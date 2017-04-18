@@ -1,0 +1,92 @@
+<!--<ion-header transparent>
+  <ion-navbar color="appheader">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Time-Table   
+    </ion-title>
+  </ion-navbar>
+  <ion-navbar align="center">  {{day}} <br> {{date}} </ion-navbar>
+
+</ion-header>
+<br> <br> <br> 
+<ion-content>
+<ion-grid>
+    <ion-row  class="row" *ngFor="let item of timetab">
+        <ion-col  width-10 class="coldesign1"> 
+            <ion-item >  <br> <br> </ion-item>
+        </ion-col>
+
+         <ion-col > 
+            <ion-list class="r">
+                 <ion-item-sliding>
+                    <ion-item> {{item.periods}} <br> {{item.subjects}} </ion-item>
+                        <ion-item-options side="right">
+                            <button ion-button color="danger" (click)="editSubject(item)"> Edit </button>
+                        </ion-item-options>
+                   </ion-item-sliding>     
+            </ion-list> 
+        </ion-col>  
+    </ion-row> 
+</ion-grid>
+</ion-content>-->
+
+<!--
+  Generated template for the Attendance2 page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar  color="appheader">
+<ion-row> 
+ <ion-col offset-25><p>4-A 22/MAR</p></ion-col>
+</ion-row>
+
+<ion-row>
+  
+    <button ion-button menuToggle >
+      <ion-icon name="menu"></ion-icon>
+    </button>
+       
+<!--<ion-col offset-50><ion-item   no-lines color="appheader" >
+  <ion-datetime displayFormat="DD/MMM/YY" [(ngModel)]="myDate"></ion-datetime>
+
+
+    </ion-item>
+</ion-col>
+-->
+</ion-row>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding-top="5" >
+   <ion-list *ngFor= "let y of time_table_notification">
+       
+            <ion-row>
+            <ion-col>{{y.subject}}</ion-col>
+            <ion-col  class="col1"> {{y.period}}</ion-col> 
+            <ion-col offset-25  class="col1">{{y.start_time}}-{{y.end_time}}</ion-col></ion-row>
+            
+          <ion-row><ion-col>Teacher:<br>{{y.teacher_name}}</ion-col>
+            <ion-col offset-50 class="col1">Attendance<br> 
+              <ion-toggle (ionChange)="toggle(y)"disabled="true()" checked="false"></ion-toggle>   
+            </ion-col>
+          </ion-row>
+       
+    </ion-list>
+     
+  
+<div id="a1">
+     <button (click)="submit()" ion-button color="primary">Submit</button>
+</div>
+
+</ion-content>
+<ion-footer>
+  <ion-toolbar color="appheader"><ion-row><ion-col id="col1"><ion-icon color="lit" name="home" align-left><br>home</ion-icon></ion-col>
+</ion-row>  </ion-toolbar>
+</ion-footer>
+
+

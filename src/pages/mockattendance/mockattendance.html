@@ -1,0 +1,24 @@
+
+<ion-header transparent>
+     <ion-navbar color="appheader">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Attendance</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <p align='left'> <b>From</b> </p>
+  <ion-item>
+  <ion-label>Date</ion-label>
+  <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="myDate"></ion-datetime>
+</ion-item>
+<p align='left'> <b>To </b> </p>
+  <ion-item>
+  <ion-label>Date</ion-label>
+  <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="myDate2"></ion-datetime>
+</ion-item><br/>
+<button ion-button color="loginbutton" block >
+      Get Attendance
+    </button>
+</ion-content>

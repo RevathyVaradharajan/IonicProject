@@ -1,0 +1,24 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Profile</ion-title>
+    <button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <h3>Profile: Udhay</h3>
+  <ion-list>
+    <button ion-item *ngFor="let student of students">
+      <ion-avatar item-left>
+        <img [src]="student.avatar_url">
+      </ion-avatar>
+      <h2>{{ student.login }}</h2>
+      <ion-icon ios="ios-arrow-forward" md="md-arrow-forward" item-right></ion-icon>
+    </button>
+  </ion-list>
+</ion-content>

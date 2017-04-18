@@ -1,0 +1,99 @@
+<ion-header transparent>
+     <ion-navbar color="appheader">
+        <ion-title>Daily Dairy</ion-title>
+     </ion-navbar>   
+</ion-header>
+
+
+<ion-content padding>
+
+<form [formGroup] = "dailyForm">
+ 
+<ion-list no-lines radio-group formControlName="selected_activity">
+    
+<ion-row>
+
+  <ion-col>
+     <ion-item>
+        <ion-radio  value="H" checked="true"  ></ion-radio>
+       <ion-label>HomeWork</ion-label>
+    </ion-item>
+  </ion-col>
+
+  <ion-col>
+    <ion-item>
+      <ion-label>Activity</ion-label>
+      <ion-radio  value="A" checked="true"></ion-radio>
+    </ion-item>
+  </ion-col>
+
+</ion-row>
+</ion-list>
+
+
+
+<ion-item id="sub" >
+  <ion-label class="www" stacked>Subject</ion-label>
+    <ion-select formControlName="selected_subject">
+          <ion-option *ngFor= " let x of daily_diary_subject">{{x.subject_name}}</ion-option>
+    </ion-select>
+  </ion-item><br>
+<ion-item *ngIf=" dailyForm.controls.selected_subject.hasError('Enter subject') "> 
+        <p id="mes">*choose any subject  </p>
+</ion-item><br/>
+
+
+
+<ion-item id="mine" >
+   <ion-label stacked class="www"> Title</ion-label>
+   <ion-textarea formControlName="selected_title"> </ion-textarea>
+</ion-item>
+<ion-item no-lines *ngIf="!dailyForm.controls.selected_title.valid &&
+                 (dailyForm.controls.selected_title.dirty )">  
+        <p id="mes">*Enter your title </p>
+</ion-item><br/>
+
+<ion-item id="mine" >
+   <ion-label stacked class="www"> Message </ion-label>
+   <ion-textarea formControlName="selected_message"></ion-textarea>
+</ion-item>
+
+<ion-item no-lines *ngIf="!dailyForm.controls.selected_message.valid &&
+                 (dailyForm.controls.selected_message.dirty )">
+        <p id="mes"> *Enter your Message </p>
+</ion-item><br/>
+
+
+  <ion-item id="a4" >
+  <ion-label class="www" stacked>End Date
+
+      <ion-icon id="a1" ios="ios-calendar-outline" md="md-calendar"></ion-icon>
+
+  <!-- Advanced: explicity set the icon for each platform -->
+              
+  <ion-datetime displayFormat="DD/MMM/YYYY" formControlName="selected_to_date"></ion-datetime>
+   </ion-label>
+</ion-item>
+ 
+<ion-item no-lines *ngIf="(dailyForm.controls.selected_to_date.dirty
+                            && (dailyForm.controls.selected_to_date.hasError('Less than'))) "> 
+        <p id="mes">*date should be greater than today  </p>
+</ion-item><br/>
+
+<ion-item no-lines>
+<button ion-button id="a2" 
+        color="loginbutton" 
+        [disabled]="!dailyForm.valid" block (click)="Submit()" >
+      Save 
+</button>
+    
+
+
+</ion-item>
+</form>
+
+</ion-content>
+<ion-footer>
+  <ion-toolbar color="appheader"><ion-row><ion-col id="col1"><ion-icon color="lit" name="home"  (click)="home()" align-left><br>home</ion-icon></ion-col>
+<ion-col id="col2">  <ion-icon name="book" (click)="viewDiary()" ><br>view</ion-icon></ion-col></ion-row>  </ion-toolbar>
+</ion-footer>

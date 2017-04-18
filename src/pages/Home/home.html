@@ -1,0 +1,128 @@
+
+<ion-header transparent>
+  <ion-navbar color="appheader">
+    <button  ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>TechGurukool</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding class="getstart" > 
+
+  <ion-segment  [(ngModel)]="segment"
+                (ionChange)= "segselected()">
+
+       <ion-segment-button value="noti">
+         Notification
+       </ion-segment-button>  
+   
+       <ion-segment-button value="Daily">
+         Dailydairy
+      </ion-segment-button>
+    
+      <ion-segment-button value="Activity">
+        Activity
+      </ion-segment-button>
+  </ion-segment>
+
+  
+<div [ngSwitch]="segment">
+
+    <div *ngSwitchCase="'noti'">
+
+      <h3>Welcome!!!  </h3>
+      <p><b><h4>Notifications</h4></b>
+        <ion-item-sliding *ngFor= "let x of abt_page_notification">
+      
+      
+        <ion-item (click)="showrow(x)" *ngIf="!x.expand" >
+          <ion-avatar item-left>
+            <img src="assets/img/exams2.png">
+          </ion-avatar>
+      
+          <h2> {{x.title}} </h2>
+          <p >  {{x.message}} </p>
+      
+        </ion-item>
+         <ion-item text-wrap (click)="showrow(x)" *ngIf="x.expand">
+
+        
+          <ion-avatar [ngClass]="{'ion2':avatar_ht,'ion1':!avatar_ht}"item-left >
+                <img src="assets/img/exams2.png">
+          </ion-avatar>
+  
+          <h2 >{{x.title}}</h2>
+          <p >{{x.message}}</p>
+        
+        </ion-item>
+
+        </ion-item-sliding>
+      
+      </p>
+      <p>
+      </p>
+      <p>
+      </p>
+
+      </div>
+
+<!--Daily Diary  !-->               
+<div *ngSwitchCase="'Daily'">
+    <p><b><h4>Daily Dairy - {{today}}</h4></b>
+    <ion-list>
+<!--I am going to do Angular 2 coding to fetch the data from the database !-->
+      <ion-item *ngFor= "let y of daily_diary_notification"  >
+        <ion-avatar item-left>
+          <img src="assets/img/exams2.png">
+        </ion-avatar>
+        <h2> {{y.title}} </h2>
+        <p>  {{y.message}} </p>
+        <button  ion-button clear item-right outline (click)="ExamView()">View</button>
+      </ion-item>
+
+</ion-list>
+ 
+</p>
+<p>
+</p>
+<p>
+</p>
+
+</div>
+
+<!-- Activity   !-->               
+<div *ngSwitchCase="'Activity'">
+<p><b><h4>Activity - 31/Mar/2017</h4></b>
+
+<ion-list>
+<!--I am going to do Angular 2 coding to fetch the data from the database !-->
+  <ion-item *ngFor= "let z of activity_diary_notification"  >
+      <ion-avatar item-left>
+        <img src="assets/img/exams2.png">
+      </ion-avatar>
+      <h2> {{z.title}} </h2>
+      <p>  {{z.message}} </p>
+  </ion-item>
+
+</ion-list>
+ 
+</p><p>
+</p><p>
+</p>
+
+</div>
+
+</div>
+
+</ion-content>    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    

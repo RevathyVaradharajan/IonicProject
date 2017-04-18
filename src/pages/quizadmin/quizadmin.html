@@ -1,0 +1,41 @@
+<ion-header transparent>
+     <ion-navbar color="appheader">
+    <ion-title>Admin Quiz</ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+
+<ion-item>
+    <ion-label class="www" stacked>Question</ion-label>
+    <ion-input type="text" autofocus></ion-input>
+  </ion-item>
+<ion-item>
+   <ion-label class="www" stacked>Option1</ion-label>
+   <ion-textarea [(ngModel)]="option1"></ion-textarea>
+</ion-item>
+<ion-item>
+   <ion-label class="www" stacked>Option2</ion-label>
+   <ion-textarea [(ngModel)]="option2"></ion-textarea>
+</ion-item>
+<ion-item>
+   <ion-label class="www" stacked>Option3</ion-label>
+   <ion-textarea [(ngModel)]="option3"></ion-textarea>
+</ion-item>
+<ion-item>
+   <ion-label class="www" stacked>Option4</ion-label>
+   <ion-textarea [(ngModel)]="option4"></ion-textarea>
+</ion-item>
+<ion-item>
+   <ion-label class="www" stacked>Answer</ion-label>
+   <ion-textarea [(ngModel)]="Answer"></ion-textarea>
+</ion-item><br/>
+  <button align-item="center" ion-button color="blue" (click)="add()"> Add</button>
+
+</ion-content>
+<ion-footer>
+  <ion-toolbar color="appheader"><ion-row><ion-col id="col1"><ion-icon color="lit" name="home"  (click)="home()" align-left><br>home</ion-icon></ion-col>
+<ion-col id="col2">  <ion-icon name="book" (click)="viewDiary()" ><br>view</ion-icon></ion-col></ion-row>  </ion-toolbar>
+</ion-footer>

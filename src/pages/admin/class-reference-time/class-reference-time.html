@@ -1,0 +1,71 @@
+<ion-header>
+    <ion-navbar>
+        <button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>
+            Class: {{selectedClass.standard}} - {{selectedClass.section}} , {{selectedClass.academic_year}}
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding class="crt">
+
+    <ion-card>
+
+        <ion-item>
+            <ion-label>Start Time</ion-label>
+            <ion-datetime displayFormat="HH:mm" [(ngModel)]="a"></ion-datetime>
+        </ion-item>
+
+
+        <ion-item>
+            <ion-label>End Time</ion-label>
+            <ion-datetime displayFormat="HH:mm" [(ngModel)]="b"></ion-datetime>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Period type</ion-label>
+            <ion-select [(ngModel)]="c">
+                <ion-option *ngFor="let p of periodTypes" value={{p.value}}>{{p.type}}</ion-option>
+            </ion-select>
+        </ion-item>
+
+        <ion-item>
+            <ion-label>Attendance required</ion-label>
+            <ion-toggle item-right [(ngModel)]="d"></ion-toggle>
+        </ion-item>
+
+        <ion-item>
+            <button (click)="addRefTimeToClass()">Add</button>
+        </ion-item>
+    </ion-card>
+
+
+
+    <br />
+    <br />
+    <ion-card>
+        <ion-card-header class="card-header">Periods</ion-card-header>
+        <ion-grid *ngIf="classRefTimes != null && classRefTimes?.length > 0">
+            <ion-row class="padding-bottom">
+                <ion-col light>Timing</ion-col>
+                <ion-col>Type</ion-col>
+                <ion-col>Attendance</ion-col>
+                <ion-col>Action</ion-col>
+            </ion-row>
+            <ion-row *ngFor="let i of classRefTimes">
+                <ion-col class="align-bottom">{{i.start_time}} - {{i.end_time}}</ion-col>
+                <ion-col class="align-bottom">{{i.period_type}}</ion-col>
+                <ion-col class="align-bottom">{{i.attendance_required}}</ion-col>
+                <ion-col class="align-bottom">
+                    <button small clear (click)="removeRefTimeFromClass(i)">
+                        <ion-icon name="trash">
+                        </ion-icon>
+                    </button>
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-card>
+
+</ion-content>

@@ -1,0 +1,16 @@
+
+export class Login{
+    first_name: string;
+    last_name: string;
+    login_id: string;
+    password: string;
+    phone_number: number;
+    email: string;
+    forget_password:string;
+    student_name: string;
+    section: string;
+    standard: string;
+    student_id: any;
+    school_id: number;
+    
+}

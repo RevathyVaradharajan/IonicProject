@@ -1,0 +1,29 @@
+<ion-header transparent  >
+  <ion-navbar color="appheader">
+    <button ion-button menuToggle >
+      <ion-icon name="menu"  ></ion-icon>
+    </button>
+    <ion-title>TechGurukool</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>  
+
+<!--I am going to do Angular 2 coding to fetch the data from the database !-->
+  
+    <ion-item text-wrap>
+          <h2><b>TITLE:</b></h2>{{parm_title}}  
+       <br><br>
+         <p> <b>Message:<br></b></p>{{parm_message}}<br>   
+        <br> <br>
+         <p> <b>Subject:<br></b></p>{{parm_subject}}<br>
+        <br> <br>
+         <p>Due date:<br></p>{{parm_due_date}}
+    </ion-item>
+
+</ion-content>
+ <ion-footer>
+  <ion-toolbar color="appheader"><ion-row>
+ <ion-col id="col1"><ion-icon  name="home" (click)="home()" align-left><br>home</ion-icon></ion-col>
+
+</ion-row>  </ion-toolbar>
+</ion-footer>

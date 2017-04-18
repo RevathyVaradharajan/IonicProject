@@ -1,0 +1,33 @@
+<ion-header>
+
+  <ion-navbar  color="appheader">
+    <ion-title>Attendance</ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding><br/>
+  <ion-item>
+    <ion-label class="www" stacked>Standard</ion-label>
+    <ion-select [(ngModel)]="selected_standard"  
+                 (ionChange)= "class_selected()" >
+      <ion-option *ngFor= " let x of class" value= "{{x.standard}}"> class - {{x.standard}} </ion-option>
+
+    </ion-select>
+  </ion-item><br>
+
+  <ion-item>
+    <ion-label class="www" stacked>Section</ion-label>
+    <ion-select [(ngModel)]="selected_section">
+        <ion-option *ngFor= " let y of sec">{{y.section}}</ion-option>
+    </ion-select>
+  </ion-item>
+   <br/>
+<button id="a1" ion-button color="loginbutton" block (click)="attendance2()">
+      Submit
+    </button>
+</ion-content>

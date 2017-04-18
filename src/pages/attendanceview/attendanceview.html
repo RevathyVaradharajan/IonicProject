@@ -1,0 +1,142 @@
+<!--
+  Generated template for the Attendance2 page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar  color="appheader">
+<ion-row> 
+ <ion-col offset-25><p>4-A 22/MAR</p></ion-col>
+</ion-row>
+
+<ion-row>
+  
+    <button ion-button menuToggle >
+      <ion-icon name="menu"></ion-icon>
+    </button>
+       
+<!--<ion-col offset-50><ion-item   no-lines color="appheader" >
+  <ion-datetime displayFormat="DD/MMM/YY" [(ngModel)]="myDate"></ion-datetime>
+
+
+    </ion-item>
+</ion-col>
+-->
+</ion-row>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+ 
+ <ion-list>
+ 
+  <ion-item id="nnnnn"> 
+    
+      <ion-row>
+            
+            <ion-col  > {{parm_period}}</ion-col> 
+            <ion-col  >{{parm_start_time}}-{{parm_end_time}}</ion-col></ion-row>
+            
+      <ion-row><ion-col >{{parm_subject}}</ion-col><ion-col >Teacher:-{{parm_teacher}}</ion-col></ion-row>
+
+  </ion-item>
+
+</ion-list>
+
+  <ion-item  no-lines>
+    <ion-label > <b>No</b> </ion-label>
+    <ion-label  class="a1"> <b>Name</b> </ion-label>
+        <ion-label class="a2"> <b>Present</b> </ion-label>
+  </ion-item>
+    
+    <ion-list no-lines paddin-left="10">      
+       <ion-item  no-lines *ngFor="let x of student_details">  
+          <ion-label>{{x.student_id}}</ion-label>
+          <ion-label>{{x.student_name}}</ion-label> 
+          <ion-toggle toogle-class="toggle-balanced" [(ngModel)]="x.checked" checked={{x.checked}}> </ion-toggle>
+       </ion-item>
+    </ion-list>
+   
+<div id="a1">
+     <button (click)="submit()" ion-button color="primary">Submit</button>
+</div>
+
+</ion-content>
+
+<!--this code is for Attendacne view page -->
+<!--
+  <ion-card>
+
+    <ion-card-header>Attendance Report </ion-card-header>
+
+    <ion-list> 
+      
+      <ion-item>
+        <ion-label color="primary" class="input-label"> Number of working days </ion-label>
+        <ion-label color="primary"> 300 </ion-label>
+       </ion-item>
+
+        <ion-item>   
+           <ion-label color="primary" class="input-label"> Number Absentees days </ion-label>
+           <ion-label color="primary"> 300 </ion-label>
+       </ion-item>
+       
+       <ion-item>
+            <button ion-button small icon-right (click)="clicked()">
+                  <ion-icon name="star"> </ion-icon>
+            </button>
+       </ion-item>
+
+    </ion-list>
+</ion-card>
+
+    <ion-list *ngIf="show">
+      <ion-item class="a7">
+      <ion-card class="a5">
+            <ion-header class="a6">Date </ion-header>
+                <ion-header class="a3">Days </ion-header>
+    <ion-header class="a4">Absent </ion-header>
+      </ion-card>
+      </ion-item>
+      <ion-card>
+          <ion-item class="a8">
+     <ion-label>24-02-2017</ion-label>
+     <ion-label class="a3">Friday</ion-label>
+     <ion-label class="a4">Present</ion-label>
+                 </ion-item>
+                       </ion-card>
+      <ion-card>
+          <ion-item>
+     <ion-label>25-02-2017</ion-label>
+     <ion-label class="a3">Saturday</ion-label>
+     <ion-label class="a4">Present</ion-label>
+                 </ion-item>
+                       </ion-card>
+
+    <ion-card>
+          <ion-item>
+     <ion-label>27-02-2017</ion-label>
+     <ion-label class="a3">Monday</ion-label>
+     <ion-label class="a4">Present</ion-label>
+                 </ion-item>
+          </ion-card>
+     <ion-card>
+          <ion-item>
+     <ion-label>28-02-2017</ion-label>
+     <ion-label class="a3">Tuesday</ion-label>
+     <ion-label class="a4">Present</ion-label>
+                 </ion-item>
+          </ion-card>
+    <ion-card>
+          <ion-item>
+     <ion-label>29-02-2017</ion-label>
+     <ion-label class="a3">Wednesday</ion-label>
+     <ion-label class="a4">Present</ion-label>
+                 </ion-item>
+              </ion-card>
+    </ion-list>-->
+
+

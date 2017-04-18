@@ -1,0 +1,18 @@
+<ion-header transparent>
+  <ion-navbar color="appheader">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>
+      Location Tracker
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+ 
+<ion-content>
+  <h3>Current Latitude: {{locationTracker.lat}}</h3>
+  <h3>Current Longitude: {{locationTracker.lng}}</h3>
+  <button ion-button full primary (click)="start()">Start Tracking</button>
+  <button ion-button full primary (click)="stop()">Stop Tracking</button>
+  <p align="center"><img src="assets/img/donmap3.png" height="300px" width="300px" > </p>
+</ion-content>

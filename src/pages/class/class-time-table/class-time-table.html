@@ -1,0 +1,99 @@
+<ion-header>
+    <ion-navbar>
+        <button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>
+            Time Table: {{selectedClass.standard}} - {{selectedClass.section}} , {{selectedClass.academic_year}}
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content class="crt">
+
+    <ion-grid>
+        <ion-row>
+            <ion-col>
+                <ion-item>
+                    <ion-label>Date</ion-label>
+                    <ion-datetime displayFormat="DD MMM YYYY" [(ngModel)]="ttDate" (ionChange)="fetchTimeTable()"></ion-datetime>
+                </ion-item>
+            </ion-col>
+        </ion-row>
+
+        <ion-row *ngIf="timeTables != null && timeTables.length == 0">
+            <ion-col>
+                <p>Nothing for this day</p>
+                <ion-chip #chip1>
+                    <ion-label>Create timetable</ion-label>
+                    <button ion-button clear color="primary" (click)="createTimeTable()">
+                        <ion-icon name="create"></ion-icon>
+                    </button>
+                </ion-chip>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
+
+    <br />
+    <br />
+
+    <div *ngIf="timeTables?.length > 0">
+        <ion-card *ngFor="let i of timeTables" class="border-at-bottom">
+            <ion-card-content no-padding>
+                <ion-card-title>
+                    <ion-row>
+                        <ion-col>
+                        </ion-col>
+                        <ion-col text-right>
+                            <ion-item>
+                                <ion-select [(ngModel)]="i.period" class="select-style">
+                                    <ion-option *ngFor="let pt of periodTypes" value="{{pt.value}}">{{pt.type}}</ion-option>
+                                    <ion-option *ngFor="let cs of classSubjects" value="{{cs.subject_name}}">{{cs.subject_name}}</ion-option>
+                                </ion-select>
+                            </ion-item>
+                        </ion-col>
+                    </ion-row>
+                </ion-card-title>
+
+                <ion-row no-padding>
+                    <ion-col>
+                        <ion-item>
+                            <ion-label class="no-margin">Start</ion-label>
+                            <ion-datetime displayFormat="HH:mm" [(ngModel)]="i.start_time"></ion-datetime>
+                        </ion-item>
+                    </ion-col>
+                    <ion-col text-right>
+                        <ion-item>
+                            <ion-label class="no-margin">End</ion-label>
+                            <ion-datetime displayFormat="HH:mm" [(ngModel)]="i.end_time"></ion-datetime>
+                        </ion-item>
+                    </ion-col>
+                </ion-row>
+
+
+                <ion-item>
+                    <ion-label class="small-font">Attendance required?</ion-label>
+                    <ion-toggle secondary [(ngModel)]="i.attendance_required"></ion-toggle>
+                </ion-item>
+
+            </ion-card-content>
+            <ion-row no-padding>
+                <ion-col>
+                    <button ion-button clear small color="primary" icon-left (click)="switchToAttendance(i)">
+                        <ion-icon name='eye'></ion-icon>
+                        Attendance
+                    </button>
+                </ion-col>
+                <ion-col text-right>
+                    <button ion-button clear small color="primary" icon-left (click)="saveTimeTableChange(i)">
+                        <ion-icon name='share-alt'></ion-icon>
+                        Save
+                    </button>
+                </ion-col>
+            </ion-row>
+        </ion-card>
+    </div>
+
+
+
+</ion-content>

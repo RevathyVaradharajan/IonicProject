@@ -1,0 +1,72 @@
+
+<ion-header transparent>
+  <ion-navbar color="appheader">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>examtimetable</ion-title>
+   
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding><br>
+<form [formGroup]="examtimetable">
+  <ion-item id="date">
+     <ion-label class="www" stacked>Date
+           <ion-icon  id="a9" ios="ios-calendar-outline" md="md-calendar"></ion-icon>
+
+     <ion-datetime displayFormat="DD/MMM/YYYY" formControlName="selected_from_date"></ion-datetime></ion-label> 
+  </ion-item>
+
+
+
+<ion-item no-lines *ngIf="!examtimetable.controls.selected_from_date.valid &&
+                 (examtimetable.controls.selected_from_date.dirty || submitAttempt)"> 
+        <p id="mes">* should be Greater than today </p>
+
+</ion-item><br>
+
+<ion-item id="date">
+   <ion-label class="www" stacked> From Time
+     <ion-icon id="a9" ios="ios-time-outline" md="md-time"></ion-icon>
+    <ion-datetime displayFormat="hh:mm:a" pickerFormat="hh:mm:a" formControlName="selected_from_time"></ion-datetime>
+  </ion-label>
+</ion-item>
+
+
+<ion-item id="date">
+   <ion-label class="www" stacked> To Time
+     <ion-icon id="a11" ios="ios-time-outline" md="md-time"></ion-icon>
+      <ion-datetime displayFormat="hh:mm:a" pickerFormat="hh:mm:a" formControlName="selected_to_time"></ion-datetime>
+  </ion-label>
+
+</ion-item><br>
+
+<ion-item *ngIf="!examtimetable.controls.selected_from_time.valid &&
+                 (examtimetable.controls.selected_from_time.dirty || submitAttempt)"> 
+        <p id="mes">time should be valid </p>
+
+</ion-item>
+
+<ion-item id="sub" >
+    <ion-label stacked class="www" >Subject </ion-label>
+  <ion-select formControlName="selected_subject">
+            <ion-option *ngFor= " let n of daily_diary_subject">{{n.subject_name}}</ion-option>
+
+  </ion-select>
+</ion-item><br>
+
+<ion-item *ngIf="!examtimetable.controls.selected_subject.valid &&
+                  examtimetable.controls.selected_subject.dirty"> 
+        <p id="mes">  *pls select the subject </p>
+</ion-item>
+
+<button ion-button color="loginbutton" [disabled]="!examtimetable.valid" block (click)="save()" >
+      Save </button>
+
+</form>
+</ion-content>
+<ion-footer>
+  <ion-toolbar color="appheader"><ion-row><ion-col id="col1"><ion-icon color="lit" name="home" (click)="home()" align-left><br>home</ion-icon></ion-col>
+<ion-col id="col2">  <ion-icon name="book" (click)="view()" ><br>view</ion-icon></ion-col></ion-row>  </ion-toolbar>
+</ion-footer>

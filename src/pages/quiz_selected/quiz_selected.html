@@ -1,0 +1,54 @@
+
+<ion-header transparent>
+     <ion-navbar color="appheader">
+    <ion-title>{{this.parm_subject}}
+    </ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+          </button>
+         <!-- <ion-item id="a1">
+  <ion-select [(ngModel)]="subject" placeholder="subject">
+  <ion-option value="Tamil" selected="true">Tamil</ion-option>
+  <ion-option value="English" selected="true">English</ion-option>
+  <ion-option value="Maths" selected="true">Maths</ion-option>
+  <ion-option value="science" selected="true">Science</ion-option>
+  <ion-option value="socialscience" selected="true">socialscience</ion-option>
+  </ion-select>
+</ion-item> -->
+
+        </ion-navbar>
+        </ion-header>
+<ion-content overflow-scroll="false">
+     <ion-list no-lines radio-group [(ngModel)]="x.checked" *ngFor= "let x of quiz_studnt_quiz">  
+
+<ion-item text-wrap>
+    <p>{{x.q_no}} . {{x.questions}}</p>      
+</ion-item>
+
+<ion-item>
+      <ion-radio item-left value={{x.option1}} checked></ion-radio>
+       <ion-label>A. {{x.option1}}</ion-label>
+</ion-item>
+
+<ion-item>
+        <ion-label>B. {{x.option2}}</ion-label>
+        <ion-radio item-left value={{x.option2}} checked></ion-radio>   
+</ion-item>
+
+<ion-item>
+        <ion-label>C. {{x.option3}}</ion-label>
+        <ion-radio item-left value={{x.option3}} checked></ion-radio>  
+</ion-item>
+
+<ion-item>
+        <ion-label>D. {{x.option4}}</ion-label>
+        <ion-radio item-left value={{x.option4}}></ion-radio> 
+</ion-item>
+
+</ion-list>
+
+
+<div id="a1">
+     <button (click)="submit()" ion-button color="primary">Submit</button>
+</div>
+</ion-content>

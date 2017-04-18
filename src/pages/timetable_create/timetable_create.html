@@ -1,0 +1,39 @@
+<ion-header transparent>
+     <ion-navbar color="appheader">
+    <ion-title>TimeTable</ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  
+  </ion-navbar>
+</ion-header>
+<ion-content padding><br/>
+  <ion-item>
+    <ion-label stacked>Standard</ion-label>
+    <ion-select  [(ngModel)]="selected_standard"  
+                 (ionChange)= "class_selected()" >
+      <ion-option *ngFor= " let x of class" value="{{x.standard}}">class-{{x.standard}}</ion-option>
+
+    </ion-select>
+  </ion-item><br>
+
+<ion-item>
+    <ion-label stacked>Section</ion-label>
+    <ion-select [(ngModel)]="selected_section">
+        <ion-option *ngFor= " let y of sec">{{y.section}}</ion-option>
+    </ion-select>
+  </ion-item><br>
+
+  <ion-item>
+  <ion-label stacked>To Date
+      <ion-icon id="a10" ios="ios-calendar-outline" md="md-calendar"></ion-icon>
+      <ion-datetime displayFormat="DD/MMM/YYYY" [(ngModel)]= "selected_tt_date"></ion-datetime></ion-label>
+</ion-item>
+
+
+  <button ion-button color="loginbutton" block (click)="submit()"> create timetable</button>
+</ion-content>
+<ion-footer>
+  <ion-toolbar color="appheader"><ion-row><ion-col id="col1"><ion-icon color="lit" name="home" align-left></ion-icon></ion-col>
+<ion-col id="col2">  <ion-icon name="book" (click)="viewDiary()" ></ion-icon></ion-col></ion-row>  </ion-toolbar>
+</ion-footer>

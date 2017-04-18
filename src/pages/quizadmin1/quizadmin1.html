@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-navbar  color="appheader">
+    <ion-title>Quiz</ion-title>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding><br>
+  <ion-item id="std">
+    <ion-label class="www" stacked>Standard</ion-label>
+    <ion-select [(ngModel)]="selected_standard"  
+                 (ionChange)= "class_selected()" >
+      <ion-option *ngFor= " let x of class" value= "{{x.standard}}"> class - {{x.standard}} </ion-option>
+
+    </ion-select>
+  </ion-item><br>
+<ion-item id="sec">
+  <ion-label class="www" stacked>Section</ion-label>
+  <ion-select [(ngModel)]="Section">
+        <ion-option *ngFor= " let y of sec"> {{y.section}} </ion-option>
+  </ion-select>
+</ion-item><br>
+<ion-item id="sub">
+  <ion-label  class="www" stacked>Subject</ion-label>
+  <ion-select [(ngModel)]="selected_subject">
+            <ion-option *ngFor= " let n of daily_diary_subject"> {{n.subject_name}} </ion-option>
+
+  </ion-select>
+</ion-item><br>
+
+
+<button id="btt" ion-button color="loginbutton" block (click)="Set()">
+      Set
+    </button>
+</ion-content>
+

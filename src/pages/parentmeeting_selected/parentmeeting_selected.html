@@ -1,0 +1,29 @@
+<ion-header transparent>
+     <ion-navbar color="appheader">
+<button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+       <ion-title (click)="doFilter()">Roll no:{{selected_record}}<br>(click)</ion-title>
+       
+     </ion-navbar>
+</ion-header>
+<ion-content padding>
+      <ion-select #sectionSelect [(ngModel)]="selected_rollno" (ionChange)="changeHeader()">
+         <ion-option *ngFor="let roll of pt_rollno" value="{{roll.student_id}}">Roll No.{{roll.student_id}}-{{roll.student_name}}</ion-option>
+         </ion-select>
+
+ 
+  <ion-item no-lines>
+    <ion-label id="uuu" stacked class="www">Teacher-Feedback</ion-label>
+    <ion-textarea  text-wrap ></ion-textarea>
+  </ion-item>
+<ion-item no-lines>
+   <ion-label id="uuu" stacked class="www">Parent-Feedback</ion-label>
+   <ion-textarea text-wrap></ion-textarea>
+</ion-item>
+<button id="btt" ion-button (click)="save()">save</button>
+</ion-content> 
+<ion-footer>
+  <ion-toolbar color="appheader"><ion-row><ion-col id="col1"><ion-icon color="lit" name="home" (click)="home()"align-left><br>home</ion-icon></ion-col>
+</ion-row>  </ion-toolbar>
+</ion-footer>

@@ -1,0 +1,45 @@
+
+
+.ios,.md{
+   time-table-page {
+       @font-face{
+        font-family: Barrio;
+        src: url"(‘../assets/fonts/barrio.woff2’) format(‘woff2’)";
+        }
+        ion-option,ion-select{font-family: 'Times New Roman', Times, serif;
+    font-size: 100%; }
+        button,h3 { font-family:'Times New Roman', Times, serif;} 
+        ion-title,ion-segment{font-family: 'Oswald', sans-serif;}
+        .www,h4{font-family: 'Oswald', sans-serif;font-size:100%;}
+
+ion-list{
+             border: 1px solid black;
+             border-radius: 15px;
+             background-color: lightgoldenrodyellow;
+             font-size: 120%;
+         }
+         ion-col{
+             font-family: 'Times New Roman', Times, serif;
+             font-size: 100%;
+         }
+         .col1{
+             text-align: right;
+         }
+#col1{
+    padding:0;
+    text-align: center;
+    font-size: 90%;
+    color:white;
+   // margin-right: 40%;
+}
+#col2{
+    padding:0;
+    text-align: center;
+    font-size: 90%;
+    color:white;
+}
+}
+}
+
+
+

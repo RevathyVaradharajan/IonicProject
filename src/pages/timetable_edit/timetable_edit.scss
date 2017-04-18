@@ -1,0 +1,8 @@
+time-table-page{
+    ion-select {
+         position: absolute;
+        .select-icon, .select-text {
+            display: none !important;  /* hidden triangle icon and selected text */
+        }
+    }
+}

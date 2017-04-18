@@ -1,0 +1,35 @@
+<ion-header>
+    <ion-navbar>
+        <button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>
+            Attendance
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+    <h2 dark> Class: {{selectedClass.standard}} - {{selectedClass.section}} , {{selectedClass.academic_year}} </h2>
+    <p secondary>Subject: {{selectedClassPeriodTT.period}}:{{selectedClassPeriodTT.tt_date}} - {{selectedClassPeriodTT.start_time}}:{{selectedClassPeriodTT.end_time}}</p>
+    <br />
+    <br />
+    <div *ngIf="!attendanceMarked" primary>
+        Mark attendance and click save
+    </div>
+    <br />
+
+    <div *ngIf="attendances?.length > 0">
+        <ion-item *ngFor="let att of attendances">
+            <ion-label>{{att.student_id}}: {{att.student_name}}</ion-label>
+            <ion-checkbox secondary [(ngModel)]="att.attendance"></ion-checkbox>
+        </ion-item>
+        <br />
+        <button full (click)="updateAttendance()">
+            <ion-icon name="cloud-upload"></ion-icon>
+            Save
+        </button>
+    </div>
+
+</ion-content>

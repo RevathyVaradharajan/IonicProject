@@ -1,0 +1,42 @@
+
+
+.crt {
+    
+    .select-style{
+        max-width: 100%;
+    }
+    
+    .no-margin{
+        margin: 0 0 0 0;
+    }
+    
+    .align-bottom {
+        border-bottom: 1px solid gray;
+        text-align: center;
+        vertical-align: middle;
+    }
+    .padding-bottom {
+        padding-bottom: 20px;
+        background-color: beige;
+        text-align: center;
+    }
+    .card-header{
+        background-color: aliceblue;
+    }
+    .left-align{
+        //text-align: left;
+        //border: 2px solid green;
+        //padding: 0px;
+        //margin-left: 0px;
+    }
+    .small-font{
+        font-size: 85%;
+        padding: none;
+        margin: 0px;
+        
+        //display: inline;
+    }
+    .border-at-bottom{
+        border-bottom: 1px solid gray;
+    }
+}

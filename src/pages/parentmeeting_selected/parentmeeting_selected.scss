@@ -1,0 +1,51 @@
+.ios,.md{
+    page-pta{
+    @font-face{
+        font-family: Barrio;
+        src: url"(‘../assets/fonts/barrio.woff2’) format(‘woff2’)";
+        }
+        ion-option,ion-select{font-family: 'Times New Roman', Times, serif;
+    font-size: 100%; }
+        button,h3 { font-family:'Times New Roman', Times, serif;} 
+        ion-title,ion-segment{font-family: 'Oswald', sans-serif;}
+        .www,p,h4{font-family: 'Oswald', sans-serif;font-size:100%;}
+ ion-item{
+     height: 40%;
+ } 
+ ion-select {
+         position: absolute;
+          color:white; 
+        .select-icon, .select-text {
+            display: none !important;  /* hidden triangle icon and selected text */
+        }
+ }
+ ion-textarea {
+max-width: 100%;
+width: 100%;
+height: 40vh;
+border:1px solid navy;
+background-color: whitesmoke;
+border-radius: 10px;
+}
+#col1,#col2{
+    padding: 0;
+    text-align: center;
+    font-size: 80%;
+    color:white;
+}
+#uuu{
+    text-align: center;
+   
+    border-radius: 20px;
+}
+#nnn{
+    font-size: 80%;
+}
+#btt{
+    margin-top:2%;
+    width:20%;
+    height: 5%;
+    text-align: center;
+}
+}
+    }

@@ -1,0 +1,51 @@
+<ion-header>
+
+    <ion-navbar>
+        <button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>
+             Subjects: {{selectedClass.standard}} - {{selectedClass.section}} , {{selectedClass.academic_year}}
+        </ion-title>
+    </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+    <ion-list *ngIf="classSubjects?.length > 0">
+        <ion-list-header>
+            Assigned to class
+        </ion-list-header>
+        <ion-item *ngFor="let i of classSubjects">
+            {{i.subject_name}}
+            <button item-right clear (click)="assignTeachers(i)">
+                <ion-icon name="contacts">
+                </ion-icon>
+                Teachers
+            </button>
+            <button item-right clear (click)="removeSubjectFromClass(i)">
+                <ion-icon name="trash">
+                </ion-icon>
+                Del
+            </button>
+        </ion-item>
+    </ion-list>
+
+    <br/>
+    <p></p>
+    
+    <ion-list>
+        <ion-list-header>
+            Master subject list
+        </ion-list-header>
+        <ion-item *ngFor="let i of schoolSubjects">
+            {{i.subject_name}}
+            <button item-right clear (click)="addSubjectToClass(i.school_subject_id)">
+                <ion-icon name="add">
+                </ion-icon>
+                Add to class
+            </button>
+        </ion-item>
+    </ion-list>
+
+</ion-content>

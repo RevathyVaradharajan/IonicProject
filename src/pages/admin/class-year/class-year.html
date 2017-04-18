@@ -1,0 +1,135 @@
+<ion-header>
+
+    <ion-navbar>
+
+        <button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+
+        <ion-title>Classes & Years</ion-title>
+
+    </ion-navbar>
+
+    <ion-segment [(ngModel)]="listnew">
+        <ion-segment-button value="list">
+            List Classes
+        </ion-segment-button>
+        <ion-segment-button value="create">
+            Create Class
+        </ion-segment-button>
+    </ion-segment>
+</ion-header>
+
+<ion-content padding class="page-bg">
+    <p></p>
+    <div [ngSwitch]="listnew">
+        <ion-card *ngSwitchCase="'create'">
+            <ion-card-header>
+                Create new class
+            </ion-card-header>
+            <ion-card-content>
+                <ion-grid>
+                    <ion-row>
+                        <ion-col>
+                            <ion-list>
+                                <ion-item>
+                                    <ion-label floating>Standard</ion-label>
+                                    <ion-input type="text" #std required></ion-input>
+                                </ion-item>
+
+                                <ion-item>
+                                    <ion-label floating>Section</ion-label>
+                                    <ion-input type="text" #section required></ion-input>
+                                </ion-item>
+
+                                <ion-item>
+                                    <ion-label floating>Acad year</ion-label>
+                                    <ion-input type="number" min="2000" max="3000" #year required></ion-input>
+                                </ion-item>
+                            </ion-list>
+
+                            <button danger outline (click)="createNew(std.value, section.value,year.value)">
+                                Save</button>
+                        </ion-col>
+                    </ion-row>
+                    <ion-row>
+
+
+                    </ion-row>
+                </ion-grid>
+            </ion-card-content>
+        </ion-card>
+
+
+        <div *ngSwitchCase="'list'">
+
+            <!--
+            <ion-list>
+                <ion-item-sliding *ngFor="let cl of classSectionYears; let i = index">
+
+                    <ion-item>
+                        Year - {{cl.academic_year}} Class : {{cl.standard}} - {{cl.section}}
+                        <button item-right clear primary (click)="switchToClassMenu(cl)">
+                            <ion-icon name="arrow-round-forward">
+                            </ion-icon>
+                            More
+                        </button>
+                    </ion-item>
+
+                    <ion-item-options side="left">
+                        <button (click)="switchToSubjects(cl)">
+                            <ion-icon name="albums"></ion-icon>
+                            Subjects
+                        </button>
+                        <button (click)="switchToTeachers(cl.id)">
+                            <ion-icon name="people"></ion-icon>
+                            Teacher
+                        </button>
+                        <button (click)="switchToPeriodTimings(cl.id)">
+                            <ion-icon name="time"></ion-icon>
+                            Timings
+                        </button>
+                    </ion-item-options>
+                </ion-item-sliding>
+            </ion-list>
+            -->
+
+            <ion-list>
+                <div *ngFor="let cl of classSectionYears; let i = index">
+                    <h2 *ngIf="i==0 || (cl.academic_year != classSectionYears[i-1].academic_year)" class="header-row-display">
+                        Year - {{cl.academic_year}} 
+                    </h2>
+
+                    <ion-item-sliding>
+                        <ion-item>
+                            Class : {{cl.standard}} - {{cl.section}}
+                            <button item-right clear primary (click)="switchToClassMenu(cl)">
+                                <ion-icon name="arrow-round-forward">
+                                </ion-icon>
+                                More
+                            </button>
+                        </ion-item>
+
+                        <ion-item-options side="left">
+                            <button (click)="switchToSubjects(cl)">
+                                <ion-icon name="albums"></ion-icon>
+                                Subjects
+                            </button>
+                            <button (click)="switchToTeachers(cl.id)">
+                                <ion-icon name="people"></ion-icon>
+                                Teacher
+                            </button>
+                            <button (click)="switchToPeriodTimings(cl.id)">
+                                <ion-icon name="time"></ion-icon>
+                                Timings
+                            </button>
+                        </ion-item-options>
+                    </ion-item-sliding>
+                </div>
+            </ion-list>
+
+        </div>
+
+    </div>
+
+</ion-content>

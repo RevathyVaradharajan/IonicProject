@@ -1,0 +1,137 @@
+
+<ion-header transparent  >
+  <ion-navbar color="appheader">
+    <button ion-button menuToggle >
+      <ion-icon name="menu"  ></ion-icon>
+    </button>
+    <ion-title>TechGurukool</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content>  
+
+  <ion-segment  [(ngModel)]="segment"
+                (ionChange)= "segselected()">
+
+       <ion-segment-button value="Daily">
+         Dailydairy
+      </ion-segment-button>
+    
+      <ion-segment-button value="Activity">
+        Activity
+      </ion-segment-button>
+
+  </ion-segment>
+  
+<div [ngSwitch]="segment">
+
+<!--Daily Diary  !-->               
+<div *ngSwitchCase="'Daily'">
+   
+<ion-list>
+<!--I am going to do Angular 2 coding to fetch the data from the database !-->
+  <ion-item-sliding *ngFor= "let y of daily_diary_notification" >
+    <ion-item (click)="showrow(y)"  *ngIf="!y.expand">
+        
+         <ion-avatar item-left>
+             <img src="assets/img/exams2.png">
+         </ion-avatar>        
+         <h2><b>{{y.title}}</b> </h2>  
+         <p>{{y.message}}</p>
+          
+    </ion-item>
+    <ion-item text-wrap (click)="showrow(y)" *ngIf="y.expand">
+         <ion-avatar class="ion">
+             <img src="assets/img/exams2.png">
+         </ion-avatar>        
+         <h2><b>{{y.title}}</b> </h2>  
+       
+         <p >{{y.message}}</p>    
+         <p > Subject:{{y.subject}}</p>
+         <p >Due date:{{y.end_date}}</p>
+         
+    </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="primary">
+         <ion-icon name="book"></ion-icon>
+         view
+        </button>
+      <button ion-button color="secondary" (click)="edit_activity(y)">
+         <ion-icon ios="ios-clipboard" md="md-clipboard"></ion-icon>
+        Edit
+      </button>
+        <button ion-button color="danger" (click)="delete(z)">
+         <ion-icon ios="ios-trash" md="md-trash"></ion-icon>
+        Delete
+      </button>
+    </ion-item-options>
+ </ion-item-sliding>
+  
+</ion-list>
+ 
+
+<p>
+</p>
+<p>
+</p>
+
+</div>
+
+<!-- Activity   !-->               
+<div *ngSwitchCase="'Activity'">
+<p><b><h4>Activity - 31/Mar/2017</h4></b>
+
+<ion-list>
+  <ion-item-sliding *ngFor= "let z of activity_diary_notification">
+    <ion-item (click)="showrow(z)">
+         <ion-avatar item-left>
+             <img src="assets/img/exams2.png">
+         </ion-avatar>
+         <h2> {{z.title}} </h2>
+          <p> {{z.message}} </p>
+         <p *ngIf="z.expand"> Subject:{{z.subject}}</p>
+         <p *ngIf="z.expand">Due date:{{z.end_date}}</p>
+
+  </ion-item>
+
+  <ion-item-options side="right">
+      <button ion-button color="primary">
+        <ion-icon name="book"></ion-icon>
+        view
+      </button>
+      <button ion-button color="secondary" (click)="edit_activity(z)">
+         <ion-icon ios="ios-clipboard" md="md-clipboard"></ion-icon>
+        Edit
+      </button>
+        <button ion-button color="danger">
+         <ion-icon ios="ios-trash" md="md-trash"></ion-icon>
+        Delete
+      </button>
+   </ion-item-options>
+ </ion-item-sliding>
+
+</ion-list>
+ 
+</p><p>
+</p><p>
+</p>
+
+</div>
+
+</div>
+
+</ion-content>    
+
+    <ion-footer>
+  <ion-toolbar color="appheader"><ion-row>
+ <ion-col id="col1"><ion-icon color="lit" name="home" (click)="home()" align-left><br>home</ion-icon></ion-col>
+
+</ion-row>  </ion-toolbar>
+</ion-footer>
+    
+    
+   
+    
+    
+    
+    
+    
