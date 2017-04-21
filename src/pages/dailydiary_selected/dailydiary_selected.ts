@@ -53,14 +53,14 @@ export class ContactPage {
                 this.dairy_page_dailydiary.id         =  navParams.get('parm_id');
                 this.dairy_page_dailydiary.end_date   =  navParams.get('parm_end_date');
                 this.dialydiary_update                =  navParams.get('parm_update');
-
-                if (this.dialydiary_update == "edit") {
+                  if (this.dialydiary_update == "edit") {
                     this.dailyForm = formBuilder.group({
                     selected_title:     [this.dairy_page_dailydiary.title,Validators.required],
                     selected_message:   [this.dairy_page_dailydiary.message,Validators.required],
                     selected_to_date:   [this.dairy_page_dailydiary.end_date,DailydiaryValidator.checkToDate],
-                    selected_subject:   [''],
+                    selected_subject:   [this.dairy_page_dailydiary.subject],
                     selected_activity:  [this.dairy_page_dailydiary.activity]})
+                    console.log('hello in edit');
                 } else {
                   this.dailyForm = formBuilder.group({  
                       selected_title:     ['',Validators.required],
@@ -68,6 +68,7 @@ export class ContactPage {
                       selected_to_date:   ['',DailydiaryValidator.checkToDate],
                       selected_subject:   ['',DailydiaryValidator.checkSubject],
                       selected_activity:  ['H']});
+                      console.log('hello:' + this.dialydiary_update);
                 }  
     
     }
@@ -179,17 +180,15 @@ home(){
 
     }
 
+ 
   resetForm() {
-
-      this.dailyForm.reset()
-               //   this.dailyForm = this.formBuilder.group({  
-                //        selected_title:     ['',Validators.required],
-                //        selected_message:   ['',Validators.required],
-                 //       selected_to_date:   ['',DailydiaryValidator.checkToDate],
-                  //      selected_subject:   ['',DailydiaryValidator.checkSubject],
-                    //    selected_activity:  ['H']});  
+      console.log('hello valid b4:' + this.dailyForm.valid);
+      this.dailyForm.reset({selected_activity:'H'});
+      console.log('hello valid after:' + this.dailyForm.valid + ':' +
+      this.dailyForm.value.selected_activity +';'
+      );
     
- }  
+  }
 
 }
 

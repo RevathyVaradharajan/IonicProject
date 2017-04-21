@@ -63,21 +63,23 @@
 </ion-header>
 
 <ion-content padding-top="5" >
+
    <ion-list *ngFor= "let y of time_table_notification">
        
             <ion-row>
-            <ion-col (click)="select_subject()">{{y.subject}}</ion-col>
-            <ion-col  class="col1"> {{y.period}}</ion-col> 
+            <ion-col (click)="select_subject(y)">{{y.subject}}</ion-col>
+            <ion-col (click)="select_period(y)" class="col1"> {{y.period}}</ion-col> 
             <ion-col offset-25  class="col1">{{y.start_time}}-{{y.end_time}}</ion-col></ion-row>
             
-          <ion-row><ion-col>{{y.teacher_name}}</ion-col>
+          <ion-row>
+            <ion-col (click)="select_teacher(y)">{{y.teacher_name}}</ion-col>
             <ion-col offset-50 class="col1">Attendance<br> 
-              <ion-toggle disabled="true()" checked="false"></ion-toggle>   
+            <ion-toggle disabled="true()" checked="false"></ion-toggle>   
             </ion-col>
           </ion-row>
 
-            <ion-select #periodselect *ngIf= "!show" [(ngModel)]="selected_period" >
-                <ion-option *ngFor= " let x of attendance_period" (ionSelect)= "change(x)">{{x.period_type}}</ion-option>
+            <ion-select #periodselect  [(ngModel)]="selected_period" (ionChange)= "edit_period(y)" >
+                <ion-option *ngFor= "let n of attendance_period"  [value]="n.period_type">{{n.period_type}}</ion-option>
             </ion-select>
 
             <ion-datetime displayFormat="HH:mm" *ngIf= "!show" [(ngModel)]="selected_start_time"></ion-datetime>
@@ -88,7 +90,7 @@
                 <ion-option *ngFor="let n of class_subject" [value]="n.subject_name">{{n.subject_name}}</ion-option>
             </ion-select><br>
 
-            <ion-select #teacherselect *ngIf= "!show" [(ngModel)]="selected_name" (ionChange)= "edit_teacher(y)">
+            <ion-select #teacherselect  [(ngModel)]="selected_name" (ionChange)= "edit_teacher(y)">
                 <ion-option *ngFor="let n of teacher_subject" [value]="n.name">{{n.name}}</ion-option>
             </ion-select>
 
@@ -117,8 +119,6 @@
           </ion-select>-->
 
     </ion-list>
-     
-  
 <div id="a1">
      <button (click)="submit()" ion-button color="primary">Save</button>
 </div>

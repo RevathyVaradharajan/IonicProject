@@ -39,6 +39,7 @@ export class NotifybydatePage {
         console.log("value of parm date" + this.parm_notify_from_date)
 
 
+       
         if(this.parm_update_type == "edit"){
            this.notifyForm = formBuilder.group({  
            selected_from_date: [this.parm_notify_from_date,UsernameValidator.checkFromDate],
@@ -55,6 +56,7 @@ export class NotifybydatePage {
            selected_message:   ['',Validators.required]
           }, {validator:UsernameValidator.checkTooDate})
         }   
+
 
   }
 
@@ -77,6 +79,11 @@ view(){
     this.navCtrl.push(Notifynew);
     console.log("am coming");
 }
+resetForm() {
+      console.log('hello valid b4:' + this.notifyForm.valid);
+      this.notifyForm.reset();
+      
+    }
 
   
 

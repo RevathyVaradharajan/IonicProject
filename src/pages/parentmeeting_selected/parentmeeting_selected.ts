@@ -5,6 +5,7 @@ import {ClassProvider} from '../../providers/class-provider';
 import { ToastController } from 'ionic-angular';
 import { Select } from 'ionic-angular';
 import{ AboutPage} from '../Home/home';
+import{LoadingController} from 'ionic-angular';
 
 @Component({
   selector: 'page-pta',
@@ -18,10 +19,10 @@ parm_section:any;
 pt_rollno:Login[];
 selected_record:any;
 selected_rollno:any;
-
+loader:any;
 
 @ViewChild('sectionSelect') sectionSelect: Select;
-constructor(public navCtrl:NavController, public navParams: NavParams,public classProvider:ClassProvider,public toastController:ToastController ){
+constructor(public loadingController:LoadingController,public navCtrl:NavController, public navParams: NavParams,public classProvider:ClassProvider,public toastController:ToastController ){
 
 
                 this.parm_standard = navParams.get('parm_standard');
@@ -31,8 +32,14 @@ constructor(public navCtrl:NavController, public navParams: NavParams,public cla
 
 }    
 
+        loading(){
+      this.loader = this.loadingController.create({
+        content:"Please wait"
+      });
+      this.loader.present();
+    }
     ngOnInit () {
-      
+      this.loading();
     //  this.fetchperiod(this.parm_standard);
       this.fetchStudent(this.parm_school_id,this.parm_standard,this.parm_section);
       
@@ -43,8 +50,8 @@ constructor(public navCtrl:NavController, public navParams: NavParams,public cla
     
             this.classProvider
               . getStudentForClass(school_id,standard,section)
-              . subscribe(res =>  {this.pt_rollno = <Login[]>res,this.check()},
-                          err =>   this.errorToast()); 
+              . subscribe(res =>  {this.pt_rollno = <Login[]>res,this.check(),this.loader.dismiss()},
+                          err =>   {this.loader.dismiss(),this.errorToast()}); 
 
       }  
 

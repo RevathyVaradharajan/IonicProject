@@ -37,5 +37,22 @@ export class TimetableProvider {
                     .catch(error => Observable.throw(new Error(error.status)));
     }
 
+    putTimetable(prvdr_timetable_notification: TimeTable[],school_id: any,  section: any, class_id:any)
+    {
+        console.log(" i'm coming in timetable provider")
+        let url: string = `${Constants.servicesURLPrefix}/classes/${school_id}/${section}/${class_id}/timetable`;
+        console.log("link" + url)
+
+         let headers = new Headers({ 'Content-Type': 'application/json' });
+        let options = new RequestOptions({ headers: headers });
+        
+        let body = JSON.stringify(prvdr_timetable_notification);        
+
+        return this.http.put(url,body, options)
+                    .map(res => res.json())
+                    .catch(error => Observable.throw(new Error(error.status)));
+
+        
+    }
 
 }

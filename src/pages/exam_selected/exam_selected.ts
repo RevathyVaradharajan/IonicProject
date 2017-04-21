@@ -54,8 +54,7 @@ export class Resultview {
                     this.school_id   = 1
     
         }
-
-        parmsForedit() {
+             parmsForedit() {
 
             this.exam_notification.date               = this.navParams.get('parm_exam_date');
             this.exam_notification.exam_type          = this.navParams.get('parm_exam_type');
@@ -78,14 +77,15 @@ export class Resultview {
        parmsForadd() {
 
             this.examtimetable = this.formBuilder.group({  
-                selected_from_date: ['',UsernameValidator.checkFromDate],
+                selected_from_date: ['',UsernameValidator.checkToDate],
                 selected_from_time: ['',Validators.required],
                 selected_to_time:   ['',Validators.required],
-                selected_subject:   ['']
+                selected_subject:   ['',UsernameValidator.checkSubject]
             })
 
         }
 
+     
         ngOnInit() {
             this.loading();
             this.fetchsubject(this.exam_notification.standard);
@@ -188,6 +188,10 @@ export class Resultview {
                           err =>  {this.loader.dismiss(),this.errorToast()}); 
 
     }
+  resetForm() {
+      console.log('hello valid b4:' + this.examtimetable);
+      this.examtimetable.reset();
+  };
 
 
 }

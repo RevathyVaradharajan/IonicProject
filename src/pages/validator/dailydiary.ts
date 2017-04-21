@@ -2,8 +2,8 @@ import { FormControl,FormGroup,Validators} from '@angular/forms';
  
 export class DailydiaryValidator {
 
-
 static checkToDate(control: FormControl): any {
+    console.log('hello in date validator:' + control.value + ';');
     let  to_dt   = control.value 
 
 
@@ -24,7 +24,9 @@ static checkToDate(control: FormControl): any {
 
        
         
-        if ( to_dt < today) {
+        if ( to_dt == null || to_dt == '' || 
+          to_dt == ' ' ||
+          to_dt < today) {
             return {
                   "Less than": true
             }
@@ -34,14 +36,23 @@ static checkToDate(control: FormControl): any {
 }
 
 static checkSubject(control: FormControl): any {
-    let  sub   = control.value 
-        if(control.value == ' '){
+    console.log('in subject validator:' + control.value + ';'
+    );
+    //console.log(control);
+    //console.log('----');
+    let  sub   = control.value; 
+    
+        if(control.value == null || control.value == '' || control.value == ' ')
+        {
+            console.log('subject field error');
             return{
                 "enter subject":true
-            }
+            };
         }
+        return null;
 
     }
+
     static checkTitle(control: FormControl): any {
     let  title   = control.value 
         if(control.value == ' '){

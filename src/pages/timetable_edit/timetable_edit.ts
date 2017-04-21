@@ -7,6 +7,7 @@ import { ToastController } from 'ionic-angular';
 import * as moment from 'moment';
 import {ClassProvider} from '../../providers/class-provider';
 import {Subject} from '../../models/Subject';
+import {PeriodTypes} from '../../models/PeriodTypes';
 import {Teacher} from '../../models/Teacher';
 import {ClassReferenceTime} from '../../models/ClassReferenceTime';
 
@@ -25,6 +26,7 @@ export class TimeTableEdit {
     selected_period: any;
     selected_attendance_required: any;
     selected_tt_date: any;
+    selected_name:any;
     selected_subject:any;
     time_table_notification: TimeTable[];
     selected_section:any;
@@ -36,44 +38,110 @@ export class TimeTableEdit {
     date: any;
     class_subject: Subject[];
     teacher_subject: Teacher[];
+    period:PeriodTypes[];
     selected_teacher_id:any;
     attendance_period: ClassReferenceTime[];
     show:Boolean= true;
     parm_standard:any;
     parm_section:any;
     parm_tt_date:any;
-    @ViewChild('subjectselect') subjectselect: Select;
+    indx:number;
+    indx1:number;
+
+@ViewChild('subjectselect') subjectselect: Select;
+@ViewChild('periodselect') periodselect: Select;
+@ViewChild('teacherselect') teacherselect: Select;
 
   constructor(public alertCtrl: AlertController, public navCtrl: NavController,navParams: NavParams,
               public timetableProvider:TimetableProvider, public toastController: ToastController,
               public classprovider: ClassProvider) {
 
                 //this.time_table.id= navParams.get('parm_id');
+                this.selected_school_id = '1';
                 this.parm_standard = navParams.get('parm_standard');
                 this.parm_section  = navParams.get('parm_section');
                 this.parm_tt_date  = navParams.get('parm_tt_date');
                 this.selected_teacher_id= '1'
-                let day = "Monday"
+                this.selected_day='monday'
+                let day = 'Monday'
         //this.time_table.id=this.selected_id;
                 
      this.timetableGet (this.parm_standard,this.parm_section, day, this.parm_tt_date);
 
 }
 
-select_subject(){
-        this.subjectselect.open();
+submit(){
+
+    //this.timetablePost (this.parm_standard,this.parm_section,  this.parm_tt_date)
+   this.putTimetable(this.time_table_notification, this.selected_school_id,this.parm_section, this.parm_standard)
+   for( let x of this.time_table_notification)
+{
+      console.log("i'm coming " + x.subject)
+  }
+
+
+}
+select_subject(z){  
+         this.indx = this.time_table_notification.indexOf(z);
+         this.subjectselect.open();
+}
+select_period(z){  
+         this.indx = this.time_table_notification.indexOf(z);
+         this.periodselect.open();
+}
+select_teacher(z){  
+         this.indx = this.time_table_notification.indexOf(z);
+         this.teacherselect.open();
+}
+
+
+
+putTimetable(prvdr_timetable_notification: TimeTable[] ,school_id:any,section:any, class_id:any){
+            console.log(class_id);
+             this.timetableProvider
+            .putTimetable(prvdr_timetable_notification,school_id,  section, class_id)
+            .subscribe(res => {this.successToastreturn(), this.check1()},
+                       err =>  this.errorToast()); 
 }
 
 edit_subject(n){
 
-        console.log("i'm coming for edit subject" + this.selected_subject)
+    console.log("i'm coming for edit subject" + this.selected_subject)
 
     let index = this.time_table_notification.indexOf(n);
+    console.log("index" + index)
+    console.log("index select" + this.indx)
     if(index > -1) {
-       this.time_table_notification[index].subject = this.selected_subject
+       this.time_table_notification[this.indx].subject = this.selected_subject
     }    
 
 }
+
+edit_period(n){
+
+console.log("i'm coming for edit period" + this.selected_period)
+
+    let index = this.time_table_notification.indexOf(n);
+    console.log("index" + index)
+    console.log("index select" + this.indx)
+    if(index > -1) {
+       this.time_table_notification[this.indx].period = this.selected_period
+    }    
+
+}
+edit_teacher(n){
+
+console.log("i'm coming for edit teacher" + this.selected_name)
+
+    let index = this.time_table_notification.indexOf(n);
+    console.log("index" + index)
+    console.log("index select" + this.indx)
+    if(index > -1) {
+       this.time_table_notification[this.indx].period = this.selected_name
+    }    
+
+}
+
 
 
 ngOnInit() {
@@ -81,8 +149,6 @@ ngOnInit() {
         this.fetchsubject(this.parm_standard);
         this.fetchperiod(this.parm_standard);
         this.fetchteacher(this.parm_standard, this.selected_teacher_id);
-
-
 }
 
 fetchsubject(class_id:number){
@@ -112,8 +178,13 @@ fetchteacher(class_id:number, teacher_id: number) {
 fetchperiod(class_id:number) {
               this.classprovider
               .getAllRefTimes(class_id)
-                .subscribe(res => {this.attendance_period = <ClassReferenceTime[]>res},
+                .subscribe(res => {this.attendance_period = <ClassReferenceTime[]>res, this.check3()},
                            err =>   this.errorToast()); 
+    }
+    check3(){
+      for (let n of this.attendance_period){
+              console.log("period type" + n.period_type)
+            }
     }
 
   save(){
