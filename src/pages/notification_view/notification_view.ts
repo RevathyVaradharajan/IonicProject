@@ -19,47 +19,46 @@ selected_school_id: number = 1;
 abt_page_notification: Notification[];
 loader:any;
 avatar_ht:boolean=false;
+id: number;
+
  constructor(public navCtrl: NavController, public navParams: NavParams,
              public notifyProvider:NotifyProvider, public toastController: ToastController,
              public loadingController:LoadingController) {
 
                 this.fetchNotify(this.selected_abt_page_date,this.selected_school_id);
-
-
   }
  
   ngOnInit() {
-  this.loading();    
-}
-loading(){
-      this.loader = this.loadingController.create({
+        this.loading();    
+  }
+
+  loading(){
+        this.loader = this.loadingController.create({
         content:"Please wait"
-      });
-      this.loader.present();
+        });
+        this.loader.present();
     }
-fetchNotify(prvdr_abt_page_date: string, prvdr_abt_page_school_id: any) {
+  fetchNotify(prvdr_abt_page_date: string, prvdr_abt_page_school_id: any) {
     
-      console.log(prvdr_abt_page_date);
-      this.notifyProvider
-            .getNotify(prvdr_abt_page_date, prvdr_abt_page_school_id)
-            .subscribe(res => {this.abt_page_notification = <Notification[]>res,this.loader.dismiss()},
+        console.log(prvdr_abt_page_date);
+        this.notifyProvider
+        .getNotify(prvdr_abt_page_date, prvdr_abt_page_school_id)
+        .subscribe(res => {this.abt_page_notification = <Notification[]>res,this.loader.dismiss()},
                        err => {this.loader.dismiss(), this.errorToast()}); 
 
   }
   
-errorToast() {
-    let toast = this.toastController.create({
-        message: "Notification not loaded, please try after sometime",
-        duration: 1000,
-        position: 'middle'
-        });
-        toast.present();
-
+  errorToast() {
+         let toast = this.toastController.create({
+          message: "Notification not loaded, please try after sometime",
+          duration: 1000,
+          position: 'middle'
+          });
+          toast.present();
   }
 
-  
-  edit(x){
-  
+  edit(slidingItem:ItemSliding,x){
+    slidingItem.close()
     let index = this.abt_page_notification.indexOf(x);
     console.log("index" + index)
     console.log("title in edit" + x.title)
@@ -85,8 +84,36 @@ view (slidingItem: ItemSliding) {
       this.navCtrl.push(NotifybydatePage);
       console.log("I am comming when view is clicked")  ;
       slidingItem.close();
- 
 }
+
+notifydelete(id:number){
+    this.notifyProvider
+            .deleteNotify(id)
+            .subscribe(res => {this.successToastDelete('Record deleted'),this.reload()},
+                              err => this.errorToast());
+}
+
+delete(slidingItem:ItemSliding,x){
+   this.loading();
+    this.notifydelete(x.id)
+    //console.log("Delete is working" + x.id);
+}
+
+  reload()
+  {
+    this.fetchNotify(this.selected_abt_page_date,this.selected_school_id);
+  }
+
+  successToastDelete(msg:string){
+  let toast = this.toastController.create({
+        message: msg,
+        duration: 1000,
+        position: 'middle'
+        });
+        toast.present();
+
+}
+ 
 
 showrow(n){
 
@@ -99,7 +126,6 @@ showrow(n){
     else {   
        this.avatar_ht =  true
   }
-  
 
     console.log("am coming to show" + n.expand);
     if(!n.expand){
@@ -110,11 +136,5 @@ showrow(n){
     }
  }
  
-
-Delete(){
-    console.log("Delete is working");
-}
-
-
 
 }

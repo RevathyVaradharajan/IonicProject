@@ -6,13 +6,16 @@
         }
         ion-option,ion-select{font-family: 'Times New Roman', Times, serif;color: black;
     font-size: 100%; }
-        button,h3 { font-family:'Times New Roman', Times, serif;color: black;} 
+        h3 { font-family:'Times New Roman', Times, serif;color: black;} 
         ion-title,ion-segment{font-family: 'Oswald', sans-serif;color: black;}
         .www,p,h4,.a3,.a4{font-family: 'Oswald', sans-serif;font-size:100%;color: black;}
 .input-label {
    white-space: normal !important;
    max-width: none !important;
    width: 100%;
+}
+button{
+    color:white;
 }
 .b1{
     text-align: left

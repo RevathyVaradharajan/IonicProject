@@ -4,7 +4,7 @@ export class Examtimetable{
     end_time: any;
     exam_type: any;
     subject: any;
-    standard: string;
+    standard: any;
     syllabus:any;
     id:number
     

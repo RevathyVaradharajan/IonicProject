@@ -115,7 +115,7 @@ segselected(){
       case "Daily": {
           console.log("I am in th Diary segment" + this.segment)
           this.daily_diary_activity = "H"
-          this.abt_page_log_in.standard = "I"
+          this.abt_page_log_in.standard = "1"
           this.abt_page_log_in.section  = "A"
           this.loading()
 
@@ -130,7 +130,7 @@ segselected(){
         
           console.log("I am in th Diary segment" + this.segment)
           this.daily_diary_activity = "A"
-          this.abt_page_log_in.standard = "I"
+          this.abt_page_log_in.standard = "1"
           this.abt_page_log_in.section  = "A"
           this.loading()
 
@@ -221,7 +221,16 @@ showrow(n){
         n.expand=false;
     }
  }
- 
+ showact(l){
 
+    let fx=this.activity_diary_notification.indexOf(l)  
+    console.log("am coming to show");   
+  if(!l.expand){
+        l.expand=true;
+        console.log("am coming to show end" + l.expand);
+    } else {
+        l.expand=false;
+    }
+ }
 
 }

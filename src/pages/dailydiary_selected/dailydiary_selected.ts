@@ -100,8 +100,8 @@ home(){
 
 
   Submit() {
-  
-  this.submitAttempt = true
+      this.loading();
+      this.submitAttempt = true
   
       this.dairy_page_dailydiary.message    =  this.dailyForm.value.selected_message
       this.dairy_page_dailydiary.title      =  this.dailyForm.value.selected_title
@@ -113,7 +113,7 @@ home(){
   if (this.dialydiary_update == "edit") {
       this.dailydiaryUpdate (this.dairy_page_dailydiary,
                              this.dairy_page_dailydiary.id);
-  
+                             
   }else {
       this.dailydiaryPost (this.dairy_page_dailydiary,
                            this.dairy_page_dailydiary.class_id,
@@ -127,8 +127,6 @@ home(){
   dailydiaryPost (prvdr_savenotification_dailydiary:Dailydiary, 
                   prvdr_savenotification_dailydiary_class_id:any,
                   prvdr_savenotification_dailydiary_section:any) {
-
- 
     this.diaryProvider
               .addDiary(prvdr_savenotification_dailydiary,
                         prvdr_savenotification_dailydiary_class_id,
@@ -155,6 +153,11 @@ home(){
           position: pos
           });
           toast.present();
+
+  if (this.dialydiary_update == "edit") {
+      this.navCtrl.pop();
+  }         
+
   }
 
   errorToast(message:string,pos:string) { 

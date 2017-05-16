@@ -1,5 +1,5 @@
-  import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import{Component } from '@angular/core';
+import {NavController, NavParams } from 'ionic-angular';
 import {Attendance2Page} from '../../pages/attendance_selected/attendance_selected';
 import {ClassProvider} from '../../providers/class-provider';
 import { ToastController } from 'ionic-angular';

@@ -10,5 +10,7 @@ export class TimeTable{
     day: any;
     school_id: any;
     teacher_name: any;
+    teacher_id:any;
     subject:any;
+    active:any;
 }

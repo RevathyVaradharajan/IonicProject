@@ -26,10 +26,11 @@
 
 <!--Daily Diary  !-->               
 <div *ngSwitchCase="'Daily'">
-   
+<p><b><h4>Dailydairy-{{today}}</h4></b>   
 <ion-list>
+
 <!--I am going to do Angular 2 coding to fetch the data from the database !-->
-  <ion-item-sliding *ngFor= "let y of daily_diary_notification" >
+  <ion-item-sliding #slidingItem *ngFor= "let y of daily_diary_notification" >
     <ion-item (click)="showrow(y)"  *ngIf="!y.expand">
         
          <ion-avatar item-left>
@@ -51,15 +52,11 @@
          
     </ion-item>
       <ion-item-options side="right">
-        <button ion-button color="primary">
-         <ion-icon name="book"></ion-icon>
-         view
-        </button>
-      <button ion-button color="secondary" (click)="edit_activity(y)">
+      <button ion-button color="secondary" (click)="edit_activity(slidingItem,y)">
          <ion-icon ios="ios-clipboard" md="md-clipboard"></ion-icon>
         Edit
       </button>
-        <button ion-button color="danger" (click)="delete(z)">
+        <button ion-button color="danger" (click)="delete(slidingItem,y)">
          <ion-icon ios="ios-trash" md="md-trash"></ion-icon>
         Delete
       </button>
@@ -78,10 +75,10 @@
 
 <!-- Activity   !-->               
 <div *ngSwitchCase="'Activity'">
-<p><b><h4>Activity - 31/Mar/2017</h4></b>
+<p><b><h4>Activity - {{today}}</h4></b>
 
 <ion-list>
-  <ion-item-sliding *ngFor= "let z of activity_diary_notification">
+  <ion-item-sliding #slidingItem *ngFor= "let z of activity_diary_notification">
     <ion-item (click)="showrow(z)">
          <ion-avatar item-left>
              <img src="assets/img/exams2.png">
@@ -94,15 +91,11 @@
   </ion-item>
 
   <ion-item-options side="right">
-      <button ion-button color="primary">
-        <ion-icon name="book"></ion-icon>
-        view
-      </button>
-      <button ion-button color="secondary" (click)="edit_activity(z)">
+      <button ion-button color="secondary" (click)="edit_activity(slidingItem,z)">
          <ion-icon ios="ios-clipboard" md="md-clipboard"></ion-icon>
         Edit
       </button>
-        <button ion-button color="danger">
+        <button ion-button color="danger" (click)="delete(slidingItem,z)">
          <ion-icon ios="ios-trash" md="md-trash"></ion-icon>
         Delete
       </button>

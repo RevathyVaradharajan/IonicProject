@@ -4,6 +4,7 @@ import {TimeTable} from '../../models/TimeTable';
 import {TimetableProvider} from '../../providers/Timetable-provider';
 import { ToastController } from 'ionic-angular';
 import * as moment from 'moment';
+import { AboutPage } from '../Home/home';
 
 @Component({
   selector: 'time-table-page',
@@ -33,7 +34,7 @@ export class TimeTablePage {
               public timetableProvider:TimetableProvider, public toastController: ToastController) {
 
     //this.selected_id='54';
-    this.selected_class_id= '2';
+    this.selected_class_id= '1';
     this.selected_start_time= '09:00';
     this.selected_end_time='12:00';
     this.selected_period='Maths';
@@ -71,10 +72,13 @@ export class TimeTablePage {
      this.timetableGet (this.time_table.class_id, this.time_table.section, this.time_table.day, this.time_table.tt_date);
 
 }
-
+home(){
+  this.navCtrl.push(AboutPage);
+  this.navCtrl.setRoot(AboutPage);
+}
   save(){
     
-    this.timetablePost (this.time_table, this.time_table.class_id, this.time_table.section);
+    //this.timetablePost (this.time_table, this.time_table.class_id, this.time_table.section, this.time_table.tt_date);
 
   }
   View(){
@@ -102,9 +106,9 @@ console.log("Value of class_id" + n.period);
   }
 
 
-  timetablePost (prvdr_timetable_notification:TimeTable, class_id:any, section:any) {
+  timetablePost (prvdr_timetable_notification:TimeTable[], class_id:any, section:any, tt_date:any) {
           this.timetableProvider
-            .addtimetable(prvdr_timetable_notification, class_id, section) 
+            .addtimetable(prvdr_timetable_notification, class_id, section, tt_date) 
             .subscribe(res => {this.successToastreturn()},
                        err =>  this.errorToast()); 
   }
@@ -157,7 +161,7 @@ let prompt = this.alertCtrl.create({
         ]
 
     });
-    
+ 
     console.log(" i'm coming to update timetable",{
     //parm_id: this.selected_id,
     parm_class_id:this.selected_class_id,

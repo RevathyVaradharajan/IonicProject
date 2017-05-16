@@ -41,10 +41,9 @@
 
   <ion-navbar  color="appheader">
 <ion-row> 
- <ion-col offset-25><p>4-A 22/MAR</p></ion-col>
+ <ion-col offset-25><p id="MMM">4-A 22/MAR</p></ion-col>
 </ion-row>
 
-<ion-row>
   
     <button ion-button menuToggle >
       <ion-icon name="menu"></ion-icon>
@@ -57,20 +56,19 @@
     </ion-item>
 </ion-col>
 -->
-</ion-row>
   </ion-navbar>
 
 </ion-header>
 
-<ion-content padding-top="5" >
+<ion-content padding-top="1" >
    <ion-list *ngFor= "let y of time_table_notification">
        
             <ion-row>
-            <ion-col>{{y.subject}}</ion-col>
+            <ion-col>subject:-{{y.subject}}</ion-col>
             <ion-col  class="col1"> {{y.period}}</ion-col> 
             <ion-col offset-25  class="col1">{{y.start_time}}-{{y.end_time}}</ion-col></ion-row>
             
-          <ion-row><ion-col>{{y.teacher_name}}</ion-col>
+          <ion-row><ion-col>Teacher:-{{y.teacher_name}}</ion-col>
             <ion-col offset-50 class="col1">Attendance<br> 
               <ion-toggle disabled="true()" checked="false"></ion-toggle>   
             </ion-col>
@@ -85,8 +83,8 @@
 
 </ion-content>
 <ion-footer>
-  <ion-toolbar color="appheader"><ion-row><ion-col id="col1"><ion-icon color="lit" name="home" align-left><br>home</ion-icon></ion-col>
-<ion-col id="col2">  <ion-icon name="book" (click)="viewDiary()" ><br>view</ion-icon></ion-col></ion-row>  </ion-toolbar>
+  <ion-toolbar color="appheader"><ion-row><ion-col id="col1"><ion-icon (click)="home()"color="lit" name="home" align-left><br>home</ion-icon></ion-col>
+</ion-row>  </ion-toolbar>
 </ion-footer>
 
 

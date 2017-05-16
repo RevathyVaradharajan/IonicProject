@@ -10,4 +10,5 @@ export class Quiz{
    checked: string;
    q_no: number; 
    section: any;
+   school_id:any;
 }

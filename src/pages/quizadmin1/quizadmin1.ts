@@ -19,6 +19,7 @@ export class QuizAdmin1 {
   parm_school_id:any;
   parm_standard:any;
   parm_class_id:any;
+  parm_subject:string;
   class: ClassSectionYear[];
   sec: ClassSectionYear[];
   daily_diary_subject: Subject[];
@@ -31,7 +32,10 @@ export class QuizAdmin1 {
               }
 
 Set(){
-      this.navCtrl.push(QuizAdmin);
+      this.navCtrl.push(QuizAdmin,{
+      parm_standard: this.selected_standard,
+      parm_section:  this.selected_section,
+      parm_subject: this.selected_subject}); 
 }
 
 ionViewDidLoad() {
@@ -71,14 +75,7 @@ fetchstandard(school_id: number){
 
 class_selected(){
 
-  console.log("i'm coming in sec")
-  //this.sec = []
-  console.log(this.selected_standard)
-  console.log("standard before trim" + this.selected_standard.length)
   let std = this.selected_standard.replace(/\s/g,'')
-
-  console.log("standard after trim" + this.selected_standard.length)
-
   this.fetchsection(this.parm_school_id,std) 
   
 }

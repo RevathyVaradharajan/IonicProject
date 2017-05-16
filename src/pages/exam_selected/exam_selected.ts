@@ -30,7 +30,7 @@ export class Resultview {
           school_id:number;
           update_type:string;
           loader:any;          
-            
+          show:boolean;      
         constructor(public navCtrl: NavController,
                     public navParams: NavParams,
                     public formBuilder: FormBuilder,
@@ -87,6 +87,7 @@ export class Resultview {
 
      
         ngOnInit() {
+            this.show=false;
             this.loading();
             this.fetchsubject(this.exam_notification.standard);
 
@@ -99,8 +100,17 @@ export class Resultview {
       this.loader.present();
     }
 
+  showview(n){
+    
+    console.log("am coming to show");   
+    if(!this.show){
+        this.show=true;
+    } else{
+      this.show=false;
 
+    }
 
+  }
         home(){
          this.navCtrl.push(AboutPage);
         this.navCtrl.setRoot(AboutPage);

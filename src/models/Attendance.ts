@@ -1,6 +1,6 @@
 export class Attendance{
     student_id: number;
-    attendance: boolean;    
+    attendance_check: boolean;    
     modified_by: number;
     modified_timestamp: any;
     student_name: string;    

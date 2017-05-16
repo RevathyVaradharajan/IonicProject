@@ -12,6 +12,7 @@ import {TimeTableEdit} from '../../pages/timetable_edit/timetable_edit';
 
 
 @Component({
+  selector:'page-Timetablec',
   templateUrl: 'timetable_create.html'
 })
 export class timetable_create {
@@ -36,7 +37,7 @@ export class timetable_create {
      //   this.selected_section= 'A'
     //    this.selected_date= '2017-04-10'
         this.selected_school_id= 1
-        this.selected_day= 'Monday'
+        this.selected_day= 'monday'
  
     }
     

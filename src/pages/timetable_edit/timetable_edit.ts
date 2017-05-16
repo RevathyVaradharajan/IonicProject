@@ -10,6 +10,7 @@ import {Subject} from '../../models/Subject';
 import {PeriodTypes} from '../../models/PeriodTypes';
 import {Teacher} from '../../models/Teacher';
 import {ClassReferenceTime} from '../../models/ClassReferenceTime';
+import { AboutPage } from '../Home/home';
 
 
 @Component({
@@ -24,11 +25,14 @@ export class TimeTableEdit {
     selected_start_time: any;
     selected_end_time: any;
     selected_period: any;
+    selected_teacher_name:any;
     selected_attendance_required: any;
     selected_tt_date: any;
     selected_name:any;
     selected_subject:any;
     time_table_notification: TimeTable[];
+    time_table_notify: TimeTable[];
+    time_table_notifi: TimeTable = new TimeTable();
     selected_section:any;
     timetab: Array<{periods:any, subjects:any}>;
     currdate: any;
@@ -47,6 +51,8 @@ export class TimeTableEdit {
     parm_tt_date:any;
     indx:number;
     indx1:number;
+    selected_active: any;
+    start_time:any;
 
 @ViewChild('subjectselect') subjectselect: Select;
 @ViewChild('periodselect') periodselect: Select;
@@ -56,14 +62,17 @@ export class TimeTableEdit {
               public timetableProvider:TimetableProvider, public toastController: ToastController,
               public classprovider: ClassProvider) {
 
-                //this.time_table.id= navParams.get('parm_id');
+                //this.time_table.id= avParams.get('parm_id');
+                this.time_table_notify = new Array<TimeTable>();
+
                 this.selected_school_id = '1';
                 this.parm_standard = navParams.get('parm_standard');
                 this.parm_section  = navParams.get('parm_section');
                 this.parm_tt_date  = navParams.get('parm_tt_date');
                 this.selected_teacher_id= '1'
-                this.selected_day='monday'
-                let day = 'Monday'
+                this.selected_day='Monday'
+                let day = 'monday'
+                this.selected_active='n';
         //this.time_table.id=this.selected_id;
                 
      this.timetableGet (this.parm_standard,this.parm_section, day, this.parm_tt_date);
@@ -71,16 +80,61 @@ export class TimeTableEdit {
 }
 
 submit(){
+        this.time_table_notify=[];
+        
+        for (let n of this.time_table_notification){      
+        // if (n.checked == false) {            
+          let s_attnd: TimeTable = new TimeTable();
+    
+    s_attnd.class_id = this.parm_standard
+    s_attnd.section = this.parm_section
+    s_attnd.tt_date = this.parm_tt_date
+    s_attnd.start_time = n.start_time
+    s_attnd.end_time = n.end_time
+    s_attnd.teacher_name = n.teacher_name
+    s_attnd.teacher_id = n.teacher_id
+    s_attnd.period = n.period
+    s_attnd.attendance_required = n.attendance_required
+    s_attnd.day = n.day
+    s_attnd.subject = n.subject
+    s_attnd.active = "Y"
+    s_attnd.school_id = n.school_id
 
-    //this.timetablePost (this.parm_standard,this.parm_section,  this.parm_tt_date)
-   this.putTimetable(this.time_table_notification, this.selected_school_id,this.parm_section, this.parm_standard)
-   for( let x of this.time_table_notification)
-{
-      console.log("i'm coming " + x.subject)
-  }
-
-
+    this.time_table_notify.push(s_attnd)
+    console.log(this.parm_standard + this.parm_section + this.parm_tt_date)
 }
+//   this.putTimetable  (this.time_table_notifi,this.selected_school_id,this.parm_section, this.parm_standard, this.selected_day)
+ //  this.timetablePost (this.time_table_notify, this.parm_standard, this.parm_section, this.parm_tt_date) 
+
+ 
+
+  let alert = this.alertCtrl.create({
+    title: 'Timetable update',
+    message: 'How you want to update Timetable?',
+    buttons: [
+      {
+        text: 'Update all ' +  this.selected_day,
+        handler: () => {
+          console.log('Cancel clicked');
+          this.putTimetable  (this.time_table_notifi,this.selected_school_id,this.parm_section, this.parm_standard, this.selected_day)
+          this.timetablePost (this.time_table_notify, this.parm_standard, this.parm_section, this.parm_tt_date) 
+
+        }
+      },
+      {
+        text: 'Update only ' +  this.parm_tt_date,
+        handler: () => {
+          console.log('Buy clicked');
+            this.timePost (this.time_table_notify, this.parm_standard, this.parm_section, this.selected_day) 
+        }
+      }
+    ]
+  });
+  alert.present();
+}
+
+
+
 select_subject(z){  
          this.indx = this.time_table_notification.indexOf(z);
          this.subjectselect.open();
@@ -96,10 +150,10 @@ select_teacher(z){
 
 
 
-putTimetable(prvdr_timetable_notification: TimeTable[] ,school_id:any,section:any, class_id:any){
+putTimetable(prvdr_timetable_notification:TimeTable,school_id:any,section:any, class_id:any, day:any){
             console.log(class_id);
              this.timetableProvider
-            .putTimetable(prvdr_timetable_notification,school_id,  section, class_id)
+            .putTimetable(prvdr_timetable_notification,school_id,  section, class_id, day)
             .subscribe(res => {this.successToastreturn(), this.check1()},
                        err =>  this.errorToast()); 
 }
@@ -137,12 +191,15 @@ console.log("i'm coming for edit teacher" + this.selected_name)
     console.log("index" + index)
     console.log("index select" + this.indx)
     if(index > -1) {
-       this.time_table_notification[this.indx].period = this.selected_name
+       this.time_table_notification[this.indx].teacher_name = this.selected_name
     }    
 
 }
 
-
+home(){
+  this.navCtrl.push(AboutPage);
+  this.navCtrl.setRoot(AboutPage);
+}
 
 ngOnInit() {
         
@@ -187,11 +244,7 @@ fetchperiod(class_id:number) {
             }
     }
 
-  save(){
-    
-    this.timetablePost (this.time_table, this.time_table.class_id, this.time_table.section);
 
-  }
   View(){
 console.log("i'm in view");
   }
@@ -205,12 +258,18 @@ console.log("i'm in view");
                        err =>  this.errorToast()); 
   }
 
-
-  timetablePost (prvdr_timetable_notification:TimeTable, class_id:any, section:any) {
+  timetablePost (prvdr_timetable_notification:TimeTable[], class_id:any, section:any, tt_date:any) {
           this.timetableProvider
-            .addtimetable(prvdr_timetable_notification, class_id, section) 
-            .subscribe(res => {this.successToastreturn()},
-                       err =>  this.errorToast()); 
+              .addtimetable(prvdr_timetable_notification, class_id, section, tt_date) 
+              .subscribe(res => {this.successToastreturn()},
+                         err =>  this.errorToast()); 
+  }
+
+  timePost (prvdr_timetable_notification:TimeTable[], class_id:any, section:any, day:any) {
+          this.timetableProvider
+              .addtime(prvdr_timetable_notification, class_id, section, day) 
+              .subscribe(res => {this.successToastreturn()},
+                         err =>  this.errorToast()); 
   }
 
   successToastreturn() {
@@ -233,8 +292,6 @@ errorToast() {
 
   }
 
-
-
 editSubject(item) {
 
 let prompt = this.alertCtrl.create({
@@ -255,7 +312,6 @@ let prompt = this.alertCtrl.create({
                          this.timetab[index] = data
                          data.periods= item.periods 
                       }    
-
                 }
             }
         ]

@@ -46,6 +46,7 @@ import { Quiz2Page } from '../pages/quiz_result/quiz_result';
 import {examNew} from '../pages/exam_view/exam_view';
 import {ParentMeeting} from '../pages/parentmeeting/parentmeeting';
 import {ParentMeeting_selected} from '../pages/parentmeeting_selected/parentmeeting_selected';
+import {AttendanceReportSelected} from '../pages/attendancereport_selected/attendancereport_selected';
 
 //import {MarkAttendancePage} from '../pages/class/attendance//mark-attendance';
 import {ClassYear} from '../pages/admin/class-year/class-year';
@@ -60,6 +61,7 @@ import {TimeTablePage} from '../pages/timetable/timetable';
 import {timetable_create} from '../pages/timetable_create/timetable_create';
 import {timetable_select} from '../pages/timetable_select/timetable_select';
 import {TimeTableEdit} from '../pages/timetable_edit/timetable_edit';
+import {ParentMeetProvider} from '../providers/parentmeet';
 
 
 
@@ -88,7 +90,7 @@ export class MyApp {
       /*{title:'Angular2maps',component:Angular2mapsPage},*/
       { title :'Admin',component:ClassYear},
       {title: 'Attendance',component:AttendancePage},
-      {title: 'Attendance Report',component:AttendanceReport},
+      {title: 'Attendance Report',component:AttendanceReportSelected},
       { title: 'Quiz',component:QuizPage},
       //{ title:'Quiz1', component:Quiz1},
       {title:'Quiz1', component:Test},

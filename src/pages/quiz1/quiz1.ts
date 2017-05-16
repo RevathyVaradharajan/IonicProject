@@ -35,12 +35,21 @@ export class Test {
     }
     
   submit(){
+ 
+        //console.log("length check" + this.selected_standard.length + this.selected_section.length + this.selected_subject.length);
+       console.log("length of standard" + this.selected_standard.length + this.selected_subject.length)
+      if(this.selected_standard && this.selected_section && this.selected_subject >0 ){
+
+      }
        this.navCtrl.push(Quiz1,{
         parm_standard: this.selected_standard,
         parm_section: this.selected_section,
         parm_subject: this.selected_subject
   });
   }
+
+
+
 
 ngOnInit() {
   this.loading();

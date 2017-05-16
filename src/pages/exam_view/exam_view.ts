@@ -6,7 +6,7 @@ import { Resultview} from '../../pages/exam_selected/exam_selected';
 import{ LoadingController} from 'ionic-angular';
 import { AboutPage } from '../Home/home';
 import { ToastController } from 'ionic-angular';
-
+import { ItemSliding } from 'ionic-angular';
 @Component({
     selector:'page-exam',
   templateUrl: 'exam_view.html'
@@ -33,7 +33,7 @@ export class examNew {
               this.standard  =  navParams.get('parm_standard')
               this.exam_type =  navParams.get('parm_exam_type')
               this.id = navParams.get('parm_id')
-              this.date      =  '2017-04-01'    
+              this.date      =  '09-03-2017'    
     }
 
   ngOnInit(){
@@ -78,8 +78,8 @@ export class examNew {
 
   }
 
-  edit(n) {
-
+  edit(slidingItem:ItemSliding,n) {
+  slidingItem.close();
        this.navCtrl.push(Resultview,{
                  parm_standard:  this.standard,
                  parm_school_id: this.school,               
@@ -93,20 +93,23 @@ export class examNew {
                  parm_update_type: "edit"});
 
   }
-
-  Examdelete( id: number){
+reload(){
+this.examtimetableGet(this.standard,this.school,this.date);
+}
+  Examdelete( exam_view,id: number){
     console.log(id)
     this.examProvider
             .removeExamtable(id)
-            .subscribe(res => {this.successToastDelete('Record deleted')},
+            .subscribe(res => {this.successToastDelete('Record deleted'),this.reload()},
                               err => this.errorToast('error removing'));
 }
 
-Delete(x){
-
-  console.log("i'm coming in exam delete" + this.parm_id)
-  this.Examdelete( this.parm_id)
+Delete(slidingItem:ItemSliding,x){
+   slidingItem.close()
+  this.Examdelete(this.exam_view, x.id)
+  console.log("delete exam" + x.id)
 }
+
 
  errorToast(msg: string) {
     let toast = this.toastController.create({
@@ -142,5 +145,6 @@ Delete(x){
 
     }
    }
+ 
+   }
 
-}

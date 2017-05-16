@@ -240,6 +240,15 @@ export class ClassProvider {
                     .catch(error => Observable.throw(new Error(error.status)));
     }    
     
+    getstudentForattendance(school_id: number, class_id: number, section:any, student_id:number)
+    {
+        let url: string = `${Constants.servicesURLPrefix}/classes/${school_id}/${class_id}/${section}/${student_id}/studentattendance`;
+        console.log("URL" + url)
+        return this.http.get(url)
+                    .map(res => res.json())
+                    .catch(error => Observable.throw(new Error(error.status)));
+    }    
+    
     
     updateAttendance(class_id: number, tt_id: number, attendances: Attendance[])
     {

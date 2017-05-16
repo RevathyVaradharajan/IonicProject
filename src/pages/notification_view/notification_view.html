@@ -12,7 +12,7 @@
    
   
 <!--I am going to do Angular 2 coding to fetch the data from the database !-->
- <ion-item-sliding *ngFor= "let x of abt_page_notification">
+ <ion-item-sliding #slidingItem *ngFor= "let x of abt_page_notification">
         
         <ion-item (click)="showrow(x)" *ngIf="!x.expand" >
           <ion-avatar item-left>
@@ -36,11 +36,11 @@
         </ion-item>
 
   <ion-item-options side="right">
-       <button ion-button color="secondary" (click)="edit(x)">
+       <button ion-button color="secondary" (click)="edit(slidingItem,x)">
          <ion-icon ios="ios-clipboard" md="md-clipboard"></ion-icon>
         Edit
       </button>
-        <button ion-button color="danger">
+        <button ion-button color="danger" (click)="delete(slidingItem,x)">
          <ion-icon ios="ios-trash" md="md-trash"></ion-icon>
         Delete
       </button>

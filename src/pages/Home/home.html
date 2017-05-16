@@ -30,9 +30,11 @@
 <div [ngSwitch]="segment">
 
     <div *ngSwitchCase="'noti'">
-
+      
       <h3>Welcome!!!  </h3>
+      
       <p><b><h4>Notifications</h4></b>
+      
         <ion-item-sliding *ngFor= "let x of abt_page_notification">
       
       
@@ -72,7 +74,8 @@
     <p><b><h4>Daily Dairy - {{today}}</h4></b>
     <ion-list>
 <!--I am going to do Angular 2 coding to fetch the data from the database !-->
-      <ion-item *ngFor= "let y of daily_diary_notification"  >
+      <ion-item-sliding *ngFor= "let y of daily_diary_notification"  >
+       <ion-item (click)="showact(y)" *ngIf="!y.expand" >
         <ion-avatar item-left>
           <img src="assets/img/exams2.png">
         </ion-avatar>
@@ -80,7 +83,16 @@
         <p>  {{y.message}} </p>
         <button  ion-button clear item-right outline (click)="ExamView()">View</button>
       </ion-item>
-
+      <ion-item text-wrap (click)="showact(y)" *ngIf="y.expand" >
+        <ion-avatar item-left>
+          <img src="assets/img/exams2.png">
+        </ion-avatar>
+        <h2> {{y.title}} </h2>
+        <p>  {{y.message}} </p>
+        <button  ion-button clear item-right outline (click)="ExamView()">View</button>
+      </ion-item>
+      
+      </ion-item-sliding>
 </ion-list>
  
 </p>
@@ -93,18 +105,26 @@
 
 <!-- Activity   !-->               
 <div *ngSwitchCase="'Activity'">
-<p><b><h4>Activity - 31/Mar/2017</h4></b>
+<p><b><h4>Activity - {{today}}</h4></b>
 
 <ion-list>
 <!--I am going to do Angular 2 coding to fetch the data from the database !-->
-  <ion-item *ngFor= "let z of activity_diary_notification"  >
+  <ion-item-sliding  *ngFor= "let z of activity_diary_notification"  >
+            <ion-item (click)="showact(z)" *ngIf="!z.expand" >
       <ion-avatar item-left>
         <img src="assets/img/exams2.png">
       </ion-avatar>
       <h2> {{z.title}} </h2>
       <p>  {{z.message}} </p>
   </ion-item>
-
+      <ion-item text-wrap (click)="showact(z)" *ngIf="z.expand" >
+      <ion-avatar item-left>
+        <img src="assets/img/exams2.png">
+      </ion-avatar>
+      <h2> {{z.title}} </h2>
+      <p>  {{z.message}} </p>
+  </ion-item>
+  </ion-item-sliding>
 </ion-list>
  
 </p><p>

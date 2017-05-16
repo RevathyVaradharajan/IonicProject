@@ -14,10 +14,11 @@ export class QuizProvider {
 
     constructor(public http: Http) {}
 
-    addQuiz(prvdr_quiz_admin_quiz:Quiz)  
+    addQuiz(prvdr_quiz_admin_quiz:Quiz, classes:number, subject:string)  
     {
-       // let url: string = `${Constants.servicesURLPrefix}/quiz/classes/subject`;
-        let url: string = `${Constants.servicesURLPrefix}/quiz/10/English`;
+        let url: string = `${Constants.servicesURLPrefix}/quiz/${classes}/${subject}`;
+        //let url: string = `${Constants.servicesURLPrefix}/quiz/10/English`;
+
         console.log("this is URL" + url);
         let headers = new Headers({ 'Content-Type': 'application/json' });
         let options = new RequestOptions({ headers: headers });
@@ -42,7 +43,5 @@ export class QuizProvider {
                     .map(res => res.json())
                     .catch(error => Observable.throw(new Error(error.status)));
     }
-
-
 
 }

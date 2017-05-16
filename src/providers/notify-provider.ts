@@ -63,7 +63,7 @@ export class NotifyProvider {
 
          console.log("this is URL" + url);
         
-        return this.http.get(url)
+        return this.http.delete(url)
                     .map(res => res.json())
                     .catch(error => Observable.throw(new Error(error.status)));
 

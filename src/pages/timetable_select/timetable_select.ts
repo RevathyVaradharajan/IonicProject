@@ -8,7 +8,7 @@ import {Subject} from '../../models/Subject';
 import {ClassProvider} from '../../providers/class-provider';
 import {ClassReferenceTime} from '../../models/ClassReferenceTime';
 import {Teacher} from '../../models/Teacher';
-
+import { AboutPage } from '../Home/home';
 
 @Component({
   selector: 'time-table-page',
@@ -87,11 +87,11 @@ addRefTimeToClass()
         //p.teacher_id = this.selected_teacher_id;
 
         console.log(" i'm in timetable add"+ this.parm_standard, this.parm_section);
-        this.timetableProvider
-        .addtimetable(this.parm_standard, this.parm_section, p)
-        .subscribe(res => {this.timetableGet(this.parm_standard,this.parm_section,this.selected_day ,this.parm_tt_date)},
-                   err => this.errorToast()
-                  );
+        //this.timetableProvider
+        //.addtimetable(this.parm_standard, this.parm_section, this.parm_tt_date)
+        //.subscribe(res => {this.timetableGet(this.parm_standard,this.parm_section,this.parm_tt_date)},
+                  // err => this.errorToast()
+                 // );
     }
 
     fetchsubject(class_id:number){
@@ -113,10 +113,13 @@ addRefTimeToClass()
       var dayOfWeek = new Date(date).getDay();    
       return isNaN(dayOfWeek) ? null : ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][dayOfWeek];
     }
-
+home(){
+  this.navCtrl.push(AboutPage);
+  this.navCtrl.setRoot(AboutPage);
+}
   save(){
     
-    this.timetablePost (this.time_table, this.time_table.class_id, this.time_table.section);
+    //this.timetablePost (this.time_table, this.time_table.class_id, this.time_table.section, this.time_table.tt_date);
 
   }
   View(){
@@ -151,9 +154,9 @@ console.log("Value of class_id" + n.period);
   }
 
 
-  timetablePost (prvdr_timetable_notification:TimeTable, class_id:any, section:any) {
+  timetablePost (prvdr_timetable_notification:TimeTable[], class_id:any, section:any, tt_date:any) {
           this.timetableProvider
-            .addtimetable(prvdr_timetable_notification, class_id, section) 
+            .addtimetable(prvdr_timetable_notification, class_id, section,tt_date) 
             .subscribe(res => {this.successToastreturn()},
                        err =>  this.errorToast()); 
   }

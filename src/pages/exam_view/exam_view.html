@@ -31,15 +31,12 @@
           </ion-item>
            
         <ion-item-options side="right">
-          <button ion-button color="primary"  (click)="view(x)">
-            <ion-icon name="book"></ion-icon> 
-            view
-          </button>
-          <button ion-button color="secondary" (click)="edit(x)">
+         
+          <button ion-button color="secondary" (click)="edit(slidingItem,x)">
             <ion-icon ios="ios-clipboard" md="md-clipboard"></ion-icon>
             Edit
           </button>
-            <button ion-button color="danger" (click)="Delete(x)">
+            <button ion-button color="danger" (click)="Delete(slidingItem,x)">
             <ion-icon ios="ios-trash" md="md-trash"></ion-icon>
             Delete
           </button>

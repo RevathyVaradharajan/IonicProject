@@ -10,7 +10,9 @@
 
 <ion-item>
     <ion-label class="www" stacked>Question</ion-label>
-    <ion-input type="text" autofocus></ion-input>
+       <ion-textarea [(ngModel)]="question"></ion-textarea>
+
+    <!--<ion-input type="text" autofocus></ion-input>-->
   </ion-item>
 <ion-item>
    <ion-label class="www" stacked>Option1</ion-label>
@@ -32,7 +34,7 @@
    <ion-label class="www" stacked>Answer</ion-label>
    <ion-textarea [(ngModel)]="Answer"></ion-textarea>
 </ion-item><br/>
-  <button align-item="center" ion-button color="blue" (click)="add()"> Add</button>
+  <button id="iii" align-item="center" ion-button color="blue" (click)="add()"> Add</button>
 
 </ion-content>
 <ion-footer>
