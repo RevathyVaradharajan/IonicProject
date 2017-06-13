@@ -40,12 +40,6 @@
 <ion-header>
 
   <ion-navbar  color="appheader">
-<<<<<<< HEAD
-=======
-<ion-row> 
- <ion-col offset-25><p id="MMM">4-A 22/MAR</p></ion-col>
-</ion-row>
->>>>>>> 89be561dea3b481878a98ad5b3e7a821abea1d8c
 
   
     <button id="btt" ion-button menuToggle >
@@ -59,12 +53,6 @@
 TimeTable
 </ion-title>       
 
-<<<<<<< HEAD
-=======
-    </ion-item>
-</ion-col>
--->
->>>>>>> 89be561dea3b481878a98ad5b3e7a821abea1d8c
   </ion-navbar>
 
 </ion-header>
@@ -73,7 +61,6 @@ TimeTable
   </ion-select>
   
 
-<<<<<<< HEAD
 <ion-content>
    <br>
  <!--  <h3>{{date | date: 'dd/MMM'}} - {{time_table_day}}!!</h3>
@@ -82,28 +69,15 @@ TimeTable
        
             <ion-row>
             <ion-col>Subject <br>{{y.subject}}</ion-col>
-=======
-<ion-content padding-top="1" >
-   <ion-list *ngFor= "let y of time_table_notification">
-       
-            <ion-row>
-            <ion-col>subject:-{{y.subject}}</ion-col>
->>>>>>> 89be561dea3b481878a98ad5b3e7a821abea1d8c
             <ion-col  class="col1"> {{y.period}}</ion-col> 
             <ion-col   class="col1">{{y.start_time}}-{{y.end_time}}</ion-col></ion-row>
             
-<<<<<<< HEAD
           <ion-row><ion-col>Teacher<br>{{y.teacher_name}}</ion-col>
             <ion-col  *ngIf="!showattend" offset-25 class="col2">Attendance<br> 
               Yes  
             </ion-col>
             <ion-col *ngIf="showattend" offset-25 class="col1">Attendance<br> 
                  
-=======
-          <ion-row><ion-col>Teacher:-{{y.teacher_name}}</ion-col>
-            <ion-col offset-50 class="col1">Attendance<br> 
-              <ion-toggle disabled="true()" checked="false"></ion-toggle>   
->>>>>>> 89be561dea3b481878a98ad5b3e7a821abea1d8c
             </ion-col>
           </ion-row>
        

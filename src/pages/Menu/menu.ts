@@ -70,6 +70,7 @@ export class MenuComponent {
        {title:'TimeTable', component:timetable_parent,icon:"clipboard"},
        {title:'Exam',component:Exam,icon:"clipboard"},  
    //  {title:'quiz', component:QuizPage,icon:"school"},
+       {title: 'Locate Us',component:MappagePage,icon:"locate"},
        {title:'Take Test', component:Test,icon:"school"},
        {title:'Track',component:glocationPage,icon:"locate"},
        {title:'About us',component:GalleryPage,icon:"images"}

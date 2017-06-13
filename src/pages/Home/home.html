@@ -40,11 +40,7 @@
 
     <div *ngSwitchCase="'noti'">
       
-<<<<<<< HEAD
       <h3 padding>Welcome!!!  </h3>
-=======
-      <h3>Welcome!!!  </h3>
->>>>>>> 89be561dea3b481878a98ad5b3e7a821abea1d8c
       
       <p><b><h4>Notifications</h4></b>
       
@@ -88,11 +84,7 @@
     <ion-list>
 <!--I am going to do Angular 2 coding to fetch the data from the database !-->
       <ion-item-sliding *ngFor= "let y of daily_diary_notification"  >
-<<<<<<< HEAD
        <ion-item (click)="showrow(y)" *ngIf="!y.expand" >
-=======
-       <ion-item (click)="showact(y)" *ngIf="!y.expand" >
->>>>>>> 89be561dea3b481878a98ad5b3e7a821abea1d8c
         <ion-avatar item-left>
           <img src="assets/img/exams2.png">
         </ion-avatar>
@@ -100,21 +92,13 @@
         <p>  {{y.message}} </p>
    
       </ion-item>
-<<<<<<< HEAD
       <ion-item text-wrap (click)="showrow(y)" *ngIf="y.expand" >
-=======
-      <ion-item text-wrap (click)="showact(y)" *ngIf="y.expand" >
->>>>>>> 89be561dea3b481878a98ad5b3e7a821abea1d8c
         <ion-avatar item-left>
           <img src="assets/img/exams2.png">
         </ion-avatar>
         <h2> {{y.title}} </h2>
         <p>  {{y.message}} </p>
-<<<<<<< HEAD
         <button  ion-button clear item-right outline (click)="ExamView()"></button>
-=======
-        <button  ion-button clear item-right outline (click)="ExamView()">View</button>
->>>>>>> 89be561dea3b481878a98ad5b3e7a821abea1d8c
       </ion-item>
       
       </ion-item-sliding>

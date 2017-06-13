@@ -72,34 +72,6 @@ export class timetable_select {
 
         }
     edit(){
-<<<<<<< HEAD
-=======
-         // this.editFlag = false;
-    }
-
-addRefTimeToClass()
-    {
-        let p = new TimeTable();
-        p.period      = this.selected_period;
-        p.start_time  = this.selected_start_time;
-        p.end_time    = this.selected_end_time;
-        p.teacher_name = this.selected_name;
-        p.subject      = this.selected_subject;
-        p.attendance_required = this.d;
-        p.class_id = this.selected_class_id;
-        p.section = this.selected_section;
-        p.school_id = this.selected_school_id;
-        p.tt_date = this.parm_tt_date;
-        p.day = this.selected_day;
-        //p.teacher_id = this.selected_teacher_id;
-
-        console.log(" i'm in timetable add"+ this.parm_standard, this.parm_section);
-        //this.timetableProvider
-        //.addtimetable(this.parm_standard, this.parm_section, this.parm_tt_date)
-        //.subscribe(res => {this.timetableGet(this.parm_standard,this.parm_section,this.parm_tt_date)},
-                  // err => this.errorToast()
-                 // );
->>>>>>> 89be561dea3b481878a98ad5b3e7a821abea1d8c
     }
 
 addRefTimeToClass(){
@@ -132,7 +104,6 @@ addRefTimeToClass(){
       var dayOfWeek = new Date(date).getDay();    
       return isNaN(dayOfWeek) ? null : ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][dayOfWeek];
     }
-<<<<<<< HEAD
 
   fetchsubject(school_id:number){
       console.log("i'm in Subject")
@@ -140,16 +111,6 @@ addRefTimeToClass(){
           .getAllSubjectsForClass(school_id)
           .subscribe(res => {this.daily_diary_subject = <Subject[]>res},
           err =>  this.errorToast()); 
-=======
-home(){
-  this.navCtrl.push(AboutPage);
-  this.navCtrl.setRoot(AboutPage);
-}
-  save(){
-    
-    //this.timetablePost (this.time_table, this.time_table.class_id, this.time_table.section, this.time_table.tt_date);
-
->>>>>>> 89be561dea3b481878a98ad5b3e7a821abea1d8c
   }
  
   home(){
@@ -185,7 +146,6 @@ home(){
               console.log("my id" + n.id)
           }
 
-<<<<<<< HEAD
   }
   
   timePost (prvdr_timetable:TimeTable, class_id:any, section:any, day:any) {
@@ -198,12 +158,6 @@ home(){
   timetable_delete(id:any){
   this.timetableProvider
             .removetimetable(id)
-=======
-
-  timetablePost (prvdr_timetable_notification:TimeTable[], class_id:any, section:any, tt_date:any) {
-          this.timetableProvider
-            .addtimetable(prvdr_timetable_notification, class_id, section,tt_date) 
->>>>>>> 89be561dea3b481878a98ad5b3e7a821abea1d8c
             .subscribe(res => {this.successToastreturn()},
               err => this.errorToast()
             );

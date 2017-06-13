@@ -35,10 +35,10 @@ align-items: center;
     border-radius:50px;
 }
 ion-footer{
-    
-    height: auto !important;
-    //background-color: #A7C1F5;
-    color: white;
+    border-radius: 10px;
+    position:relative;
+    background-color: cornflowerblue;
+    color:white;
 }
 #foott{
 position:absolute;     
@@ -59,10 +59,9 @@ a{
     color: white;   
 }
 #hh{
-    resize:both;
-    position: relative;
-    height: auto !important;
-    width: auto !important;
+    
+    
+    
     border-radius: 10px;
     background-color: cornflowerblue;
 }

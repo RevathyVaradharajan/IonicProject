@@ -195,12 +195,7 @@ segselected(){
       case "Daily": {
           console.log("I am in th Diary segment" + this.segment)
           this.daily_diary_activity = "H"
-<<<<<<< HEAD
         
-=======
-          this.abt_page_log_in.standard = "1"
-          this.abt_page_log_in.section  = "A"
->>>>>>> 89be561dea3b481878a98ad5b3e7a821abea1d8c
           this.loading()
 
           this.fetchDailydiary(this.abt_page_log_in.standard, this.abt_page_log_in.section, 
@@ -214,11 +209,6 @@ segselected(){
         
           console.log("I am in th Diary segment" + this.segment)
           this.daily_diary_activity = "A"
-<<<<<<< HEAD
-=======
-          this.abt_page_log_in.standard = "1"
-          this.abt_page_log_in.section  = "A"
->>>>>>> 89be561dea3b481878a98ad5b3e7a821abea1d8c
           this.loading()
 
            this.fetchDiaryActivity(this.abt_page_log_in.standard, this.abt_page_log_in.section, 
@@ -363,7 +353,6 @@ showrow(n){
     }
  }
  showact(l){
-<<<<<<< HEAD
 
     let fx=this.activity_diary_notification.indexOf(l)  
     console.log("am coming to show");   
@@ -386,17 +375,5 @@ showrow(n){
         n.expand=false;
     }
    }
-=======
-
-    let fx=this.activity_diary_notification.indexOf(l)  
-    console.log("am coming to show");   
-  if(!l.expand){
-        l.expand=true;
-        console.log("am coming to show end" + l.expand);
-    } else {
-        l.expand=false;
-    }
- }
->>>>>>> 89be561dea3b481878a98ad5b3e7a821abea1d8c
 
 }

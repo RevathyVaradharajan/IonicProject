@@ -7,13 +7,10 @@ import{ LoadingController} from 'ionic-angular';
 import { AboutPage } from '../Home/home';
 import { ToastController } from 'ionic-angular';
 import { ItemSliding } from 'ionic-angular';
-<<<<<<< HEAD
 import {GlobalVars} from '../../providers/global-provider';
 import { Select } from 'ionic-angular';
 import {Login} from '../../models/login-model';
 
-=======
->>>>>>> 89be561dea3b481878a98ad5b3e7a821abea1d8c
 @Component({
     selector:'page-exam',
   templateUrl: 'exam_view.html'
@@ -90,10 +87,6 @@ export class examNew {
               this.standard  =  navParams.get('parm_standard')
               this.exam_type =  navParams.get('parm_exam_type')
               this.id = navParams.get('parm_id')
-<<<<<<< HEAD
-=======
-              this.date      =  '09-03-2017'    
->>>>>>> 89be561dea3b481878a98ad5b3e7a821abea1d8c
     }
 
              this.loading();
@@ -154,11 +147,7 @@ exam_type_header() {
   }
 }
 
-<<<<<<< HEAD
 edit(slidingItem:ItemSliding,n) {
-=======
-  edit(slidingItem:ItemSliding,n) {
->>>>>>> 89be561dea3b481878a98ad5b3e7a821abea1d8c
   slidingItem.close();
        this.navCtrl.push(Resultview,{
                 
@@ -175,25 +164,17 @@ edit(slidingItem:ItemSliding,n) {
 
   }
 reload(){
-<<<<<<< HEAD
     this.examtimetableGet(this.standard,this.school,this.date);
 }
 
 Examdelete( exam_view,id: number){
 
-=======
-this.examtimetableGet(this.standard,this.school,this.date);
-}
-  Examdelete( exam_view,id: number){
-    console.log(id)
->>>>>>> 89be561dea3b481878a98ad5b3e7a821abea1d8c
     this.examProvider
             .removeExamtable(id)
             .subscribe(res => {this.successToastDelete('Record deleted'),this.reload()},
                               err => this.errorToast('error removing'));
 }
 
-<<<<<<< HEAD
 
 Delete(slidingItem:ItemSliding,x){
   slidingItem.close()
@@ -202,16 +183,6 @@ Delete(slidingItem:ItemSliding,x){
 }
 
 errorToast(msg: string) {
-=======
-Delete(slidingItem:ItemSliding,x){
-   slidingItem.close()
-  this.Examdelete(this.exam_view, x.id)
-  console.log("delete exam" + x.id)
-}
-
-
- errorToast(msg: string) {
->>>>>>> 89be561dea3b481878a98ad5b3e7a821abea1d8c
     let toast = this.toastController.create({
         message: msg,
         duration: 1000,
@@ -241,7 +212,6 @@ view(n){
     }
    }
  
-<<<<<<< HEAD
 
 
 home(){
@@ -252,7 +222,4 @@ home(){
 
 
 }
-=======
-   }
->>>>>>> 89be561dea3b481878a98ad5b3e7a821abea1d8c
 

@@ -20,18 +20,13 @@ abt_page_notification: Notification[];
 loader:any;
 avatar_ht:boolean=false;
 id: number;
-<<<<<<< HEAD
 recep_ind:string;
 segment:any;
 selected_to_date:any  = new Date().toISOString();
-=======
-
->>>>>>> 89be561dea3b481878a98ad5b3e7a821abea1d8c
  constructor(public navCtrl: NavController, public navParams: NavParams,
              public notifyProvider:NotifyProvider, public toastController: ToastController,
              public loadingController:LoadingController) {
 
-<<<<<<< HEAD
                 let today = new Date();
                 let  dd: any    = today.getDate();
                 let  mm: any    = today.getMonth()+1; //January is 0!
@@ -89,31 +84,6 @@ fetchNotify(prvdr_abt_page_date: string, prvdr_abt_page_school_id: any,recep_ind
 
 
  
-=======
-                this.fetchNotify(this.selected_abt_page_date,this.selected_school_id);
-  }
- 
-  ngOnInit() {
-        this.loading();    
-  }
-
-  loading(){
-        this.loader = this.loadingController.create({
-        content:"Please wait"
-        });
-        this.loader.present();
-    }
-  fetchNotify(prvdr_abt_page_date: string, prvdr_abt_page_school_id: any) {
-    
-        console.log(prvdr_abt_page_date);
-        this.notifyProvider
-        .getNotify(prvdr_abt_page_date, prvdr_abt_page_school_id)
-        .subscribe(res => {this.abt_page_notification = <Notification[]>res,this.loader.dismiss()},
-                       err => {this.loader.dismiss(), this.errorToast()}); 
-
-  }
-  
->>>>>>> 89be561dea3b481878a98ad5b3e7a821abea1d8c
   errorToast() {
          let toast = this.toastController.create({
           message: "Notification not loaded, please try after sometime",
@@ -123,12 +93,8 @@ fetchNotify(prvdr_abt_page_date: string, prvdr_abt_page_school_id: any,recep_ind
           toast.present();
   }
 
-<<<<<<< HEAD
 
 edit(slidingItem:ItemSliding,x){
-=======
-  edit(slidingItem:ItemSliding,x){
->>>>>>> 89be561dea3b481878a98ad5b3e7a821abea1d8c
     slidingItem.close()
     let index = this.abt_page_notification.indexOf(x);
 
@@ -157,23 +123,15 @@ notifydelete(id:number){
 
 delete(slidingItem:ItemSliding,x){
    this.loading();
-<<<<<<< HEAD
    this.notifydelete(x.id)
-=======
-    this.notifydelete(x.id)
->>>>>>> 89be561dea3b481878a98ad5b3e7a821abea1d8c
     //console.log("Delete is working" + x.id);
 }
 
   reload()
   {
-<<<<<<< HEAD
    this.fetchNotify(this.selected_abt_page_date,this.selected_school_id,this.recep_ind);
 
     //this.fetchNotify(this.selected_abt_page_date,this.selected_school_id);
-=======
-    this.fetchNotify(this.selected_abt_page_date,this.selected_school_id);
->>>>>>> 89be561dea3b481878a98ad5b3e7a821abea1d8c
   }
 
   successToastDelete(msg:string){
@@ -206,7 +164,6 @@ showrow(n){
     }
  }
 
-<<<<<<< HEAD
 home(){
   this.navCtrl.push(AboutPage);
   this.navCtrl.setRoot(AboutPage);
@@ -214,6 +171,3 @@ home(){
  
 
 }
-=======
-}
->>>>>>> 89be561dea3b481878a98ad5b3e7a821abea1d8c

@@ -31,10 +31,7 @@ export class Resultview {
           update_type:string;
           loader:any;          
           show:boolean;      
-<<<<<<< HEAD
           selected_from_date:any=new Date().toISOString();     
-=======
->>>>>>> 89be561dea3b481878a98ad5b3e7a821abea1d8c
         constructor(public navCtrl: NavController,
                     public navParams: NavParams,
                     public formBuilder: FormBuilder,
@@ -91,11 +88,7 @@ parmsForadd() {
 }
 
      
-<<<<<<< HEAD
 ngOnInit() {
-=======
-        ngOnInit() {
->>>>>>> 89be561dea3b481878a98ad5b3e7a821abea1d8c
             this.show=false;
             this.loading();
             this.fetchsubject(this.exam_notification.standard);

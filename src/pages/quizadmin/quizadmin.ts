@@ -77,11 +77,8 @@ errorToast() {
        this.quiz_admin.option3 = this.option3
        this.quiz_admin.option4 = this.option4
        this.quiz_admin.answer = this.Answer
-<<<<<<< HEAD
        this.quiz_admin.school_id = this.school_id
 
-=======
->>>>>>> 89be561dea3b481878a98ad5b3e7a821abea1d8c
 
       this.quizadd(this.quiz_admin, this.parm_standard,this.parm_subject)
       console.log("class" + this.parm_standard + this.parm_subject)

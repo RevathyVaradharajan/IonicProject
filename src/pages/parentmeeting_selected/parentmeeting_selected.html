@@ -4,7 +4,6 @@
 <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-<<<<<<< HEAD
 <ion-title>
      <p  (click)="doFilter()">{{selected_record}} <br>
      <ion-icon id="jj" ios="ios-arrow-down" md="md-arrow-dropdown"></ion-icon></p>
@@ -19,23 +18,6 @@
   
   
 
-=======
-     <!--  <ion-title (click)="doFilter()">Roll no:{{selected_record}}<ion-avatar >
-     <img src="assets/img/arrow2.png">
-      </ion-avatar><br></ion-title>
-     -->
-     <p (click)="doFilter()">Roll no:{{selected_record}} <img src="assets/img/arrow2.png"></p>
-     
-     </ion-navbar>
-</ion-header>
-<ion-content padding>
-  
-      <ion-select #sectionSelect [(ngModel)]="selected_roll_no" (ionChange)="changeHeader()">
-         <ion-option *ngFor="let roll of pt_rollno" value="{{roll.student_id}}">Roll No.{{roll.student_id}}-{{roll.student_name}}</ion-option>
-         </ion-select>
-  
-
->>>>>>> 89be561dea3b481878a98ad5b3e7a821abea1d8c
 
  <!--
     <h2>Teacher-feedback</h2>
@@ -49,36 +31,21 @@
 -->
     <ion-item no-lines>
    <ion-label id="uuu" stacked class="www">Teacher FeedBack</ion-label>
-<<<<<<< HEAD
    <ion-textarea autocomplete="true" spellcheck="true" rows="7" text-wrap [(ngModel)]="selected_teacher_message"></ion-textarea>
-=======
-   <ion-textarea rows="7" text-wrap [(ngModel)]="selected_teacher_message"></ion-textarea>
->>>>>>> 89be561dea3b481878a98ad5b3e7a821abea1d8c
 </ion-item>
   
   <ion-item no-lines>
    <ion-label id="uuu" stacked class="www">Parent FeedBack</ion-label>
-<<<<<<< HEAD
    <ion-textarea rows="7" text-wrap autocomplete="true" spellcheck="true" [(ngModel)]="selected_student_message"></ion-textarea>
 </ion-item>
 
 
 <button  ion-button full (click)="save()">save</button>
-=======
-   <ion-textarea rows="7" text-wrap [(ngModel)]="selected_student_message"></ion-textarea>
-</ion-item>
-
-
-<button id="btt" ion-button (click)="save()">save</button>
->>>>>>> 89be561dea3b481878a98ad5b3e7a821abea1d8c
 
 
 </ion-content> 
 <ion-footer>
   <ion-toolbar color="appheader"><ion-row><ion-col id="col1"><ion-icon color="lit" name="home" (click)="home()"align-left><br>home</ion-icon></ion-col>
-<<<<<<< HEAD
   <ion-col id="col1"><ion-icon color="lit" name="book" (click)="View()"align-left><br>View</ion-icon></ion-col>
-=======
->>>>>>> 89be561dea3b481878a98ad5b3e7a821abea1d8c
 </ion-row>  </ion-toolbar> 
 </ion-footer>

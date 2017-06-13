@@ -29,11 +29,29 @@ export class NotifybydatePage {
     parm_update_type: any;
     parm_notify_id:number;
     loader:any;
-    selected_to_date:any  = new Date().toISOString();
+    current_date:any
     title_message: any;
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public formBuilder: FormBuilder,public loadingCOntroller:LoadingController) {
+
+        this.current_date = new Date();
+        let  dd: any    = this.current_date.getDate();
+        let  mm: any    = this.current_date.getMonth()+1; //January is 0!
+        let  yyyy: any  = this.current_date.getFullYear();
+        let  month: string;
+        if(dd<10) {
+            dd='0'+dd
+        } 
+
+        if(mm<10) {
+            mm='0'+mm
+        } 
+
+        this.current_date = dd+'/'+mm+'/'+yyyy; 
+        this.current_date = yyyy+'-'+mm+'-'+dd; 
+
+        console.log("Value of the current Date" + this.current_date)
 
         this.parm_notify_from_date = navParams.get('parm_from_date');
         this.parm_notify_to_date   = navParams.get('parm_to_date');
@@ -43,7 +61,6 @@ export class NotifybydatePage {
         this.parm_notify_id        = navParams.get('parm_id');
         this.parm_notify_activity  = navParams.get('parm_recep_ind');
 
-        console.log("current date of "+ this.selected_to_date)
 
         if(this.parm_update_type == "edit"){
            this.notifyForm = formBuilder.group({  
@@ -57,8 +74,8 @@ export class NotifybydatePage {
           else {
           
           this.notifyForm = formBuilder.group({  
-           selected_from_date: ['',UsernameValidator.checkFromDate],
-           selected_to_date:   ['',Validators.required],
+           selected_from_date: [this.current_date,UsernameValidator.checkFromDate],
+           selected_to_date:   [this.current_date,Validators.required],
            selected_title:     ['',Validators.required],
            selected_message:   ['',Validators.required],
            selected_activity: ['A']

@@ -25,20 +25,34 @@ export class timetable_create {
   daily_diary_subject: Subject[];
   selected_day:any;
   time_table_notification: TimeTable[];
-  selected_tt_date:any  
+  selected_tt_date:any;  
+  current_date:any;
 
     constructor(public navCtrl: NavController,navParams: NavParams,public timetableProvider:TimetableProvider,
                 public quiz: ClassProvider, public toastController: ToastController){
 
+        this.current_date = new Date();
+        let  dd: any    = this.current_date.getDate();
+        let  mm: any    = this.current_date.getMonth()+1; //January is 0!
+        let  yyyy: any  = this.current_date.getFullYear();
+        let  month: string;
+        if(dd<10) {
+            dd='0'+dd
+        } 
+
+        if(mm<10) {
+            mm='0'+mm
+        } 
+
+        this.current_date = yyyy+'-'+mm+'-'+dd; 
+
+        this.selected_tt_date = this.current_date
+        
+
         this.selected_day = this.getDayOfWeek(this.selected_tt_date)
 
         this.selected_school_id= 1
-<<<<<<< HEAD
       
-=======
-        this.selected_day= 'monday'
- 
->>>>>>> 89be561dea3b481878a98ad5b3e7a821abea1d8c
     }
     
   getDayOfWeek(date) {
