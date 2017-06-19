@@ -1,7 +1,15 @@
 0<ion-header>
 
   <ion-navbar  color="appheader">
+<<<<<<< HEAD
   <ion-title>{{this.parm_standard}} - {{this.parm_section}} {{this.parm_tt_date | date: 'dd/MMM'}}</ion-title>
+=======
+<ion-row> 
+ <ion-col offset-25><p>{{this.parm_standard}}-{{this.parm_section}} {{this.parm_tt_date}}</p></ion-col>
+</ion-row>
+
+<ion-row>
+>>>>>>> 89be561dea3b481878a98ad5b3e7a821abea1d8c
   
     <button ion-button menuToggle >
       <ion-icon name="menu"></ion-icon>
@@ -47,7 +55,11 @@
                 <ion-option *ngFor= "let n of attendance_period"  [value]="n.period_type" (ionSelect)="change(n)">{{n.period_type}}</ion-option>
             </ion-select>
 
+<<<<<<< HEAD
             <ion-datetime displayFormat="HH:mm" *ngIf= "!show"  [(ngModel)]="selected_start_time">{{selected_start_time}}</ion-datetime>
+=======
+            <ion-datetime displayFormat="HH:mm" *ngIf= "!show"  [(ngModel)]="selected_start_time"></ion-datetime>
+>>>>>>> 89be561dea3b481878a98ad5b3e7a821abea1d8c
 
             <ion-datetime displayFormat="HH:mm" *ngIf= "!show" [(ngModel)]="selected_end_time">{{selected_end_time}}</ion-datetime>
 

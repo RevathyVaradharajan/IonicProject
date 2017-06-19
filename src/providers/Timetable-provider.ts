@@ -43,7 +43,11 @@ export class TimetableProvider {
                     .catch(error => Observable.throw(new Error(error.status)));
     }
 
+<<<<<<< HEAD
     getTimetable(class_id:any,section: any,day: any, tt_date:any)
+=======
+    getTimetable(class_id:any,section: any,day: any, tt_date)
+>>>>>>> 89be561dea3b481878a98ad5b3e7a821abea1d8c
     {
         console.log(" i'm coming in timetable provider")
         let url: string = `${Constants.servicesURLPrefix}/classes/${class_id}/${section}/${day}/${tt_date}/timetable`;
@@ -53,6 +57,7 @@ export class TimetableProvider {
                     .catch(error => Observable.throw(new Error(error.status)));
     }
 
+<<<<<<< HEAD
     getTeacherTimetable(class_id:any,teacher_id: any,day: any, tt_date:any)
     {
         console.log(" i'm coming in timetable provider")
@@ -83,6 +88,12 @@ export class TimetableProvider {
     {
         console.log(" i'm coming in timetable provider")
         let url: string = `${Constants.servicesURLPrefix}/classes/${school_id}/${section}/${class_id}/${tt_date}`;
+=======
+    putTimetable(prvdr_timetable_notification:TimeTable,school_id: any,  section: any, class_id:any, day:any)
+    {
+        console.log(" i'm coming in timetable provider")
+        let url: string = `${Constants.servicesURLPrefix}/classes/${school_id}/${section}/${class_id}/${day}/timetable`;
+>>>>>>> 89be561dea3b481878a98ad5b3e7a821abea1d8c
         console.log("link" + url)
 
          let headers = new Headers({ 'Content-Type': 'application/json' });

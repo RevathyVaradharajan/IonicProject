@@ -5,10 +5,14 @@ import {TimetableProvider} from '../../providers/Timetable-provider';
 import { ToastController } from 'ionic-angular';
 import * as moment from 'moment';
 import { AboutPage } from '../Home/home';
+<<<<<<< HEAD
 import {GlobalVars} from '../../providers/global-provider';
 import { Select } from 'ionic-angular';
 import {Login} from '../../models/login-model';
 import{LoadingController} from 'ionic-angular';
+=======
+
+>>>>>>> 89be561dea3b481878a98ad5b3e7a821abea1d8c
 @Component({
   selector: 'time-table-page',
   templateUrl: 'timetable.html'
@@ -33,6 +37,7 @@ export class TimeTablePage {
     selected_day: any;
     notifyTime: any;
     date: any;
+<<<<<<< HEAD
     login:Login[]
     role_type:string;
     selected_record:any;
@@ -67,6 +72,30 @@ constructor(public alertCtrl: AlertController, public navCtrl: NavController,nav
                 this.showheader=true;
                 this.time_table.class_id= navParams.get('parm_standard');
                 this.time_table.section=navParams.get('parm_section');
+=======
+
+  constructor(public alertCtrl: AlertController, public navCtrl: NavController,navParams: NavParams,
+              public timetableProvider:TimetableProvider, public toastController: ToastController) {
+
+    //this.selected_id='54';
+    this.selected_class_id= '1';
+    this.selected_start_time= '09:00';
+    this.selected_end_time='12:00';
+    this.selected_period='Maths';
+    this.selected_attendance_required='false';
+    this.selected_tt_date='09-04-2017';
+    this.selected_school_id= '1';
+    this.selected_section= 'A';
+    this.selected_day= 'monday';
+    this.selected_subject= 'Maths';
+
+                //this.time_table.id= navParams.get('parm_id');
+                this.time_table.class_id= navParams.get('parm_class_id');
+                this.time_table.start_time= navParams.get('parm_start_time');
+                this.time_table.end_time= navParams.get('parm_end_time');
+                this.time_table.period= navParams.get('parm_period');
+                this.time_table.attendance_required= navParams.get('parm_attendance_required');
+>>>>>>> 89be561dea3b481878a98ad5b3e7a821abea1d8c
                 this.time_table.tt_date= navParams.get('parm_tt_date');
 
                 this.selected_record = navParams.get('parm_student_name')
@@ -165,6 +194,7 @@ home(){
   this.navCtrl.push(AboutPage);
   this.navCtrl.setRoot(AboutPage);
 }
+<<<<<<< HEAD
 
  doFilter() {
 
@@ -181,6 +211,13 @@ home(){
  }
 
 save(){
+=======
+home(){
+  this.navCtrl.push(AboutPage);
+  this.navCtrl.setRoot(AboutPage);
+}
+  save(){
+>>>>>>> 89be561dea3b481878a98ad5b3e7a821abea1d8c
     
     //this.timetablePost (this.time_table, this.time_table.class_id, this.time_table.section, this.time_table.tt_date);
 

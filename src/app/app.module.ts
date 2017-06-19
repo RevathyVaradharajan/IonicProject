@@ -90,6 +90,7 @@ import {timetable_create} from '../pages/timetable_create/timetable_create';
 import {timetable_select} from '../pages/timetable_select/timetable_select';
 import {TimeTableEdit} from '../pages/timetable_edit/timetable_edit';
 import {ParentMeetProvider} from '../providers/parentmeet';
+<<<<<<< HEAD
 import {GlobalVars} from '../providers/global-provider';
 import{MenuComponent} from '../pages/Menu/menu';
 import{Page1} from '../pages/PageOne/pageone';
@@ -103,6 +104,11 @@ import{ParentView} from '../pages/Parentview/parentview';
 /*import {ParallaxHeader} from '../components/parallax-header/parallax-header';*/
 
 
+=======
+
+
+/*import {ParallaxHeader} from '../components/parallax-header/parallax-header';*/
+>>>>>>> 89be561dea3b481878a98ad5b3e7a821abea1d8c
 @NgModule({
   declarations: [
     MyApp,
@@ -161,6 +167,7 @@ import{ParentView} from '../pages/Parentview/parentview';
     timetable_create,
     timetable_select,
     TimeTableEdit,
+<<<<<<< HEAD
     AttendanceReportSelected,
     MenuComponent,
     Page1,
@@ -169,6 +176,9 @@ import{ParentView} from '../pages/Parentview/parentview';
     timetable_parent,
     StudentDetails,
     ParentView
+=======
+    AttendanceReportSelected
+>>>>>>> 89be561dea3b481878a98ad5b3e7a821abea1d8c
     
   ],
   imports: [
@@ -239,6 +249,7 @@ import{ParentView} from '../pages/Parentview/parentview';
     timetable_create,
     timetable_select,
     TimeTableEdit,
+<<<<<<< HEAD
     AttendanceReportSelected,
     MenuComponent,
     Page1,
@@ -246,6 +257,9 @@ import{ParentView} from '../pages/Parentview/parentview';
     adminmain,
     StudentDetails,
     ParentView
+=======
+    AttendanceReportSelected
+>>>>>>> 89be561dea3b481878a98ad5b3e7a821abea1d8c
   
   ],
   providers: [ConnectivityService,
@@ -264,9 +278,13 @@ import{ParentView} from '../pages/Parentview/parentview';
                TimetableProvider, 
                ResultProvider,
                QuizProvider,
+<<<<<<< HEAD
                ParentMeetProvider,
                GlobalVars,Datanew,
                MasterProvider]
+=======
+               ParentMeetProvider]
+>>>>>>> 89be561dea3b481878a98ad5b3e7a821abea1d8c
               
 })
 export class AppModule {}

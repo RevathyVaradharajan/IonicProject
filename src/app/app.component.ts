@@ -65,6 +65,7 @@ import {timetable_create} from '../pages/timetable_create/timetable_create';
 import {timetable_select} from '../pages/timetable_select/timetable_select';
 import {TimeTableEdit} from '../pages/timetable_edit/timetable_edit';
 import {ParentMeetProvider} from '../providers/parentmeet';
+<<<<<<< HEAD
 import{Datanew} from '../providers/datanew';
 import {GlobalVars} from '../providers/global-provider';
 import{MenuComponent} from '../pages/Menu/menu';
@@ -73,6 +74,11 @@ import{Period} from '../pages/period/period';
 import{adminmain} from '../pages/admin/adminmain/adminmain';
 import{StudentDetails}from '../pages/studentDetails/sd';
 import{ParentView} from '../pages/Parentview/parentview';
+=======
+
+
+
+>>>>>>> 89be561dea3b481878a98ad5b3e7a821abea1d8c
 
 @Component({
   selector:'page-main',
@@ -99,10 +105,17 @@ export class MyApp {
       { title: 'Home', component: AboutPage,icon:"home" },
       {title:'Daily Diary', component:DailyDiary,icon:"book"},
       /*{title:'Angular2maps',component:Angular2mapsPage},*/
+<<<<<<< HEAD
 //      { title :'Admin',component:ClassYear,icon:"create"},
   //    {title: 'Attendance',component:AttendancePage,icon:"timer"},
     //  {title: 'Attendance Report',component:AttendanceReportSelected,icon:"timer"},
       //{ title: 'Quiz',component:QuizPage,icon:"school"},
+=======
+      { title :'Admin',component:ClassYear},
+      {title: 'Attendance',component:AttendancePage},
+      {title: 'Attendance Report',component:AttendanceReportSelected},
+      { title: 'Quiz',component:QuizPage},
+>>>>>>> 89be561dea3b481878a98ad5b3e7a821abea1d8c
       //{ title:'Quiz1', component:Quiz1},
       //{title:'Quiz1', component:Test,icon:"school"},
      // { title:'QuizAdmin', component:QuizAdmin1,icon:"school"},

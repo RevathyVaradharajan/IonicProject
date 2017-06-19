@@ -15,6 +15,7 @@ import * as moment from 'moment';
 export class Attendance2Page{
     time_table: TimeTable = new TimeTable();
     time_table_notification: TimeTable[];
+<<<<<<< HEAD
     time_notification: TimeTable[];
     timetab: Array<{periods:any, subjects:any}>;
     date:any;
@@ -22,6 +23,13 @@ export class Attendance2Page{
     parm_section:any 
     parm_school_id:number;
     attendance_check:boolean;
+=======
+    timetab: Array<{periods:any, subjects:any}>;
+    
+    parm_standard: any
+    parm_section:any 
+    parm_school_id:number;
+>>>>>>> 89be561dea3b481878a98ad5b3e7a821abea1d8c
 
   constructor(public alertCtrl: AlertController, public navCtrl: NavController,navParams: NavParams,
               public timetableProvider:TimetableProvider, public toastController: ToastController) {
@@ -29,13 +37,21 @@ export class Attendance2Page{
                 this.parm_standard  = navParams.get('parm_standard');
                 this.parm_section   = navParams.get('parm_section');
                 this.parm_school_id = navParams.get('parm_school_id');
+<<<<<<< HEAD
                 this.time_notification = new Array<TimeTable>();
+=======
+>>>>>>> 89be561dea3b481878a98ad5b3e7a821abea1d8c
 
                 let  today: any = new Date();
                 let  dd: any    = today.getDate();
                 let  mm: any    = today.getMonth()+1; //January is 0!
                 let  yyyy: any  = today.getFullYear();
+<<<<<<< HEAD
                 let  month: string;        
+=======
+                let  month: string;
+                
+>>>>>>> 89be561dea3b481878a98ad5b3e7a821abea1d8c
               
                 if(dd<10) {
                     dd='0'+dd
@@ -46,6 +62,7 @@ export class Attendance2Page{
                 } 
 
                today = yyyy+'-'+mm+'-'+dd;
+<<<<<<< HEAD
                //today = '2017-05-20' 
                 this.date  = today                
                let day =  this.getDayOfWeek(this.date) 
@@ -90,6 +107,34 @@ loadattendance(){
   
   successToastreturn() {
 
+=======
+               today = '2017-01-01' 
+               let date  = today                
+               let day =  this.getDayOfWeek(date) 
+
+               this.timetableGet (this.parm_standard, this.parm_section, day, date);
+  }
+      
+
+  getDayOfWeek(date) {
+          var dayOfWeek = new Date(date).getDay();    
+          return isNaN(dayOfWeek) ? null : ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][dayOfWeek];
+  }
+
+          
+
+  
+  timetableGet(class_id:any,section: any, day:any, tt_date:any) {
+      this.timetableProvider
+            .getTimetable(class_id,section,day,tt_date)
+            .subscribe(res => {this.time_table_notification= <TimeTable[]>res},
+                       err =>  this.errorToast()); 
+  }
+
+  
+  successToastreturn() {
+
+>>>>>>> 89be561dea3b481878a98ad5b3e7a821abea1d8c
         let toast = this.toastController.create({
         message: "Timetable updated to database",
         duration: 1000,
@@ -115,8 +160,12 @@ loadattendance(){
     
     toggle(n) {
 
+<<<<<<< HEAD
            console.log("I am coming for the value of toggle" + n.period)  
 
+=======
+           console.log("I am coming for the value of toggle" + n.period)   
+>>>>>>> 89be561dea3b481878a98ad5b3e7a821abea1d8c
            this.navCtrl.push(AttendanceView, {
            parm_standard: this.parm_standard,
            parm_section:  this.parm_section,
@@ -126,8 +175,13 @@ loadattendance(){
            parm_start_time:n.start_time,
            parm_end_time:n.end_time,
            parm_teacher:n.teacher_name});
+<<<<<<< HEAD
         }
 
+=======
+          
+  }
+>>>>>>> 89be561dea3b481878a98ad5b3e7a821abea1d8c
   submit(){
       this.navCtrl.push(AttendanceView, {
           parm_standard: this.parm_standard,

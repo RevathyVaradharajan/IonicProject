@@ -8,7 +8,11 @@ import{ AboutPage} from '../Home/home';
 import{LoadingController} from 'ionic-angular';
 import {ParentMeetProvider} from '../../providers/parentmeet';
 import {Parentmeet} from '../../models/ParentMeet';
+<<<<<<< HEAD
 import{ParentView} from '../Parentview/parentview';
+=======
+
+>>>>>>> 89be561dea3b481878a98ad5b3e7a821abea1d8c
 @Component({
   selector: 'page-pta',
   templateUrl: 'ParentMeeting_selected.html'
@@ -29,9 +33,12 @@ selected_student_message:any;
 selected_teacher_message:any;
 student_message:any;
 teacher_message:any;
+<<<<<<< HEAD
 student_name:any;
 selected_student_name:any;
 
+=======
+>>>>>>> 89be561dea3b481878a98ad5b3e7a821abea1d8c
 
 @ViewChild('sectionSelect') sectionSelect: Select;
 
@@ -63,10 +70,16 @@ selected_student_name:any;
     //  this.fetchperiod(this.parm_standard);
             this.fetchStudent(this.parm_school_id,this.parm_standard,this.parm_section);
             //this.fetchmessage(this.roll_no);
+<<<<<<< HEAD
    
             console.log("roll_no is" + this.roll_no)
  
       }
+=======
+            console.log("roll_no is" + this.roll_no)
+ 
+          }
+>>>>>>> 89be561dea3b481878a98ad5b3e7a821abea1d8c
       
     fetchStudent(school_id:number,standard:any,section:string)  {
             
@@ -83,6 +96,7 @@ selected_student_name:any;
               .subscribe(res => {this.successToastreturn("Records updated","middle"),this.loader.dismiss()},
                         err =>  {this.loader.dismiss(),this.errorToast("Records not updated","middle")}); 
     }
+<<<<<<< HEAD
 
     fetchmessage(roll_no:any) {
         this.parentprovider
@@ -98,6 +112,23 @@ selected_student_name:any;
         }
     }
 
+=======
+
+    fetchmessage(roll_no:any) {
+        this.parentprovider
+              .getmessage(roll_no)
+              .subscribe(res =>  {this.parentmeeting = <Parentmeet[]>res, this.check1()},
+                        err =>  {this.loader.dismiss(),this.errorToast("Subjects not loaded","middle")}); 
+    }
+
+    check1(){
+        for(let x of this.parentmeeting){
+          this.roll_no= x.roll_no
+          console.log("roll_no is" + x.roll_no)
+        }
+    }
+
+>>>>>>> 89be561dea3b481878a98ad5b3e7a821abea1d8c
    check() {
   
       for (let x of this.pt_rollno) {
@@ -111,6 +142,7 @@ selected_student_name:any;
         console.log("Value of the first name" + x.student_name)    
    }
       }
+<<<<<<< HEAD
     changerecord(x){
         
         this.selected_record=x.student_id + "-" + x.student_name;
@@ -120,6 +152,17 @@ selected_student_name:any;
         this.student_message= this.selected_student_message
         this.fetchmessage(this.selected_roll_no)
         console.log(this.selected_roll_no)
+=======
+    changeHeader(){
+        console.log("checking the selection header")
+        console.log("the selected roll_no" + this.selected_roll_no)
+        console.log("am coming");
+        this.selected_record=this.selected_roll_no;
+        this.teacher_message= this.selected_teacher_message;
+        this.student_message= this.selected_student_message
+        this.fetchmessage(this.selected_roll_no)
+        console.log(this.selected_roll_no + this.selected_teacher_message + this.selected_student_message)
+>>>>>>> 89be561dea3b481878a98ad5b3e7a821abea1d8c
       }
 
     doFilter() {
@@ -129,7 +172,10 @@ selected_student_name:any;
         //this.fetchmessage(this.roll_no);
 
 	  }
+<<<<<<< HEAD
     
+=======
+>>>>>>> 89be561dea3b481878a98ad5b3e7a821abea1d8c
 
     home(){
 
@@ -143,6 +189,7 @@ selected_student_name:any;
           position: pos
           });
           toast.present();
+<<<<<<< HEAD
   }
 
   errorToast(message:string,pos:string) { 
@@ -163,6 +210,33 @@ selected_student_name:any;
       parm_roll_no: this.roll_no,
       parm_record: this.selected_record}); 
   }
+=======
+  }
+
+  errorToast(message:string,pos:string) { 
+
+      let toast = this.toastController.create({
+          message: "Dailydiary not loaded, please try after sometime",
+          duration: 1000,
+          position: 'middle'
+          });
+          toast.present();
+
+  }
+  save(){
+       
+       this.teacherparentmeeting.teacher_message= this.selected_teacher_message 
+       this.teacherparentmeeting.student_message = this.selected_student_message 
+       this.teacherparentmeeting.roll_no = this.selected_roll_no         
+
+        this.parentPost(this.teacherparentmeeting,this.parm_school_id,this.parm_standard,this.parm_section);
+        console.log(this.selected_roll_no + this.selected_teacher_message + this.selected_student_message)
+      this.selected_teacher_message=''
+      this.selected_student_message=''
+  }
+
+}
+>>>>>>> 89be561dea3b481878a98ad5b3e7a821abea1d8c
 
 
   save(){

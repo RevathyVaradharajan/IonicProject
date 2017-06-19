@@ -33,7 +33,12 @@ export class timetable_create {
         this.selected_day = this.getDayOfWeek(this.selected_tt_date)
 
         this.selected_school_id= 1
+<<<<<<< HEAD
       
+=======
+        this.selected_day= 'monday'
+ 
+>>>>>>> 89be561dea3b481878a98ad5b3e7a821abea1d8c
     }
     
   getDayOfWeek(date) {

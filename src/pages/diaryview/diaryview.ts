@@ -70,14 +70,23 @@ prvdr_savenotification_dailydiary:Dailydiary;
         } 
 
       this.today = dd+'/'+mm+'/'+yyyy; 
+<<<<<<< HEAD
       this.selected_date=yyyy+'-'+mm+'-'+dd;
+=======
+      let tdy=yyyy+'-'+mm+'-'+dd;
+>>>>>>> 89be561dea3b481878a98ad5b3e7a821abea1d8c
           this.segment="Daily";          
           this.parm_standard          = this.navParams.get('parm_standard');
           this.parm_section           = this.navParams.get('parm_section'); 
           this.parm_school_id         = this.navParams.get('parm_school_id');
           this.parm_id                = this.navParams.get('parm_id');
+<<<<<<< HEAD
  //         this.selected_date          = "2017-03-30";
  //          this.segselected()
+=======
+          this.selected_date          = "2017-03-30";
+//          this.segselected()
+>>>>>>> 89be561dea3b481878a98ad5b3e7a821abea1d8c
           this.selected_id=60;
 }
 

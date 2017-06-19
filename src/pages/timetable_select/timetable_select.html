@@ -21,11 +21,19 @@
 
     <ion-card class="card1">
 
+<<<<<<< HEAD
          <ion-item>
                 <ion-label>Period</ion-label>
              <ion-select  [(ngModel)]="selected_period" >
                    <ion-option *ngFor= "let x of attendance_period" (ionSelect)="change(x)">{{x.period_type}}</ion-option>
                </ion-select> 
+=======
+        <ion-item>
+            <ion-label>Period1</ion-label>
+            <ion-select [(ngModel)]="selected_period" >
+                <ion-option *ngFor= " let x of attendance_period" (ionSelect)= "change(x)">{{x.period_type}}</ion-option>
+            </ion-select>
+>>>>>>> 89be561dea3b481878a98ad5b3e7a821abea1d8c
         </ion-item>
 
         <ion-item>
@@ -99,7 +107,11 @@
 
 </ion-content>
 <ion-footer>
+<<<<<<< HEAD
   <ion-toolbar color="appheader"><ion-row><ion-col id="col1"><ion-icon (click)="home()" name="home" ><br>home</ion-icon></ion-col>
+=======
+  <ion-toolbar color="appheader"><ion-row><ion-col id="col1"><ion-icon (click)="home()" color="lit" name="home" align-left><br>home</ion-icon></ion-col>
+>>>>>>> 89be561dea3b481878a98ad5b3e7a821abea1d8c
 <ion-col id="col2" *ngIf="showview">  <ion-icon name="book" (click)="viewDiary()" ><br>view</ion-icon></ion-col></ion-row>  </ion-toolbar>
 </ion-footer>
 
