@@ -4,7 +4,7 @@
 
 
 <ion-content overflow-scroll="false">
-                <h2>Final Score: {{score}}</h2>
+                <h2>Final Score: {{score}}/{{this.quiz_answers_quiz.length}}</h2>
 
      <ion-list no-lines radio-group [(ngModel)]="x.checked" *ngFor= "let x of quiz_answers_quiz">  
 <ion-item text-wrap>
@@ -75,7 +75,7 @@
 </ion-list>
 
 <div id="a2">
-            <button (click)="submit()" ion-button color="primary">Try One more!</button>
+            <button (click)="submit()" ion-button color="primary">Try Again!</button>
 </div>
 
 </ion-content>

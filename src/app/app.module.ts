@@ -43,6 +43,7 @@ import { Quiz2Page } from '../pages/quiz_result/quiz_result';
 import {examNew} from '../pages/exam_view/exam_view';
 import {ParentMeeting} from '../pages/parentmeeting/parentmeeting';
 import {ParentMeeting_selected} from '../pages/parentmeeting_selected/parentmeeting_selected';
+import {AttendanceReportSelected} from '../pages/attendancereport_selected/attendancereport_selected';
 
 
 /*Services*/
@@ -88,11 +89,20 @@ import {TimeTablePage} from '../pages/timetable/timetable';
 import {timetable_create} from '../pages/timetable_create/timetable_create';
 import {timetable_select} from '../pages/timetable_select/timetable_select';
 import {TimeTableEdit} from '../pages/timetable_edit/timetable_edit';
-
-
-
-
+import {ParentMeetProvider} from '../providers/parentmeet';
+import {GlobalVars} from '../providers/global-provider';
+import{MenuComponent} from '../pages/Menu/menu';
+import{Page1} from '../pages/PageOne/pageone';
+import{Period} from '../pages/period/period';
+import{StudentDetails}from '../pages/studentDetails/sd';
+import{adminmain} from '../pages/admin/adminmain/adminmain';
+import{Datanew} from '../providers/datanew';
+import {timetable_parent} from '../pages/timetable_parent/timetable_parent';
+import{MasterProvider} from '../providers/master_service';
+import{ParentView} from '../pages/Parentview/parentview';
 /*import {ParallaxHeader} from '../components/parallax-header/parallax-header';*/
+
+
 @NgModule({
   declarations: [
     MyApp,
@@ -150,7 +160,15 @@ import {TimeTableEdit} from '../pages/timetable_edit/timetable_edit';
     TimeTablePage,
     timetable_create,
     timetable_select,
-    TimeTableEdit
+    TimeTableEdit,
+    AttendanceReportSelected,
+    MenuComponent,
+    Page1,
+    Period,
+    adminmain,
+    timetable_parent,
+    StudentDetails,
+    ParentView
     
   ],
   imports: [
@@ -216,10 +234,18 @@ import {TimeTableEdit} from '../pages/timetable_edit/timetable_edit';
   ParentMeeting_selected,
   AttendanceView,
   Diaryview,
+  timetable_parent,
       TimeTablePage,
     timetable_create,
     timetable_select,
-    TimeTableEdit
+    TimeTableEdit,
+    AttendanceReportSelected,
+    MenuComponent,
+    Page1,
+    Period,
+    adminmain,
+    StudentDetails,
+    ParentView
   
   ],
   providers: [ConnectivityService,
@@ -237,7 +263,10 @@ import {TimeTableEdit} from '../pages/timetable_edit/timetable_edit';
                ExamtimetableProvider,
                TimetableProvider, 
                ResultProvider,
-               QuizProvider]
+               QuizProvider,
+               ParentMeetProvider,
+               GlobalVars,Datanew,
+               MasterProvider]
               
 })
 export class AppModule {}

@@ -5,4 +5,5 @@ export class ClassReferenceTime{
     end_time: string;
     period_type: string;
     attendance_required: boolean;
+    description:any;
 }

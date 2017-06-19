@@ -30,7 +30,8 @@ export class Resultview {
           school_id:number;
           update_type:string;
           loader:any;          
-            
+          show:boolean;      
+          selected_from_date:any=new Date().toISOString();     
         constructor(public navCtrl: NavController,
                     public navParams: NavParams,
                     public formBuilder: FormBuilder,
@@ -45,7 +46,8 @@ export class Resultview {
 
                     
                     if(this.update_type=="edit") {
-                       this.parmsForedit()  
+                        console.log("I am coming here to check the edit")
+                        this.parmsForedit()  
                     } else {
                        this.parmsForadd()  
                     }   
@@ -66,31 +68,32 @@ export class Resultview {
             this.exam_notification.id                 = this.navParams.get('parm_id');
           
             this.examtimetable = this.formBuilder.group({  
-                selected_from_date: [this.exam_notification.date,Validators.required],
-                selected_from_time: [this.exam_notification.from_time,Validators.required],
-                selected_to_time:   [this.exam_notification.end_time,Validators.required],
-                selected_subject:   [this.exam_notification.subject]
-            })
+            selected_from_date: [this.exam_notification.date,UsernameValidator.checkToDate],
+            selected_from_time: [this.exam_notification.from_time,Validators.required],
+            selected_to_time:   [this.exam_notification.end_time,Validators.required],
+            selected_subject:   [this.exam_notification.subject]
+        })
 
-        }
+    }
 
-       parmsForadd() {
-
+parmsForadd() {
+           
             this.examtimetable = this.formBuilder.group({  
-                selected_from_date: ['',UsernameValidator.checkToDate],
+                selected_from_date: [this.selected_from_date,UsernameValidator.checkToDate],
                 selected_from_time: ['',Validators.required],
                 selected_to_time:   ['',Validators.required],
                 selected_subject:   ['',UsernameValidator.checkSubject]
             })
 
-        }
+}
 
      
-        ngOnInit() {
+ngOnInit() {
+            this.show=false;
             this.loading();
             this.fetchsubject(this.exam_notification.standard);
 
-        }
+}
         
         loading(){
       this.loader = this.loadingController.create({
@@ -99,8 +102,17 @@ export class Resultview {
       this.loader.present();
     }
 
+  showview(n){
+    
+    console.log("am coming to show");   
+    if(!this.show){
+        this.show=true;
+    } else{
+      this.show=false;
 
+    }
 
+  }
         home(){
          this.navCtrl.push(AboutPage);
         this.navCtrl.setRoot(AboutPage);
@@ -125,17 +137,15 @@ export class Resultview {
                                         this.exam_notification.standard,this.school_id)  
            }    
                       
-              
-
         }
 
-
+        
         examtimetablePut(prvdr_examtimetable_notification:Examtimetable, 
                          id:number) {
 
                 this.examProvider
                     .updateExamtable(prvdr_examtimetable_notification,id) 
-                    .subscribe(res => {this.successToastreturn(),this.loader.dismiss()},
+                    .subscribe(res => {this.successToastreturn(),this.resetForm(),this.loader.dismiss()},
                                  err => {this.loader.dismiss(), this.errorToast()});               
 
         }
@@ -145,7 +155,7 @@ export class Resultview {
                            school_id: number) {
                   this.examProvider
                       .addExamtable(prvdr_examtimetable_notification,class_id,school_id) 
-                      .subscribe(res => {this.successToastreturn(),this.loader.dismiss()},
+                      .subscribe(res => {this.successToastreturn(),this.resetForm(),this.loader.dismiss()},
                                  err =>  {this.loader.dismiss(),this.errorToast()}); 
         }
 
@@ -157,7 +167,12 @@ export class Resultview {
                 position: 'middle'
                 });
                 toast.present();
-        }
+             
+         if (this.update_type == "edit") {
+             this.navCtrl.pop();
+        } 
+   
+     }
 
         errorToast() {
 
@@ -180,14 +195,14 @@ export class Resultview {
 
 
 
-    fetchsubject(standard:any){
+fetchsubject(standard:any){
       
           this.classProvider
               .getAllSubjectsForClass(standard)
               .subscribe(res => {this.daily_diary_subject = <Subject[]>res,this.loader.dismiss()},
                           err =>  {this.loader.dismiss(),this.errorToast()}); 
 
-    }
+}
   resetForm() {
       console.log('hello valid b4:' + this.examtimetable);
       this.examtimetable.reset();

@@ -11,6 +11,8 @@ export class Login{
     section: string;
     standard: string;
     student_id: any;
+    teacher_id:any;
     school_id: number;
-    
+    roll:number;
+    access_type:any;
 }

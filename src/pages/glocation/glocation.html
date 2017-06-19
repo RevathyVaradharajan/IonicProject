@@ -3,12 +3,20 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>
-      Location Tracker
-    </ion-title>
+   <ion-title *ngIf="!showheader">
+<p id="hh" (click)="doFilter()">{{selected_record}} 
+           <ion-icon id="jj" ios="ios-arrow-down" md="<md-arrow-></md-arrow->down"></ion-icon></p>
+     </ion-title>       
+<ion-title *ngIf="showheader">
+locationTracking
+</ion-title>
   </ion-navbar>
 </ion-header>
  
+ <ion-select #sectionSelect >
+         <ion-option *ngFor="let roll of login"  (ionSelect)="changerecord(roll)">Roll No.{{roll.student_id}}-{{roll.student_name}}</ion-option>
+  </ion-select>
+  
 <ion-content>
   <h3>Current Latitude: {{locationTracker.lat}}</h3>
   <h3>Current Longitude: {{locationTracker.lng}}</h3>

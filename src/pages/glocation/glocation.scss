@@ -1,3 +1,22 @@
-page-glocation {
+.ios,.md
+{
+    page-glocation {
+
+h3{
+     
+     text-align: center;
+     color: white;
+ }    
+  #hh{
+        font-family: 'Oswald', sans-serif;font-size:70%;color: white;
+  }
+  p{font-family: 'Oswald', sans-serif;font-size:50%;color: white;}
+ 
+  .select-icon, .select-text {
+            display: none !important;  /* hidden triangle icon and selected text */
+        }
+	
+
+}
 
 }

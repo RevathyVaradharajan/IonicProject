@@ -9,9 +9,10 @@ import {timetable_select} from '../../pages/timetable_select/timetable_select'
 import {TimeTable} from '../../models/TimeTable';
 import {TimetableProvider} from '../../providers/Timetable-provider';
 import {TimeTableEdit} from '../../pages/timetable_edit/timetable_edit';
-
+import{TimeTablePage} from '../timetable/timetable';
 
 @Component({
+  selector:'page-Timetablec',
   templateUrl: 'timetable_create.html'
 })
 export class timetable_create {
@@ -19,36 +20,37 @@ export class timetable_create {
   selected_school_id: any;
   selected_standard:any;
   selected_section:any;
-  selected_tt_date:any;
   class: ClassSectionYear[];
   sec: ClassSectionYear[];
   daily_diary_subject: Subject[];
   selected_day:any;
   time_table_notification: TimeTable[];
-
+  selected_tt_date:any  
 
     constructor(public navCtrl: NavController,navParams: NavParams,public timetableProvider:TimetableProvider,
                 public quiz: ClassProvider, public toastController: ToastController){
-      //this.selected_section="A"
-      //this.selected_standard="standard I"
-      //this.selected_subject="Maths"
-     //   this.selected_standard= 2
-     //   this.selected_section= 'A'
-    //    this.selected_date= '2017-04-10'
+
+        this.selected_day = this.getDayOfWeek(this.selected_tt_date)
+
         this.selected_school_id= 1
-        this.selected_day= 'Monday'
- 
+      
     }
     
-     
+  getDayOfWeek(date) {
+          var dayOfWeek = new Date(date).getDay();    
+          return isNaN(dayOfWeek) ? null : ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][dayOfWeek];
+  }
+
+
   submit(){
-    
+
+     this.selected_day = this.getDayOfWeek(this.selected_tt_date)
      this.timetableGet (this.selected_standard, this.selected_section, this.selected_day, this.selected_tt_date);
 
   }
 
   timetableGet(class_id:any,section: any, day: any, tt_date:any) {
-    console.log("i'm in timetable get method")
+ 
       this.timetableProvider
             .getTimetable(class_id,section,day, tt_date)
             .subscribe(res => {this.time_table_notification= <TimeTable[]>res,this.page_logic()},
@@ -56,8 +58,9 @@ export class timetable_create {
   }
  
  page_logic() {
-    
-      if(this.time_table_notification.length < 0) {
+
+      console.log("Coming here for the length value" +  this.time_table_notification.length )  
+      if(this.time_table_notification.length <= 0) {
            this.navCtrl.push(timetable_select,{
                 parm_standard: this.selected_standard,
                 parm_section: this.selected_section,
@@ -67,10 +70,7 @@ export class timetable_create {
                 parm_standard: this.selected_standard,
                 parm_section: this.selected_section,
                 parm_tt_date: this.selected_tt_date});
-
       } 
-
-
 }
 
 ngOnInit() {
@@ -122,7 +122,16 @@ errorToast() {
         toast.present();
 
   }
+ submitview(){
+   
+   
 
+    this.navCtrl.push(TimeTablePage,{
+                parm_standard: this.selected_standard,
+                parm_section: this.selected_section,
+                parm_tt_date: this.selected_tt_date});
+
+ }
 
 
 

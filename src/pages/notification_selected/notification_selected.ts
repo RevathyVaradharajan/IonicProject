@@ -44,6 +44,7 @@ constructor(public navCtrl: NavController, public platform: Platform,
  
 }
 
+
 ngOninit() {
      this.loading();
  
@@ -64,7 +65,8 @@ addNotifications(){
           this.notify_page_notification.message       = this.navParams.get('parm_message');        
           this.notify_page_notification.id            = this.navParams.get('parm_id');
           this.parm_update_type                       = this.navParams.get('parm_update_type');  
-
+          this.notify_page_notification.recep         = this.navParams.get('parm_recep_ind');
+          console.log("I am getting the vaue for RECEP ind"  + this.notify_page_notification.recep)
           //Get the vvalue from Parm 
           this.notify_page_notification.school_id     = 1
           //Get the vvalue from Parm 
@@ -83,6 +85,7 @@ addNotifications(){
                  
                  if(i.checked) {
                      
+      
                     switch(i.title) {
 
                         case 'Monday':
@@ -131,7 +134,7 @@ notificationPost (prvdr_notify_page_notification:Notification) {
      
           this.notifyProvider
               .addNotify(prvdr_notify_page_notification)
-              .subscribe(res => {this.successToastreturn("Notification updated to Database", "middle"),this.nextPage(),this.loader.dismiss()},
+              .subscribe(res => {this.successToastreturn("Notification updated to Database", "middle"),this.nextPage()},
                         err =>  {this.loader.dismiss(),this.errorToast("Notification not updated to Database", "middle")}); 
 
 }
@@ -140,7 +143,7 @@ notificationUpdt(prvdr_notify_page_notification:Notification,prvdr_notify_page_i
               console.log("I am coming to update the notification")  
               this.notifyProvider
               .putNotify(prvdr_notify_page_notification,prvdr_notify_page_id)
-              .subscribe(res => {this.successToastreturn("Notification updated to Database", "middle"),this.nextPage(),this.loader.dismiss()},
+              .subscribe(res => {this.successToastreturn("Notification updated to Database", "middle"),this.nextPage()},
                          err =>  {this.loader.dismiss(),this.errorToast("Notification not updated to Database", "middle")}); 
 
 }
@@ -153,6 +156,11 @@ successToastreturn(msg:string,pos:string) {
         position: pos
         });
         toast.present();
+
+         if (this.parm_update_type == "edit") {
+      this.navCtrl.pop();
+  } 
+
 }
 
 errorToast(msg:string,pos:string) {

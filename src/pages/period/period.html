@@ -1,0 +1,67 @@
+<ion-header transparent>
+  <ion-navbar color="appheader">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title> Period </ion-title>
+   
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content>
+<br>
+<br>
+    <ion-card>
+
+<ion-item id="mine" >
+   <ion-label stacked class="www" > Period</ion-label>
+   <ion-textarea autocomplete="true" spellcheck="true" [(ngModel)]="c"> </ion-textarea>
+</ion-item>
+
+<ion-item id="mine" >
+   <ion-label stacked class="www"> Description</ion-label>
+   <ion-textarea autocomplete="true" spellcheck="true" [(ngModel)]="d"> </ion-textarea>
+</ion-item>
+
+<ion-item id="date">
+   <ion-label class="www" stacked> Start Time
+       <ion-icon  ios="ios-time-outline" md="md-time"></ion-icon>
+    <ion-datetime displayFormat="hh:mm:a" pickerFormat="hh:mm:a" [(ngModel)]="a"></ion-datetime>
+  </ion-label>
+</ion-item>
+
+<ion-item id="date">
+   <ion-label class="www" stacked> End Time
+       <ion-icon  ios="ios-time-outline" md="md-time"></ion-icon>
+      <ion-datetime displayFormat="hh:mm:a" pickerFormat="hh:mm:a" [(ngModel)]="b"></ion-datetime>
+  </ion-label>
+</ion-item>
+
+<br>
+    <button ion-button color="loginbutton"  block (click)="save()"> Add </button>
+    </ion-card>
+    <ion-card>
+
+    <ion-card-header class="card-header">Periods</ion-card-header>
+    <ion-row class="padding-bottom" padding-left>
+                <ion-col >Period</ion-col>
+                <ion-col>Start time</ion-col>
+                <ion-col>End Time</ion-col>
+                <ion-col>Delete</ion-col>
+            </ion-row>
+         <ion-row *ngFor="let i of classRefTimes" padding-left>
+                <ion-col class="align-bottom">{{i.period_type}}</ion-col>
+                <ion-col class="align-bottom">{{i.start_time}}  </ion-col>
+                  <ion-col class="align-bottom"> {{i.end_time}} </ion-col>
+                    <ion-col class="align-bottom">
+                        <button small clear (click)="removeperiod(i)">
+                        <ion-icon name="trash">
+                        </ion-icon>
+                    </button>
+                        </ion-col>
+                </ion-row>
+
+    </ion-card>
+
+</ion-content>

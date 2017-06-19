@@ -1,5 +1,5 @@
 .ios,.md{
-    page-login {
+    page-loginnew {
        @font-face{
         font-family: Barrio;
         src: url"(‘../assets/fonts/barrio.woff2’) format(‘woff2’)";
@@ -7,6 +7,75 @@
       
         button { font-family:'Times New Roman', Times, serif;} 
         ion-title{font-family: 'Oswald', sans-serif;}
-        .www,p{font-family: 'Oswald', sans-serif;font-size:100%;}
+        button{font-family: 'Oswald', sans-serif;font-size:100%;}
+   #Ist{
+  color:black;
+  font-size:120%;
+  }
+button{
+    
+    text-align: center;
+    margin-left:33%;
+    
+}
+#ddd{
+    background-color:white;
+}
+.img1{
+height: 27vh !important;
+width: auto !important;
+align-items: center;
+}
+.hint{
+
+  color:red;
+  font-size:80%;
+}
+#mi{
+    border-radius:50px;
+}
+ion-footer{
+    
+    height: auto !important;
+    //background-color: #A7C1F5;
+    color: white;
+}
+#foott{
+position:absolute;     
+height: 8vh !important;
+width: auto !important;
+margin-bottom: 2%;
+    
+}
+a{
+    color: white;
+}
+#a1{
+    
+    text-align: center;
+    width: 30%;
+    margin-left: 25%;
+    border-radius: 30%;
+    color: white;   
+}
+#hh{
+    resize:both;
+    position: relative;
+    height: auto !important;
+    width: auto !important;
+    border-radius: 10px;
+    background-color: cornflowerblue;
+}
+#foot{
+    font-size: 72%;
+   }
+#ooo{
+  padding-left: 4%;
+  height: 80%;
+  border-radius: 20px;
+  font-size: 90%;
+  border: 1px solid cornflowerblue;
+   }
+   
     }
 }

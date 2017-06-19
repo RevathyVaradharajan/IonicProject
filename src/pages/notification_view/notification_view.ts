@@ -14,59 +14,89 @@ import{LoadingController} from 'ionic-angular';
 
 export class Notifynew {
 
-selected_abt_page_date:string = "2017-03-04"
+selected_abt_page_date:any;
 selected_school_id: number = 1;
 abt_page_notification: Notification[];
 loader:any;
 avatar_ht:boolean=false;
+id: number;
+recep_ind:string;
+segment:any;
+selected_to_date:any  = new Date().toISOString();
  constructor(public navCtrl: NavController, public navParams: NavParams,
              public notifyProvider:NotifyProvider, public toastController: ToastController,
              public loadingController:LoadingController) {
 
-                this.fetchNotify(this.selected_abt_page_date,this.selected_school_id);
+                let today = new Date();
+                let  dd: any    = today.getDate();
+                let  mm: any    = today.getMonth()+1; //January is 0!
+                let  yyyy: any  = today.getFullYear();
+                let  month: string;
+        if(dd<10) {
+            dd='0'+dd
+        } 
 
+        if(mm<10) {
+            mm='0'+mm
+        } 
 
-  }
- 
-  ngOnInit() {
-  this.loading();    
+             this.selected_abt_page_date = yyyy+'-'+mm+'-'+dd;         
+             this.segment = "admin" 
+             this.recep_ind = 'A'
+             this.loading();    
+             this.fetchNotify(this.selected_abt_page_date,this.selected_school_id,this.recep_ind);
 }
-loading(){
-      this.loader = this.loadingController.create({
+ 
+loading() {
+
+        this.loader = this.loadingController.create({
         content:"Please wait"
-      });
-      this.loader.present();
-    }
-fetchNotify(prvdr_abt_page_date: string, prvdr_abt_page_school_id: any) {
-    
-      console.log(prvdr_abt_page_date);
-      this.notifyProvider
-            .getNotify(prvdr_abt_page_date, prvdr_abt_page_school_id)
-            .subscribe(res => {this.abt_page_notification = <Notification[]>res,this.loader.dismiss()},
-                       err => {this.loader.dismiss(), this.errorToast()}); 
-
-  }
-  
-errorToast() {
-    let toast = this.toastController.create({
-        message: "Notification not loaded, please try after sometime",
-        duration: 1000,
-        position: 'middle'
         });
-        toast.present();
+        this.loader.present();
+}
 
+fetchNotify(prvdr_abt_page_date: string, prvdr_abt_page_school_id: any,recep_ind:string)
+ {
+
+        this.notifyProvider
+        .getNotify(prvdr_abt_page_date, prvdr_abt_page_school_id,this.recep_ind)
+        .subscribe(res => {this.abt_page_notification = <Notification[]>res,this.loader.dismiss()},
+                       err => {this.loader.dismiss(), this.errorToast()}); 
+ } 
+ 
+ segselect_teacher(){
+
+    switch(this.segment){
+    
+      case "admin": {
+      this.recep_ind = "A" 
+      this.fetchNotify(this.selected_abt_page_date,this.selected_school_id,this.recep_ind);
+      break;  
+    }
+
+      case "noti": {
+      this.recep_ind = "T" 
+      this.fetchNotify(this.selected_abt_page_date,this.selected_school_id,this.recep_ind);
+      break;  
+      }
+    }
+ }
+
+
+ 
+  errorToast() {
+         let toast = this.toastController.create({
+          message: "Notification not loaded, please try after sometime",
+          duration: 1000,
+          position: 'middle'
+          });
+          toast.present();
   }
 
-  
-  edit(x){
-  
+
+edit(slidingItem:ItemSliding,x){
+    slidingItem.close()
     let index = this.abt_page_notification.indexOf(x);
-    console.log("index" + index)
-    console.log("title in edit" + x.title)
-    console.log("title in message" + x.message)
-    console.log("title in id" + x.id)
-    console.log("from_date"   + x.from_date)
-    console.log("to_date"     + x.to_date)
 
      this.navCtrl.push(NotifybydatePage, {
       parm_from_date : x.from_date,
@@ -74,19 +104,46 @@ errorToast() {
       parm_title: x.title,
       parm_message: x.message,
       parm_id: x.id,
-      parm_update_type : "edit"
-    });
+      parm_update_type : "edit",
+      parm_recep_ind: x.recep 
+  });
 }
-home(){
-  this.navCtrl.push(AboutPage);
-  this.navCtrl.setRoot(AboutPage);
-}
+
 view (slidingItem: ItemSliding) {
       this.navCtrl.push(NotifybydatePage);
-      console.log("I am comming when view is clicked")  ;
       slidingItem.close();
- 
 }
+
+notifydelete(id:number){
+    this.notifyProvider
+            .deleteNotify(id)
+            .subscribe(res => {this.successToastDelete('Record deleted'),this.reload()},
+                              err => this.errorToast());
+}
+
+delete(slidingItem:ItemSliding,x){
+   this.loading();
+   this.notifydelete(x.id)
+    //console.log("Delete is working" + x.id);
+}
+
+  reload()
+  {
+   this.fetchNotify(this.selected_abt_page_date,this.selected_school_id,this.recep_ind);
+
+    //this.fetchNotify(this.selected_abt_page_date,this.selected_school_id);
+  }
+
+  successToastDelete(msg:string){
+  let toast = this.toastController.create({
+        message: msg,
+        duration: 1000,
+        position: 'middle'
+        });
+        toast.present();
+
+}
+ 
 
 showrow(n){
 
@@ -99,22 +156,18 @@ showrow(n){
     else {   
        this.avatar_ht =  true
   }
-  
 
-    console.log("am coming to show" + n.expand);
     if(!n.expand){
         n.expand=true;
-        console.log("am coming to show end" + n.expand);
     } else {
         n.expand=false;
     }
  }
- 
 
-Delete(){
-    console.log("Delete is working");
+home(){
+  this.navCtrl.push(AboutPage);
+  this.navCtrl.setRoot(AboutPage);
 }
-
-
+ 
 
 }

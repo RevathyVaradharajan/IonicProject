@@ -14,5 +14,6 @@ export class Notification {
     weekday6:any;
     weekday7:any;
     expand:boolean=false;
+    recep:string;
         
 }

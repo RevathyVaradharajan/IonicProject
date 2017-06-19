@@ -1,11 +1,11 @@
-  import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import{Component } from '@angular/core';
+import {NavController, NavParams } from 'ionic-angular';
 import {Attendance2Page} from '../../pages/attendance_selected/attendance_selected';
 import {ClassProvider} from '../../providers/class-provider';
 import { ToastController } from 'ionic-angular';
 import {ClassSectionYear} from '../../models/ClassSectionYear';
 import{LoadingController} from 'ionic-angular';
-
+import{AttendanceReport} from '../../pages/attendance-report/attendancereport';
 @Component({
   selector: 'page-attendance',
   templateUrl: 'attendance.html'
@@ -83,6 +83,14 @@ export class AttendancePage {
            parm_section:  this.selected_section,
            parm_school_id: this.parm_school_id});  
   
+   }
+   attendance2report(){
+     
+        this.navCtrl.push(AttendanceReport, {
+           parm_standard: this.selected_standard,
+           parm_section:  this.selected_section,
+           parm_school_id: this.parm_school_id});
+
    }
 
 }

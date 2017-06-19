@@ -6,13 +6,30 @@
     <ion-title>Notifications</ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content>
 
-  <ion-list>
+
+<ion-content  padding class="getstart" > 
+ 
+  <ion-segment  [(ngModel)]="segment"
+                (ionChange)= "segselect_teacher()">
+
+       <ion-segment-button value="admin">
+         School
+       </ion-segment-button>  
    
+       <ion-segment-button value="noti">
+         Teacher
+      </ion-segment-button>
+    
+  </ion-segment>
+
   
+<div [ngSwitch]="segment" padding>
+
+    <div *ngSwitchCase="'admin'">
 <!--I am going to do Angular 2 coding to fetch the data from the database !-->
- <ion-item-sliding *ngFor= "let x of abt_page_notification">
+<ion-list>
+ <ion-item-sliding #slidingItem *ngFor= "let x of abt_page_notification">
         
         <ion-item (click)="showrow(x)" *ngIf="!x.expand" >
           <ion-avatar item-left>
@@ -36,24 +53,72 @@
         </ion-item>
 
   <ion-item-options side="right">
-       <button ion-button color="secondary" (click)="edit(x)">
+       <button ion-button color="secondary" (click)="edit(slidingItem,x)">
          <ion-icon ios="ios-clipboard" md="md-clipboard"></ion-icon>
         Edit
       </button>
-        <button ion-button color="danger">
+        <button ion-button color="danger" (click)="delete(slidingItem,x)">
          <ion-icon ios="ios-trash" md="md-trash"></ion-icon>
         Delete
       </button>
     </ion-item-options>
  </ion-item-sliding>
-
 </ion-list>
+
 <p>
 </p>
 <p>
 </p>
 <p>
 </p>
+</div>
+    <div *ngSwitchCase="'noti'">
+   <ion-list>
+   <ion-item-sliding #slidingItem *ngFor= "let x of abt_page_notification">
+        
+        <ion-item (click)="showrow(x)" *ngIf="!x.expand" >
+          <ion-avatar item-left>
+            <img src="assets/img/exams2.png">
+          </ion-avatar>
+      
+          <h2> {{x.title}} </h2>
+          <p >  {{x.message}} </p>
+      
+        </ion-item>
+         <ion-item text-wrap (click)="showrow(x)" *ngIf="x.expand">
+
+        
+          <ion-avatar [ngClass]="{'ion2':avatar_ht,'ion1':!avatar_ht}"item-left >
+                <img src="assets/img/exams2.png">
+          </ion-avatar>
+  
+          <h2 >{{x.title}}</h2>
+          <p >{{x.message}}</p>
+        
+        </ion-item>
+
+  <ion-item-options side="right">
+       <button ion-button color="secondary" (click)="edit(slidingItem,x)">
+         <ion-icon ios="ios-clipboard" md="md-clipboard"></ion-icon>
+        Edit
+      </button>
+        <button ion-button color="danger" (click)="delete(slidingItem,x)">
+         <ion-icon ios="ios-trash" md="md-trash"></ion-icon>
+        Delete
+      </button>
+    </ion-item-options>
+ </ion-item-sliding>
+   </ion-list>
+
+<p>
+</p>
+<p>
+</p>
+<p>
+</p>
+</div>
+ </div>
+    
 </ion-content>  
 <ion-footer>
   <ion-toolbar color="appheader"><ion-row><ion-col id="col1"><ion-icon color="lit" name="home" (click)="home()"align-left><br>home</ion-icon></ion-col>

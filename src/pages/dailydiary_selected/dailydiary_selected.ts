@@ -25,11 +25,11 @@ export class ContactPage {
 
   daily_diary_subject: Subject[];
   dialydiary_update: string;
-
   dailyForm: FormGroup;
   submitAttempt: boolean;
   loader:any;
-
+  selected_to_date:any= new Date().toISOString();
+  
   constructor(public navCtrl: NavController, 
                 public platform: Platform, 
                 public alertCtrl: AlertController, 
@@ -53,6 +53,7 @@ export class ContactPage {
                 this.dairy_page_dailydiary.id         =  navParams.get('parm_id');
                 this.dairy_page_dailydiary.end_date   =  navParams.get('parm_end_date');
                 this.dialydiary_update                =  navParams.get('parm_update');
+                  
                   if (this.dialydiary_update == "edit") {
                     this.dailyForm = formBuilder.group({
                     selected_title:     [this.dairy_page_dailydiary.title,Validators.required],
@@ -60,12 +61,11 @@ export class ContactPage {
                     selected_to_date:   [this.dairy_page_dailydiary.end_date,DailydiaryValidator.checkToDate],
                     selected_subject:   [this.dairy_page_dailydiary.subject],
                     selected_activity:  [this.dairy_page_dailydiary.activity]})
-                    console.log('hello in edit');
                 } else {
                   this.dailyForm = formBuilder.group({  
                       selected_title:     ['',Validators.required],
                       selected_message:   ['',Validators.required],
-                      selected_to_date:   ['',DailydiaryValidator.checkToDate],
+                      selected_to_date:   [this.selected_to_date,DailydiaryValidator.checkToDate],
                       selected_subject:   ['',DailydiaryValidator.checkSubject],
                       selected_activity:  ['H']});
                       console.log('hello:' + this.dialydiary_update);
@@ -100,8 +100,8 @@ home(){
 
 
   Submit() {
-  
-  this.submitAttempt = true
+      this.loading();
+      this.submitAttempt = true
   
       this.dairy_page_dailydiary.message    =  this.dailyForm.value.selected_message
       this.dairy_page_dailydiary.title      =  this.dailyForm.value.selected_title
@@ -113,7 +113,7 @@ home(){
   if (this.dialydiary_update == "edit") {
       this.dailydiaryUpdate (this.dairy_page_dailydiary,
                              this.dairy_page_dailydiary.id);
-  
+                             
   }else {
       this.dailydiaryPost (this.dairy_page_dailydiary,
                            this.dairy_page_dailydiary.class_id,
@@ -127,8 +127,6 @@ home(){
   dailydiaryPost (prvdr_savenotification_dailydiary:Dailydiary, 
                   prvdr_savenotification_dailydiary_class_id:any,
                   prvdr_savenotification_dailydiary_section:any) {
-
- 
     this.diaryProvider
               .addDiary(prvdr_savenotification_dailydiary,
                         prvdr_savenotification_dailydiary_class_id,
@@ -155,6 +153,11 @@ home(){
           position: pos
           });
           toast.present();
+
+  if (this.dialydiary_update == "edit") {
+      this.navCtrl.pop();
+  }         
+
   }
 
   errorToast(message:string,pos:string) { 

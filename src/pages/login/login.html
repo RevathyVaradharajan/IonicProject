@@ -1,54 +1,50 @@
 
+<ion-content  id="ddd"  >
+  <form [formGroup]="loginForm" (ngSubmit)="login">
+ <div  align="center"><img padding="5" src="assets/img/don2.png" > </div>
+  <div  >
+    <h4 align="center"><b>Connect | Communicate | Coordinate</b></h4>
+   <div id="mi" align="center"><img class="img1" src="assets/img/tech.png" >
+   </div>
+     <ion-label id="Ist"  > 
+       <br>
+     
+      <ion-row>
+      
+      <ion-col>
+        <ion-input autocomplete="true" spellcheck="true" id="ooo" type="tel" maxlength="10" placeholder="Mobile No." formControlName="phNo" autofocus></ion-input>
+      </ion-col>
+        </ion-row>
+    <ion-item no-lines text-wrap *ngIf="!loginForm.controls.phNo.valid &&
+                      loginForm.controls.phNo.hasError('Mobile Number in-correct')">
+                <p class="hint" >Mobile Number in-correct</p>
+    </ion-item>              
+    <ion-item  no-lines text-wrap *ngIf="!loginForm.controls.phNo.valid &&
+                      loginForm.controls.phNo.hasError('Records not in the database')">
+                <p class="hint">Mobile number not in records.Please sign-up</p>
+    </ion-item>     
 
-<ion-content padding>
-  <p align="center"><img src="assets/img/don2.png" > </p>
-  <h4 align="center"><b>Connect| Engage| Learn</b></h4>
-  <ion-list >
-  <ion-item>
-    <ion-label class="www" floating>Username</ion-label>
-    <ion-input type="text" autofocus></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label floating class="www">Password</ion-label>
-    <ion-input type="password"></ion-input>
-  </ion-item>
- </ion-list>  
-<button ion-button color="loginbutton" block (click)="Submit()">
-      Login
-    </button><br/>
-<button ion-button color="loginbutton" block (click)="ForgotPassword()">
-      Forgot Password
-    </button>
-    <p align="center"> Welcome to the most trusted Mobile App Solution connecting educators,students and parents.Contact us at <a href="mailto:kpabhiram@gmail.com">info@acctelnetwork.com</a> </p>
-    <p align="center"> <b>&#169;Guava Inc., All Rights Reserved</b></p>
+         </ion-label> 
+   
+<div id="a1">
+<button padding ion-button  color="loginbutton" (click)="Submit()"  block outline [disabled]="!loginForm.valid">
+      continue
+</button></div> 
+</div>
+    <!-- <button id="btt" ion-button color="loginbutton"   type="submit"  block  (click)="sub()">
+      sign up
+    </button>-->
+    
+  </form>
+  <p></p><p></p><br><div >
+ <ion-footer id="hh">
+    <p align="center"> <b>&#169;Guava Inc., All Rights Reserved</b></p>  
+   <p align="center" id="foot"> Welcome to the most trusted Mobile App Solution connecting educators,students and parents.Contact us at <a href="mailto:kpabhiram@gmail.com">info@acctelnetwork.com</a> </p>
+ </ion-footer>
+   </div>
+
+ 
+  <!-- <ion-row><ion-col id="III" width-20><ion-label>+91</ion-label></ion-col><ion-col width-80 id="II">   
+      <ion-input type="text" maxlength="10" ></ion-input></ion-col></ion-row>-->
+
 </ion-content>
-
-
-
-
-<!--Old Code-->
-<!--
-<ion-content padding>
-  <p align="center"><img src="assets/img/don2.png" > </p>
-  <h4 align="center"><b>Connect| Engage| Learn</b></h4>
-  <ion-list >
-  <ion-item>
-    <ion-label floating>Username</ion-label>
-    <ion-input type="text" autofocus></ion-input>
-  </ion-item>
-  <ion-item>
-    <ion-label floating>Password</ion-label>
-    <ion-input type="password"></ion-input>
-  </ion-item>
- </ion-list>  
-<button ion-button color="loginbutton" block (click)="Submit()">
-      Login
-    </button><br/>
-<button ion-button color="loginbutton" block (click)="ForgotPassword()">
-      Forgot Password
-    </button>
-    <p align="center"> Welcome to the most trusted Mobile App Solution connecting educators,students and parents.Contact us at <a href="mailto:kpabhiram@gmail.com">info@acctelnetwork.com</a> </p>
-    <p align="center"> <b>&#169;Guava Inc., All Rights Reserved</b></p>
-</ion-content>
-
--->

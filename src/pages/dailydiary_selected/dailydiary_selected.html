@@ -46,7 +46,7 @@
 
 <ion-item id="mine" >
    <ion-label stacked class="www"> Title</ion-label>
-   <ion-textarea formControlName="selected_title"> </ion-textarea>
+   <ion-textarea autocomplete="true" spellcheck="true" formControlName="selected_title"> </ion-textarea>
 </ion-item>
 <ion-item no-lines *ngIf="!dailyForm.controls.selected_title.valid &&
                  (dailyForm.controls.selected_title.dirty )">  
@@ -55,7 +55,7 @@
 
 <ion-item id="mine" >
    <ion-label stacked class="www"> Message </ion-label>
-   <ion-textarea formControlName="selected_message"></ion-textarea>
+   <ion-textarea autocomplete="true" spellcheck="true" formControlName="selected_message"></ion-textarea>
 </ion-item>
 
 <ion-item no-lines *ngIf="!dailyForm.controls.selected_message.valid &&
@@ -71,7 +71,7 @@
 
   <!-- Advanced: explicity set the icon for each platform -->
               
-  <ion-datetime displayFormat="DD/MMM/YYYY" formControlName="selected_to_date"></ion-datetime>
+  <ion-datetime displayFormat="DD/MMM/YYYY" min="2017" max="2018-10-31" pickerFormat="DD MM YYYY" formControlName="selected_to_date"></ion-datetime>
    </ion-label>
 </ion-item>
  
@@ -81,7 +81,7 @@
 </ion-item><br/>
 
 <ion-item no-lines>
-<button ion-button id="a2" 
+ <button  full ion-button  
         color="loginbutton" 
         [disabled]="!dailyForm.valid" block (click)="Submit()" >
       Save 
@@ -95,5 +95,5 @@
 </ion-content>
 <ion-footer>
   <ion-toolbar color="appheader"><ion-row><ion-col id="col1"><ion-icon color="lit" name="home"  (click)="home()" align-left><br>home</ion-icon></ion-col>
-<ion-col id="col2">  <ion-icon name="book" (click)="viewDiary()" ><br>view</ion-icon></ion-col></ion-row>  </ion-toolbar>
+<ion-col id="col2" >  <ion-icon name="book" (click)="viewDiary()" ><br>view</ion-icon></ion-col></ion-row>  </ion-toolbar>
 </ion-footer>

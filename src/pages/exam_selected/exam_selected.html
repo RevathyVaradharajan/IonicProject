@@ -4,18 +4,18 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>examtimetable</ion-title>
+    <ion-title>exam Timetable</ion-title>
    
   </ion-navbar>
 </ion-header>
 
 <ion-content padding><br>
 <form [formGroup]="examtimetable">
-  <ion-item id="date">
+  <ion-item (click)="showview()" id="date">
      <ion-label class="www" stacked>Date
-           <ion-icon  id="a9" ios="ios-calendar-outline" md="md-calendar"></ion-icon>
+           <ion-icon   ios="ios-calendar-outline" md="md-calendar"></ion-icon>
 
-     <ion-datetime displayFormat="DD/MMM/YYYY" formControlName="selected_from_date"></ion-datetime></ion-label> 
+     <ion-datetime displayFormat="DD/MMM/YYYY" min="2017" max="2018-10-31" pickerFormat="DD MM YYYY" formControlName="selected_from_date"></ion-datetime></ion-label> 
   </ion-item>
 
 
@@ -28,7 +28,7 @@
 
 <ion-item id="date">
    <ion-label class="www" stacked> From Time
-     <ion-icon id="a9" ios="ios-time-outline" md="md-time"></ion-icon>
+     <ion-icon  ios="ios-time-outline" md="md-time"></ion-icon>
     <ion-datetime displayFormat="hh:mm:a" pickerFormat="hh:mm:a" formControlName="selected_from_time"></ion-datetime>
   </ion-label>
 </ion-item>
@@ -36,7 +36,7 @@
 
 <ion-item id="date">
    <ion-label class="www" stacked> To Time
-     <ion-icon id="a11" ios="ios-time-outline" md="md-time"></ion-icon>
+     <ion-icon  ios="ios-time-outline" md="md-time"></ion-icon>
       <ion-datetime displayFormat="hh:mm:a" pickerFormat="hh:mm:a" formControlName="selected_to_time"></ion-datetime>
   </ion-label>
 
@@ -68,5 +68,5 @@
 </ion-content>
 <ion-footer>
   <ion-toolbar color="appheader"><ion-row><ion-col id="col1"><ion-icon color="lit" name="home" (click)="home()" align-left><br>home</ion-icon></ion-col>
-<ion-col id="col2">  <ion-icon name="book" (click)="view()" ><br>view</ion-icon></ion-col></ion-row>  </ion-toolbar>
+<ion-col id="col2" >  <ion-icon name="book" (click)="view()" ><br>view</ion-icon></ion-col></ion-row>  </ion-toolbar>
 </ion-footer>

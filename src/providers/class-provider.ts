@@ -117,6 +117,16 @@ export class ClassProvider {
                     .map(res => res.json())
                     .catch(error => Observable.throw(new Error(error.status)));
     }    
+
+    getteacher(class_id: number)
+    {
+        let url: string = `${Constants.servicesURLPrefix}/class/${class_id}/teachers`;
+        
+        return this.http.get(url)
+                    .map(res => res.json())
+                    .catch(error => Observable.throw(new Error(error.status)));
+    }    
+    
     
     addTeacherToSubjectClass(class_id: number, subject_id: number, t: Teacher)
     {
@@ -173,6 +183,14 @@ export class ClassProvider {
                     .catch(error => Observable.throw(new Error(error.status)));
     }    
     
+    removeperiod(id:any)
+    {
+        let url: string = `${Constants.servicesURLPrefix}/period/${id}/delete`;
+        
+        return this.http.delete(url)
+                    .map(res => res.json())
+                    .catch(error => Observable.throw(new Error(error.status)));
+    }    
     
     getTimeTableForDate(class_id: number, tt_date: string)
     {
@@ -240,6 +258,15 @@ export class ClassProvider {
                     .catch(error => Observable.throw(new Error(error.status)));
     }    
     
+    getstudentForattendance(school_id: number, class_id: number, section:any, student_id:number)
+    {
+        let url: string = `${Constants.servicesURLPrefix}/classes/${school_id}/${class_id}/${section}/${student_id}/studentattendance`;
+        console.log("URL" + url)
+        return this.http.get(url)
+                    .map(res => res.json())
+                    .catch(error => Observable.throw(new Error(error.status)));
+    }    
+    
     
     updateAttendance(class_id: number, tt_id: number, attendances: Attendance[])
     {
@@ -253,7 +280,7 @@ export class ClassProvider {
         return this.http.put(url,body, options)
                     .map(res => res.json())
                     .catch(error => Observable.throw(new Error(error.status)));
-    }
+    }   
     
         addAttendance(attendance:Attendance[],school_id:number,standard:any,section:string)
     {

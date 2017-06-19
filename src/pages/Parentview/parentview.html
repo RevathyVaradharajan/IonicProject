@@ -1,0 +1,50 @@
+<ion-header transparent>
+     <ion-navbar color="appheader">
+     
+<button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+<ion-title>
+     <p  (click)="doFilter()">{{parm_roll_no}} <br>
+     <ion-icon id="jj" ios="ios-arrow-down" md="md-arrow-dropdown"></ion-icon></p>
+    </ion-title>     
+     </ion-navbar>
+</ion-header>
+      <ion-select #sectionSelect [(ngModel)]="selected_roll_no" (ionChange)="changeHeader()">
+         <ion-option *ngFor="let roll of pt_rollno" value="{{roll.student_id}} - {{roll.student_name}}">Roll No.{{roll.student_id}}-{{roll.student_name}}</ion-option>
+         </ion-select>
+      
+<ion-content>
+
+  <ion-item no-lines>
+  <ion-label>History:</ion-label>
+  <ion-datetime displayFormat="MM/DD/YYYY" pickerFormat="DD MM YYYY" [(ngModel)]="myDate"></ion-datetime>
+  
+</ion-item>
+
+
+ <!--
+    <h2>Teacher-feedback</h2>
+    <label class="item-input"   stacked >
+    <textarea rows="7" cols="30"  text-wrap [(ngModel)]= "selected_parent_message"></textarea>
+    </label>
+    <h2>Parent-feedback</h2>
+    <label class="item-input"   stacked >
+    <textarea rows="7" cols="30"  text-wrap [(ngModel)]= "selected_teacher_message"></textarea>
+    </label>
+-->
+    <ion-item no-lines  *ngFor= "let x of parentmeeting">
+      <ion-item>
+   <ion-row   no-lines>
+                <ion-col class="col-4" width-75>{{x.teacher_message</ion-col> <br>   
+            </ion-row>
+            <ion-row   no-lines>
+                  <ion-col class="colwrap">{{x.student_message}}</ion-col>
+            </ion-row>
+</ion-item>
+    </ion-item>
+</ion-content> 
+<ion-footer>
+  <ion-toolbar color="appheader"><ion-row><ion-col id="col1"><ion-icon color="lit" name="home" (click)="home()"align-left><br>home</ion-icon></ion-col>
+</ion-row>  </ion-toolbar> 
+</ion-footer>

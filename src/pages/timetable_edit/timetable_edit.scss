@@ -1,8 +1,70 @@
-time-table-page{
-    ion-select {
+.ios,.md{
+    time-edit-page{
+           @font-face{
+        font-family: Barrio;
+        src: url"(‘../assets/fonts/barrio.woff2’) format(‘woff2’)";
+        }
+ 
+        button,h3 { font-family:'Times New Roman', Times, serif;} 
+        ion-segment{font-family: 'Oswald', sans-serif;}
+        .www,h4,.btt{font-family: 'Oswald', sans-serif;font-size:100%;}
+          ion-title{font-family: 'Oswald', sans-serif;font-size:100%;color: white;}
+        span{font-family: 'Oswald', sans-serif;font-size:100%;color: white;}
+       ion-list{
+             border: 1px solid #6A96F2;
+             border-radius: 15px;
+             background-color: #C8E3FA;
+             font-size: 80%;
+         }
+        .tte{
+            background-color: #fff;
+        }
+        p{
+             color: blue;
+             }
+     
+         ion-col{
+             font-family: 'Times New Roman', Times, serif;
+             font-size: 100%;
+         }
+         .col2{
+             text-align: center;
+         } 
+         #MMM{
+             color: white;
+         }
+   
+  .hh{
+     font-size: 120%;
+     text-align: center;
+     color: white;
+ }    
+               
+#col1{
+    padding:0;
+    text-align: center;
+    font-size: 90%;
+    color:white;
+   // margin-right: 40%;
+}
+#col2{
+    padding:0;
+    text-align: center;
+    font-size: 90%;
+    color:white;
+}
+#a1{
+    text-align: center;
+} 
+         ion-select {
          position: absolute;
         .select-icon, .select-text {
             display: none !important;  /* hidden triangle icon and selected text */
         }
+    }
+     ion-icon,button{
+         color:white;
+     }
+
     }
 }

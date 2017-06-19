@@ -1,44 +1,7 @@
-<ion-menu [content]="content">
-
-<ion-header >
-
-    <ion-toolbar color="appheader">
-
-     <!-- create a Header and logout here--> 
-
-      <a href="#"><img id="img1" src="assets/img/logout.png"></a> 
-
-      <!--create icon<ion-icon ios="ios-log-out" md="md-log-out"></ion-icon> -->
-
-      <ion-label class="use"><b>USER NAME</b></ion-label>
-
-      <ion-label id="use1">Teacher</ion-label>
-
-   <img id="img" src="assets/img/user.png">
-
-<!-- <button id="btt" ion-button color="loginbutton" block (click)="Submit()">
-
-      Logout
-
-    </button>
-
-    -->
-
-    </ion-toolbar>
-
-  </ion-header>
-
-  <ion-content >
-    <ion-list >
-      <button id="new" ion-item *ngFor="let p of pages" (click)="openPage(p)">
-        {{p.title}}
-      </button>
-    </ion-list>
-  </ion-content>
-
-</ion-menu>
 
 
-<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>
+<ion-nav [root]="rootPage" ></ion-nav>
+
+
 
 

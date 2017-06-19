@@ -1,50 +1,7 @@
-<!--<ion-header transparent>
-  <ion-navbar color="appheader">
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
-    <ion-title>Time-Table   
-    </ion-title>
-  </ion-navbar>
-  <ion-navbar align="center">  {{day}} <br> {{date}} </ion-navbar>
-
-</ion-header>
-<br> <br> <br> 
-<ion-content>
-<ion-grid>
-    <ion-row  class="row" *ngFor="let item of timetab">
-        <ion-col  width-10 class="coldesign1"> 
-            <ion-item >  <br> <br> </ion-item>
-        </ion-col>
-
-         <ion-col > 
-            <ion-list class="r">
-                 <ion-item-sliding>
-                    <ion-item> {{item.periods}} <br> {{item.subjects}} </ion-item>
-                        <ion-item-options side="right">
-                            <button ion-button color="danger" (click)="editSubject(item)"> Edit </button>
-                        </ion-item-options>
-                   </ion-item-sliding>     
-            </ion-list> 
-        </ion-col>  
-    </ion-row> 
-</ion-grid>
-</ion-content>-->
-
-<!--
-  Generated template for the Attendance2 page.
-
-  See http://ionicframework.com/docs/v2/components/#navigation for more info on
-  Ionic pages and navigation.
--->
-<ion-header>
+0<ion-header>
 
   <ion-navbar  color="appheader">
-<ion-row> 
- <ion-col offset-25><p>4-A 22/MAR</p></ion-col>
-</ion-row>
-
-<ion-row>
+  <ion-title>{{this.parm_standard}} - {{this.parm_section}} {{this.parm_tt_date | date: 'dd/MMM'}}</ion-title>
   
     <button ion-button menuToggle >
       <ion-icon name="menu"></ion-icon>
@@ -57,76 +14,54 @@
     </ion-item>
 </ion-col>
 -->
-</ion-row>
+
   </ion-navbar>
 
 </ion-header>
 
-<ion-content padding-top="5" >
+<ion-content class="tte" padding-top="5" >
 
-   <ion-list *ngFor= "let y of time_table_notification">
+   <ion-list *ngFor= "let y of time_table_notification_date_day">
        
             <ion-row>
-            <ion-col (click)="select_subject(y)">{{y.subject}}</ion-col>
+            <ion-col (click)="select_subject(y)">Subject<p>{{y.subject}}</p></ion-col>
             <ion-col (click)="select_period(y)" class="col1"> {{y.period}}</ion-col> 
-            <ion-col offset-25  class="col1">{{y.start_time}}-{{y.end_time}}</ion-col></ion-row>
+            <ion-col class="col2" > Time <p>{{y.start_time}}-{{y.end_time}}</p></ion-col></ion-row>
             
           <ion-row>
-            <ion-col (click)="select_teacher(y)">{{y.teacher_name}}</ion-col>
-            <ion-col offset-50 class="col1">Attendance<br> 
-            <ion-toggle disabled="true()" checked="false"></ion-toggle>   
-            </ion-col>
+            <ion-col (click)="select_teacher(y)">Teacher<p>{{y.teacher_name}}</p></ion-col>
+            <ion-col offset-50 class="col1">Attendance 
+                <ion-toggle toogle-class="toggle-balanced" [(ngModel)]="y.attendance_required" checked={{y.attendance_required}}> </ion-toggle>
+            </ion-col>  
+            
           </ion-row>
 
-            <ion-select #periodselect  [(ngModel)]="selected_period" (ionChange)= "edit_period(y)" >
-                <ion-option *ngFor= "let n of attendance_period"  [value]="n.period_type">{{n.period_type}}</ion-option>
+          
+    </ion-list>
+<div >
+     <button full (click)="submit()" ion-button color="primary">Save</button>
+</div>
+
+</ion-content>
+  <ion-select #periodselect  [(ngModel)]="selected_period" (ionChange)= "edit_period(y)" >
+                <ion-option *ngFor= "let n of attendance_period"  [value]="n.period_type" (ionSelect)="change(n)">{{n.period_type}}</ion-option>
             </ion-select>
 
-            <ion-datetime displayFormat="HH:mm" *ngIf= "!show" [(ngModel)]="selected_start_time"></ion-datetime>
+            <ion-datetime displayFormat="HH:mm" *ngIf= "!show"  [(ngModel)]="selected_start_time">{{selected_start_time}}</ion-datetime>
 
-            <ion-datetime displayFormat="HH:mm" *ngIf= "!show" [(ngModel)]="selected_end_time"></ion-datetime>
+            <ion-datetime displayFormat="HH:mm" *ngIf= "!show" [(ngModel)]="selected_end_time">{{selected_end_time}}</ion-datetime>
 
             <ion-select #subjectselect [(ngModel)]="selected_subject" (ionChange)= "edit_subject(y)">
                 <ion-option *ngFor="let n of class_subject" [value]="n.subject_name">{{n.subject_name}}</ion-option>
             </ion-select><br>
 
             <ion-select #teacherselect  [(ngModel)]="selected_name" (ionChange)= "edit_teacher(y)">
-                <ion-option *ngFor="let n of teacher_subject" [value]="n.name">{{n.name}}</ion-option>
+                <ion-option *ngFor="let n of teacher_subject" [value]="n.name" (ionSelect)="teacher(n)">{{n.teacher_name}}</ion-option>
             </ion-select>
 
-          <!--<ion-select #subjectselect [(ngModel)]="selected_subject">
-            <ion-option *ngFor = "let n of class_subject">{{n.subject_name}}</ion-option>
-          </ion-select>
-
-          <ion-select #periodselect [(ngModel)]="selected_period">
-            <ion-option *ngFor = "let per of period">{{x.period_type}}</ion-option>
-          </ion-select>
-
-          <ion-item>
-            <ion-label>Start Time</ion-label>
-            <ion-datetime displayFormat="HH:mm" [(ngModel)]="selected_start_time"></ion-datetime>
-        </ion-item>
-
-
-        <ion-item>
-            <ion-label >End Time</ion-label>
-            <ion-datetime displayFormat="HH:mm"[(ngModel)]="selected_end_time"></ion-datetime>
-        </ion-item>
-
-          <ion-select #teacherselect [(ngModel)]="selected_name">
-            <ion-option *ngFor="let n of teacher_subject">{{n.name}}</ion-option>
-
-          </ion-select>-->
-
-    </ion-list>
-<div id="a1">
-     <button (click)="submit()" ion-button color="primary">Save</button>
-</div>
-
-</ion-content>
 <ion-footer>
-  <ion-toolbar color="appheader"><ion-row><ion-col id="col1"><ion-icon color="lit" name="home" align-left><br>home</ion-icon></ion-col>
-<ion-col id="col2">  <ion-icon name="book" (click)="viewDiary()" ><br>view</ion-icon></ion-col></ion-row>  </ion-toolbar>
+  <ion-toolbar color="appheader"><ion-row><ion-col id="col1"><ion-icon (click)="home()" color="lit" name="home" align-left><br>home</ion-icon></ion-col>
+</ion-row>  </ion-toolbar>
 </ion-footer>
 
 

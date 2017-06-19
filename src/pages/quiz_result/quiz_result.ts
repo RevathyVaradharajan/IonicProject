@@ -24,6 +24,7 @@ export class Quiz2Page {
 
       this.quiz_answers_quiz = navParams.get('parm_quiz_data');
       this.calculate_score ();
+      this.calculate_question();
 
   }
   submit(){
@@ -34,6 +35,11 @@ export class Quiz2Page {
   home(){
   this.navCtrl.push(AboutPage);
   this.navCtrl.setRoot(AboutPage);
+}
+calculate_question(){
+  if(this.quiz_answers_quiz.length){
+    
+  }
 }
   calculate_score() {
         for(let num of this.quiz_answers_quiz) {

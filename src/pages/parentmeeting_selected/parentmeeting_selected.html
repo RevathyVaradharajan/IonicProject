@@ -1,29 +1,51 @@
 <ion-header transparent>
      <ion-navbar color="appheader">
+     
 <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-       <ion-title (click)="doFilter()">Roll no:{{selected_record}}<br>(click)</ion-title>
-       
+<ion-title>
+     <p  (click)="doFilter()">{{selected_record}} <br>
+     <ion-icon id="jj" ios="ios-arrow-down" md="md-arrow-dropdown"></ion-icon></p>
+    </ion-title>     
      </ion-navbar>
 </ion-header>
-<ion-content padding>
-      <ion-select #sectionSelect [(ngModel)]="selected_rollno" (ionChange)="changeHeader()">
-         <ion-option *ngFor="let roll of pt_rollno" value="{{roll.student_id}}">Roll No.{{roll.student_id}}-{{roll.student_name}}</ion-option>
-         </ion-select>
+      <ion-select #sectionSelect [(ngModel)]="selected_roll_no">
+         <ion-option *ngFor="let role of pt_rollno"  (ionSelect)="changerecord(role)" value="{{role.student_id}} - {{role.student_name}}">Roll No.{{role.student_id}} - {{role.student_name}}</ion-option>
+      </ion-select>
 
- 
-  <ion-item no-lines>
-    <ion-label id="uuu" stacked class="www">Teacher-Feedback</ion-label>
-    <ion-textarea  text-wrap ></ion-textarea>
-  </ion-item>
-<ion-item no-lines>
-   <ion-label id="uuu" stacked class="www">Parent-Feedback</ion-label>
-   <ion-textarea text-wrap></ion-textarea>
+<ion-content >
+  
+  
+
+
+ <!--
+    <h2>Teacher-feedback</h2>
+    <label class="item-input"   stacked >
+    <textarea rows="7" cols="30"  text-wrap [(ngModel)]= "selected_parent_message"></textarea>
+    </label>
+    <h2>Parent-feedback</h2>
+    <label class="item-input"   stacked >
+    <textarea rows="7" cols="30"  text-wrap [(ngModel)]= "selected_teacher_message"></textarea>
+    </label>
+-->
+    <ion-item no-lines>
+   <ion-label id="uuu" stacked class="www">Teacher FeedBack</ion-label>
+   <ion-textarea autocomplete="true" spellcheck="true" rows="7" text-wrap [(ngModel)]="selected_teacher_message"></ion-textarea>
 </ion-item>
-<button id="btt" ion-button (click)="save()">save</button>
+  
+  <ion-item no-lines>
+   <ion-label id="uuu" stacked class="www">Parent FeedBack</ion-label>
+   <ion-textarea rows="7" text-wrap autocomplete="true" spellcheck="true" [(ngModel)]="selected_student_message"></ion-textarea>
+</ion-item>
+
+
+<button  ion-button full (click)="save()">save</button>
+
+
 </ion-content> 
 <ion-footer>
   <ion-toolbar color="appheader"><ion-row><ion-col id="col1"><ion-icon color="lit" name="home" (click)="home()"align-left><br>home</ion-icon></ion-col>
-</ion-row>  </ion-toolbar>
+  <ion-col id="col1"><ion-icon color="lit" name="book" (click)="View()"align-left><br>View</ion-icon></ion-col>
+</ion-row>  </ion-toolbar> 
 </ion-footer>

@@ -45,10 +45,10 @@ export class NotifyProvider {
                     .catch(error => Observable.throw(new Error(error.status)));
     }
 
-    getNotify(prvdr_abt_page_date: string, prvdr_abt_page_school_id: any) {
+    getNotify(date: string, school_id: any, recep_ind:string) {
 
-        console.log("Value in provider " + prvdr_abt_page_date )
-        let url: string = `${Constants.servicesURLPrefix}/notifications/${prvdr_abt_page_school_id}/${prvdr_abt_page_date}`;
+        console.log("Value in provider " + date )
+        let url: string = `${Constants.servicesURLPrefix}/notifications/${school_id}/${date}/${recep_ind}`;
         
         console.log("this is URL" + url);
         
@@ -57,13 +57,24 @@ export class NotifyProvider {
                     .catch(error => Observable.throw(new Error(error.status)));
     }
 
+    getNotify_teacher(prvdr_abt_page_date: string, prvdr_abt_page_school_id: any) {
+
+        console.log("Value in provider " + prvdr_abt_page_date )
+        let url: string = `${Constants.servicesURLPrefix}/notifications/${prvdr_abt_page_school_id}/${prvdr_abt_page_date}/recep`;
+        
+        console.log("this is URL" + url);
+        
+        return this.http.get(url)
+                    .map(res => res.json())
+                    .catch(error => Observable.throw(new Error(error.status)));
+    }
     deleteNotify( id: number){
         console.log("Value in provider " + id)
         let url: string = `${Constants.servicesURLPrefix}/notifications/${id}`;
 
          console.log("this is URL" + url);
         
-        return this.http.get(url)
+        return this.http.delete(url)
                     .map(res => res.json())
                     .catch(error => Observable.throw(new Error(error.status)));
 

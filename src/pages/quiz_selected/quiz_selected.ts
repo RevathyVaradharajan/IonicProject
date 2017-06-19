@@ -37,7 +37,7 @@ studnt_quiz: Quiz;
                 this.parm_section  = navParams.get('parm_section');
                 this.parm_subject  = navParams.get('parm_subject');
 
-                this.parm_standard = 10
+                //this.parm_standard = 10
                 
 
                 this.fetchquestions(this.parm_standard, this.parm_subject);  

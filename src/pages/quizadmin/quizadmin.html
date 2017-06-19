@@ -10,29 +10,31 @@
 
 <ion-item>
     <ion-label class="www" stacked>Question</ion-label>
-    <ion-input type="text" autofocus></ion-input>
+       <ion-textarea [(ngModel)]="question"></ion-textarea>
+
+    <!--<ion-input type="text" autofocus></ion-input>-->
   </ion-item>
 <ion-item>
    <ion-label class="www" stacked>Option1</ion-label>
-   <ion-textarea [(ngModel)]="option1"></ion-textarea>
+   <ion-textarea autocomplete="true" spellcheck="true" [(ngModel)]="option1"></ion-textarea>
 </ion-item>
 <ion-item>
    <ion-label class="www" stacked>Option2</ion-label>
-   <ion-textarea [(ngModel)]="option2"></ion-textarea>
+   <ion-textarea [(ngModel)]="option2" autocomplete="true" spellcheck="true"></ion-textarea>
 </ion-item>
 <ion-item>
    <ion-label class="www" stacked>Option3</ion-label>
-   <ion-textarea [(ngModel)]="option3"></ion-textarea>
+   <ion-textarea [(ngModel)]="option3" autocomplete="true" spellcheck="true"></ion-textarea>
 </ion-item>
 <ion-item>
    <ion-label class="www" stacked>Option4</ion-label>
-   <ion-textarea [(ngModel)]="option4"></ion-textarea>
+   <ion-textarea [(ngModel)]="option4" autocomplete="true" spellcheck="true"></ion-textarea>
 </ion-item>
 <ion-item>
    <ion-label class="www" stacked>Answer</ion-label>
-   <ion-textarea [(ngModel)]="Answer"></ion-textarea>
+   <ion-textarea [(ngModel)]="Answer" autocomplete="true" spellcheck="true"></ion-textarea>
 </ion-item><br/>
-  <button align-item="center" ion-button color="blue" (click)="add()"> Add</button>
+  <button id="iii" align-item="center" ion-button color="blue" (click)="add()"> Add</button>
 
 </ion-content>
 <ion-footer>

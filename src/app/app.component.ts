@@ -46,6 +46,7 @@ import { Quiz2Page } from '../pages/quiz_result/quiz_result';
 import {examNew} from '../pages/exam_view/exam_view';
 import {ParentMeeting} from '../pages/parentmeeting/parentmeeting';
 import {ParentMeeting_selected} from '../pages/parentmeeting_selected/parentmeeting_selected';
+import {AttendanceReportSelected} from '../pages/attendancereport_selected/attendancereport_selected';
 
 //import {MarkAttendancePage} from '../pages/class/attendance//mark-attendance';
 import {ClassYear} from '../pages/admin/class-year/class-year';
@@ -57,12 +58,21 @@ import {DiaryviewPage} from '../pages/diaryview/diaryview';
 import{AttendanceView} from '../pages/attendanceview/attendanceview';
 import{Diaryview} from '../pages/dailydiary2/dailydiary2';
 import {TimeTablePage} from '../pages/timetable/timetable';
+
+import {timetable_parent} from '../pages/timetable_parent/timetable_parent';
+
 import {timetable_create} from '../pages/timetable_create/timetable_create';
 import {timetable_select} from '../pages/timetable_select/timetable_select';
 import {TimeTableEdit} from '../pages/timetable_edit/timetable_edit';
-
-
-
+import {ParentMeetProvider} from '../providers/parentmeet';
+import{Datanew} from '../providers/datanew';
+import {GlobalVars} from '../providers/global-provider';
+import{MenuComponent} from '../pages/Menu/menu';
+import{Page1} from '../pages/PageOne/pageone';
+import{Period} from '../pages/period/period';
+import{adminmain} from '../pages/admin/adminmain/adminmain';
+import{StudentDetails}from '../pages/studentDetails/sd';
+import{ParentView} from '../pages/Parentview/parentview';
 
 @Component({
   selector:'page-main',
@@ -73,59 +83,65 @@ export class MyApp {
 
   // make HelloIonicPage the root (or first) page
   rootPage: any = LoginPage;
-  pages: Array<{title: string, component: any}>;
+//  pages: Array<{title: string, component: any, icon:string}>;
+
 
   constructor(
     public platform: Platform,
     public menu: MenuController
   ) {
-    this.initializeApp();
 
+
+  //  this.initializeApp();
     // set our app's pages
-    this.pages = [
-      { title: 'Home', component: AboutPage },
-      {title:'Daily Diary', component:DailyDiary},
+    console.log("am coming here test the menu while leaving")  
+   /* this.pages = [
+      { title: 'Home', component: AboutPage,icon:"home" },
+      {title:'Daily Diary', component:DailyDiary,icon:"book"},
       /*{title:'Angular2maps',component:Angular2mapsPage},*/
-      { title :'Admin',component:ClassYear},
-      {title: 'Attendance',component:AttendancePage},
-      {title: 'Attendance Report',component:AttendanceReport},
-      { title: 'Quiz',component:QuizPage},
+//      { title :'Admin',component:ClassYear,icon:"create"},
+  //    {title: 'Attendance',component:AttendancePage,icon:"timer"},
+    //  {title: 'Attendance Report',component:AttendanceReportSelected,icon:"timer"},
+      //{ title: 'Quiz',component:QuizPage,icon:"school"},
       //{ title:'Quiz1', component:Quiz1},
-      {title:'Quiz1', component:Test},
-      { title:'QuizAdmin', component:QuizAdmin1},
+      //{title:'Quiz1', component:Test,icon:"school"},
+     // { title:'QuizAdmin', component:QuizAdmin1,icon:"school"},
       //{title:'Test', component:Test},
-      {title:'Test', component:Test1}, 
-      {title:'TimeTable', component:TimeTablePage}, 
-      {title:'TimeTable Upload', component:timetable_create}, 
-      {title:'Parent Meet', component: ParentMeeting},
-      {title : ' School Gallery',component:GalleryPage},
+      //{title:'Test', component:Test1,icon:"paper"}, 
+      //{title:'TimeTable', component:TimeTablePage,icon:"home"}, 
+      //{title:'TimeTable Upload', component:timetable_create,icon:"home"}, 
+      //{title:'Parent Meet', component: ParentMeeting,icon:"home"},
+      //{title : ' School Gallery',component:GalleryPage,icon:"image"},
       /*{title:'Map',component:MapPage},*/
-      {title: 'Locate Us',component:MappagePage},
-      {title:'Track',component:glocationPage},
+      //{title: 'Locate Us',component:MappagePage,icon:"globe"},
+      //{title:'Track',component:glocationPage,icon:"locate"},
      // { title: 'TimeTable',component:TimeTablePage},
-      {title:'Exam',component:Exam},
-      {title:'Upload',component:PhotodisplayPage},
+      //{title:'Exam',component:Exam,icon:"clipboard"},
+      //{title:'Upload',component:PhotodisplayPage,icon:"share"},
       /*{title:'Attendance',component:MockattendancePage},*/
-      {title:'Notifications',component:NotifybydatePage},
+      //{title:'Notifications',component:NotifybydatePage,icon:"notification"},
       /*{title :'reversegeocoding' ,component:AppComponent }*/
       /*{title:'FeedListPage',component:FeedListPage},*/
       /*{title:'feedHomePage',component:feedHomePage},*/
       
-    ];
   }
 
-  initializeApp() {
-    this.platform.ready().then(() => {
+  ionViewCanLeave(){
+    console.log("am coming here test the menu while leaving")
+  }
+
+  
+ //initializeApp() {
+   // this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
-      StatusBar.styleDefault();
-    });
-  }
-
-  openPage(page) {
+     // StatusBar.styleDefault();
+    //});
+ //}
+  //openPage(page) {
     // close the menu when clicking a link from the menu
-    this.menu.close();
+    //this.menu.close();
     // navigate to the new page if it is not the current page
-    this.nav.setRoot(page.component);
-  }
+    //this.nav.setRoot(page.component);
+ // }
 }

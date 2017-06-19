@@ -8,13 +8,23 @@
     font-size: 100%; }
         button,h3 { font-family:'Times New Roman', Times, serif;} 
         ion-title,ion-segment{font-family: 'Oswald', sans-serif;}
-        .www,p,h4{font-family: 'Oswald', sans-serif;font-size:100%;}
+        .www,h4{font-family: 'Oswald', sans-serif;font-size:100%;}
+        p{font-family: 'Oswald', sans-serif;font-size:70%;color: white;}
 #col100,#col200{
     padding:0;
     text-align: center;
     font-size: 90%;
     color:white;
 }
+.hh{
+     font-size: 120%;
+     text-align: center;
+     color: white;
+ }  
+ .select-icon, .select-text {
+            display: none !important;  /* hidden triangle icon and selected text */
+        }
+	  
             .col-1{
                 background-color: #D5A907;
                 text-align: center;

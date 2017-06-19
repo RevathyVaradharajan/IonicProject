@@ -1,12 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import {Attendance} from '../../models/Attendance';
 import {ClassReferenceTime} from '../../models/ClassReferenceTime';
 import { NavController, NavParams } from 'ionic-angular';
 import {ClassProvider} from '../../providers/class-provider';
 import { ToastController } from 'ionic-angular';
 import {Login} from '../../models/login-model';
-import{AboutPage} from '../Home/home';
-import{LoadingController} from 'ionic-angular';
 
 export class studentDetail {
           student_name: string;
@@ -41,8 +39,8 @@ export class AttendanceView {
       parm_start_time:any   
       parm_end_time:any 
       parm_teacher:any
-
-
+      selected_abt_page_date:String;
+ 
       constructor(public navCtrl: NavController, 
                   public navParams: NavParams,
                   public classProvider: ClassProvider, 
@@ -62,8 +60,8 @@ export class AttendanceView {
                         } 
 
                         this.today = yyyy+'-'+mm+'-'+dd;
-    
-
+                        let tdy=yyyy+'-'+mm+'-'+dd;
+                    this.selected_abt_page_date = tdy ;
                   this.parm_standard          = this.navParams.get('parm_standard');
                   this.parm_section           = this.navParams.get('parm_section'); 
                   this.parm_school_id         = this.navParams.get('parm_school_id');
@@ -100,7 +98,8 @@ export class AttendanceView {
 
 
     }  
-
+    myDate: String = new Date().toISOString();
+   
     loadData(y:Login[]){
 
          for (let n of y){
@@ -122,7 +121,6 @@ export class AttendanceView {
                            err =>   this.errorToast("Period not loaded","middle")); 
 
     }
-
 
     private errorToast(msg:string, pos:string) {
         let toast = this.toastController.create({
@@ -152,10 +150,10 @@ export class AttendanceView {
   submit() {
 
     for (let n of this.student_details){      
-    //     if (n.checked == false) {            
+        // if (n.checked == false) {            
            let s_attnd: Attendance = new Attendance();
            s_attnd.student_id = n.student_id
-           s_attnd.attendance = false
+           s_attnd.attendance_check = n.checked
            s_attnd.modified_by = 1
            s_attnd.student_name=n.student_name    
            s_attnd.class_id=this.parm_standard
@@ -165,19 +163,19 @@ export class AttendanceView {
            s_attnd.period=this.parm_period
            s_attnd.tt_id = this.parm_tt_id
            this.selected_attendance.push(s_attnd)  
-           console.log("Checking the value" + n.student_name + n.checked)
+           console.log("Checking the value" + n.student_name + n.checked + this.parm_standard)
      }
-        this.updateAttendance(this.parm_standard,this.parm_tt_id, this.selected_attendance)
+        this.updateAttendance(this.selected_attendance,this.parm_standard,this.parm_tt_id)
       
   }
 
-        updateAttendance(standard:number ,tt_id:number, attendance:Attendance[])
+        updateAttendance(attendance:Attendance[],standard:any,tt_id:number)
         
         {
-            console.log("coming to update attendance")
+            console.log("coming to update attendance" + standard)
    
             this.classProvider
-                .updateAttendance(standard,tt_id, attendance)
+                .updateAttendance(standard,tt_id,attendance)
                 .subscribe(res => {this.successToast("Attendance updated successfully","middle");},
                            err =>  this.errorToast("Error Updating dataset","middle"));
         }

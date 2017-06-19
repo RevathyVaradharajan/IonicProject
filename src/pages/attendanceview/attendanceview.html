@@ -7,16 +7,13 @@
 <ion-header>
 
   <ion-navbar  color="appheader">
-<ion-row> 
- <ion-col offset-25><p>4-A 22/MAR</p></ion-col>
-</ion-row>
-
-<ion-row>
   
     <button ion-button menuToggle >
       <ion-icon name="menu"></ion-icon>
     </button>
-       
+     <ion-title>
+  {{parm_standard}}-{{parm_section}} {{today}}
+</ion-title>  
 <!--<ion-col offset-50><ion-item   no-lines color="appheader" >
   <ion-datetime displayFormat="DD/MMM/YY" [(ngModel)]="myDate"></ion-datetime>
 
@@ -24,34 +21,18 @@
     </ion-item>
 </ion-col>
 -->
-</ion-row>
   </ion-navbar>
 
 </ion-header>
 
 <ion-content padding>
- 
- <ion-list>
- 
-  <ion-item id="nnnnn"> 
-    
-      <ion-row>
-            
-            <ion-col  > {{parm_period}}</ion-col> 
-            <ion-col  >{{parm_start_time}}-{{parm_end_time}}</ion-col></ion-row>
-            
-      <ion-row><ion-col >{{parm_subject}}</ion-col><ion-col >Teacher:-{{parm_teacher}}</ion-col></ion-row>
-
-  </ion-item>
-
-</ion-list>
-
+  
+  
   <ion-item  no-lines>
     <ion-label > <b>No</b> </ion-label>
     <ion-label  class="a1"> <b>Name</b> </ion-label>
         <ion-label class="a2"> <b>Present</b> </ion-label>
   </ion-item>
-    
     <ion-list no-lines paddin-left="10">      
        <ion-item  no-lines *ngFor="let x of student_details">  
           <ion-label>{{x.student_id}}</ion-label>
@@ -61,7 +42,7 @@
     </ion-list>
    
 <div id="a1">
-     <button (click)="submit()" ion-button color="primary">Submit</button>
+     <button (click)="submit()" ion-button full color="primary">Submit</button>
 </div>
 
 </ion-content>

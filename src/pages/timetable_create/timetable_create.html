@@ -9,27 +9,27 @@
 </ion-header>
 <ion-content padding><br/>
   <ion-item>
-    <ion-label stacked>Standard</ion-label>
+    <ion-label class="www" stacked>Standard</ion-label>
     <ion-select  [(ngModel)]="selected_standard"  
                  (ionChange)= "class_selected()" >
-      <ion-option *ngFor= " let x of class" value="{{x.standard}}">class-{{x.standard}}</ion-option>
+      <ion-option *ngFor= " let x of class" value="{{x.standard}}">Class-{{x.standard}}</ion-option>
 
     </ion-select>
   </ion-item><br>
 
 <ion-item>
-    <ion-label stacked>Section</ion-label>
+    <ion-label class="www" stacked>Section</ion-label>
     <ion-select [(ngModel)]="selected_section">
         <ion-option *ngFor= " let y of sec">{{y.section}}</ion-option>
     </ion-select>
   </ion-item><br>
 
   <ion-item>
-  <ion-label stacked>To Date
+  <ion-label class="www" stacked>To Date
       <ion-icon id="a10" ios="ios-calendar-outline" md="md-calendar"></ion-icon>
-      <ion-datetime displayFormat="DD/MMM/YYYY" [(ngModel)]= "selected_tt_date"></ion-datetime></ion-label>
+      <ion-datetime displayFormat="DD/MMM/YYYY" min="2017" max="2018-10-31"  pickerFormat="DD MMM YYYY" [(ngModel)]= "selected_tt_date"></ion-datetime></ion-label>
 </ion-item>
 
-
-  <button ion-button color="loginbutton" block (click)="submit()"> create timetable</button>
+<button  ion-button color="loginbutton" full (click)="submit()"> Create </button>
+  <button  ion-button color="loginbutton" full (click)="submitview()"> View</button>
 </ion-content>

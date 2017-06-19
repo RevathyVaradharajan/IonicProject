@@ -6,8 +6,9 @@ import { ToastController } from 'ionic-angular';
 import {ClassSectionYear} from '../../models/ClassSectionYear';
 import {Subject} from '../../models/Subject';
 import {LoadingController} from 'ionic-angular';
-
-
+import{QuizAdmin} from '../quizadmin/quizadmin';
+import {Login} from '../../models/login-model';
+import {GlobalVars} from '../../providers/global-provider';
 @Component({
   templateUrl: 'quiz1.html',
   selector:'page-quiz1'
@@ -23,24 +24,41 @@ export class Test {
   sec: ClassSectionYear[];
   daily_diary_subject: Subject[];
   loader:any;
-
-    constructor(public navCtrl: NavController,navParams: NavParams,
+  showheader:any;
+  role_type:string;
+  login:Login[]
+    constructor(public navCtrl: NavController,navParams: NavParams,public globalVars:GlobalVars,
                 public loadingController:LoadingController,public quiz: ClassProvider, public toastController: ToastController){
       //this.selected_section="A"
       //this.selected_standard="standard I"
       //this.selected_subject="Maths"
           this.parm_school_id= 1;
           this.parm_class_id=1;
+          this.login = this.globalVars.getMyGlobalVar()
+          this.role_type = this.globalVars.getMyGlobalrole()
+          if(this.role_type=="P"){
+            this.showheader=true;
+
+          }
 
     }
     
   submit(){
+ 
+        //console.log("length check" + this.selected_standard.length + this.selected_section.length + this.selected_subject.length);
+       console.log("length of standard" + this.selected_standard.length + this.selected_subject.length)
+      if(this.selected_standard && this.selected_section && this.selected_subject >0 ){
+
+      }
        this.navCtrl.push(Quiz1,{
         parm_standard: this.selected_standard,
         parm_section: this.selected_section,
         parm_subject: this.selected_subject
   });
   }
+
+
+
 
 ngOnInit() {
   this.loading();
@@ -131,7 +149,17 @@ errorToast() {
 
   }
 
-
-
+submitview(){
+   this.navCtrl.push(QuizAdmin,{
+        parm_standard: this.selected_standard,
+        parm_section: this.selected_section,
+        parm_subject: this.selected_subject
+  });
+ 
+}
 
 }
+
+
+
+

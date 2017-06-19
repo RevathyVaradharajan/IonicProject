@@ -40,53 +40,58 @@
 <ion-header>
 
   <ion-navbar  color="appheader">
-<ion-row> 
- <ion-col offset-25><p>4-A 22/MAR</p></ion-col>
-</ion-row>
 
-<ion-row>
   
-    <button ion-button menuToggle >
+    <button id="btt" ion-button menuToggle >
       <ion-icon name="menu"></ion-icon>
     </button>
-       
-<!--<ion-col offset-50><ion-item   no-lines color="appheader" >
-  <ion-datetime displayFormat="DD/MMM/YY" [(ngModel)]="myDate"></ion-datetime>
+<ion-title *ngIf="!showheader" (click)="doFilter()">
+<span>{{selected_record}} 
+           <ion-icon id="jj" ios="ios-arrow-down" md="<md-arrow-></md-arrow->down"></ion-icon>
+</span>  </ion-title>       
+<ion-title *ngIf="showheader">
+TimeTable
+</ion-title>       
 
-
-    </ion-item>
-</ion-col>
--->
-</ion-row>
   </ion-navbar>
 
 </ion-header>
+<ion-select #sectionSelect>
+         <ion-option *ngFor="let roll of login" (ionSelect)="changerecord(roll)">Roll No.{{roll.student_id}}{{roll.student_name}}</ion-option>
+  </ion-select>
+  
 
-<ion-content padding-top="5" >
-   <ion-list *ngFor= "let y of time_table_notification">
+<ion-content>
+   <br>
+ <!--  <h3>{{date | date: 'dd/MMM'}} - {{time_table_day}}!!</h3>
+   -->
+   <ion-list *ngFor= "let y of time_table_notification_date_day">
        
             <ion-row>
-            <ion-col>{{y.subject}}</ion-col>
+            <ion-col>Subject <br>{{y.subject}}</ion-col>
             <ion-col  class="col1"> {{y.period}}</ion-col> 
-            <ion-col offset-25  class="col1">{{y.start_time}}-{{y.end_time}}</ion-col></ion-row>
+            <ion-col   class="col1">{{y.start_time}}-{{y.end_time}}</ion-col></ion-row>
             
-          <ion-row><ion-col>{{y.teacher_name}}</ion-col>
-            <ion-col offset-50 class="col1">Attendance<br> 
-              <ion-toggle disabled="true()" checked="false"></ion-toggle>   
+          <ion-row><ion-col>Teacher<br>{{y.teacher_name}}</ion-col>
+            <ion-col  *ngIf="!showattend" offset-25 class="col2">Attendance<br> 
+              Yes  
+            </ion-col>
+            <ion-col *ngIf="showattend" offset-25 class="col1">Attendance<br> 
+                 
             </ion-col>
           </ion-row>
        
     </ion-list>
      
   
-<div id="a1">
+<!--<div id="a1">
      <button (click)="submit()" ion-button color="primary">Submit</button>
-</div>
+</div>-->
 
 </ion-content>
 <ion-footer>
-  <ion-toolbar color="appheader"><ion-row><ion-col id="col1"><ion-icon color="lit" name="home" align-left><br>home</ion-icon></ion-col>
-<ion-col id="col2">  <ion-icon name="book" (click)="viewDiary()" ><br>view</ion-icon></ion-col></ion-row>  </ion-toolbar>
+  <ion-toolbar color="appheader"><ion-row><ion-col id="col1"><ion-icon (click)="home()"color="lit" name="home" align-left><br>home</ion-icon></ion-col>
+</ion-row>  </ion-toolbar>
 </ion-footer>
 
 

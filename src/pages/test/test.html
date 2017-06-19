@@ -24,7 +24,7 @@
     <ion-label class="www" stacked>Class</ion-label>
     <ion-select  id="sec" [(ngModel)]="selected_standard"  
                  (ionChange)= "class_selected()" >
-      <ion-option *ngFor= " let x of class" value= "{{x.standard}}"> class - {{x.standard}} </ion-option>
+      <ion-option *ngFor= " let x of class" value= "{{x.standard}}"> Class - {{x.standard}} </ion-option>
 
     </ion-select>
   </ion-item><br>
@@ -35,5 +35,5 @@
 
     </ion-select>
   </ion-item> <br>
-<button id="a1" ion-button color="loginbutton" block (click)="submit()"> Submit</button>
+<button  ion-button color="loginbutton" full (click)="submit()"> Submit</button>
 </ion-content>

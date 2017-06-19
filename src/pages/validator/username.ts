@@ -31,18 +31,18 @@ static checkFromDate(control: FormControl): any {
     let  mm: any    = today.getMonth()+1; //January is 0!
     let  yyyy: any  = today.getFullYear();
     let  month: string;
-    if(dd<10) {
+    if(dd<=10) {
          dd='0'+dd
     } 
 
-    if(mm<10) {
+    if(mm<=10) {
          mm='0'+mm
     } 
 
 today = yyyy+'-'+mm+'-'+dd;
 
   if( today == null || today == '' || 
-          today == ' ' ||today >= control.value){           
+          today == ' ' ||today > control.value){           
     return {
          "not a valid date": true
     };
@@ -53,9 +53,10 @@ today = yyyy+'-'+mm+'-'+dd;
 
 
 static checkToDate(control: FormControl): any {
-    console.log('hello in date validator:' + control.value + ';');
-    let  to_dt   = control.value 
 
+    console.log('hello in date validator:' + control.value + ';');
+    
+    let  to_dt   = control.value 
 
     let  today: any = new Date();
     let  dd: any    = today.getDate();

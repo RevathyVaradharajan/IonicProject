@@ -1,45 +1,61 @@
 <ion-header>
   <ion-navbar  color="appheader">
-    <ion-title>Exam Time Table</ion-title>
+    
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
+      
+<ion-title *ngIf="showheader">
+<p  (click)="doFilter()">{{selected_record}} 
+           <ion-icon id="jj" ios="ios-arrow-down" md="<md-arrow-></md-arrow->down"></ion-icon></p>
+     </ion-title>       
+<ion-title *ngIf="!showheader">
+Exam Scheduled
+</ion-title>       
+
   </ion-navbar>
 </ion-header>
 
+ <ion-select #sectionSelect >
+         <ion-option *ngFor="let roll of login"  (ionSelect)="changerecord(roll)">Roll No.{{roll.student_id}}-{{roll.student_name}}</ion-option>
+  </ion-select>
 <ion-content>
 
   <ion-list>  
-    
+    <h3 padding-left>{{this.header_exam_type}} </h3>    
     <ion-item-sliding #slidingItem  *ngFor= "let x of exam_view">
  
-        <ion-item (click)="view(x)">
+        <ion-item (click)="view(x)" *ngIf="!x.expand">
        
           <ion-row no-lines>
                 <ion-col  class="col-3" width-25>{{x.date | date: 'dd/MM'}}</ion-col>
                 <ion-col  class="col-4" width-75>{{x.subject}}</ion-col>
             </ion-row>
 
-            <ion-row  *ngIf="show" no-lines>
+          </ion-item>
+        <ion-item (click)="view(x)"  text-wrap *ngIf="x.expand">
+       
+          <ion-row no-lines>
+                <ion-col  class="col-3" width-25>{{x.date | date: 'dd/MM'}}</ion-col>
+                <ion-col  class="col-4" width-75>{{x.subject}}</ion-col>
+            </ion-row>
+
+            <ion-row   no-lines>
                 <ion-col width-25 class="col-3"></ion-col>
                 <ion-col class="col-4" width-75>{{x.from_time}} - {{x.end_time}}</ion-col> <br>   
             </ion-row>
-            <ion-row  *ngIf="show" no-lines>
+            <ion-row   no-lines>
                   <ion-col width-25 class="col-3"></ion-col>
                   <ion-col class="colwrap">{{x.syllabus}}</ion-col>
             </ion-row>
-          </ion-item>
-           
+          </ion-item> 
         <ion-item-options side="right">
-          <button ion-button color="primary"  (click)="view(x)">
-            <ion-icon name="book"></ion-icon> 
-            view
-          </button>
-          <button ion-button color="secondary" (click)="edit(x)">
+         
+          <button ion-button color="secondary" *ngIf="!showheader" (click)="edit(slidingItem,x)">
             <ion-icon ios="ios-clipboard" md="md-clipboard"></ion-icon>
             Edit
           </button>
-            <button ion-button color="danger" (click)="Delete(x)">
+            <button ion-button color="danger" *ngIf="!showheader" (click)="Delete(slidingItem,x)">
             <ion-icon ios="ios-trash" md="md-trash"></ion-icon>
             Delete
           </button>

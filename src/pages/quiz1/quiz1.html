@@ -30,5 +30,18 @@
             <ion-option *ngFor= " let n of daily_diary_subject">{{n.subject_name}}</ion-option>
     </ion-select><br>
 </ion-item>
-  <button ion-button color="loginbutton" block (click)="submit()"> Submit</button>
+
+
+  <button ion-button color="loginbutton" *ngIf="!showheader" full (click)="submit()"> Submit</button>
+
+ 
+    <button ion-button color="loginbutton" *ngIf="!showheader" full (click)="submitview()"> Create</button>
+
+
+<ion-row *ngIf="showheader">
+  <ion-col>
+  <button ion-button color="loginbutton" full (click)="submit()"> Submit</button>
+  </ion-col>
+  
+</ion-row>
 </ion-content>

@@ -1,0 +1,48 @@
+
+<ion-header transparent>
+     <ion-navbar color="appheader">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Admin</ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding>
+  <ion-item>
+  <ion-label stacked>Name</ion-label>
+  <ion-textarea autocomplete="true" spellcheck="true" [(ngModel)]="selected_name">
+  </ion-textarea>
+</ion-item>
+<ion-item>
+  <ion-label stacked>Father's Name</ion-label>
+  <ion-textarea [(ngModel)]="selected_fname" autocomplete="true" spellcheck="true">
+  </ion-textarea>
+</ion-item>
+<ion-item>
+  <ion-label stacked>DOB</ion-label>
+  <ion-textarea [(ngModel)]="selected_dob" autocomplete="true" spellcheck="true">
+  </ion-textarea>
+  </ion-item>
+<ion-item>
+  <ion-label stacked>Gender</ion-label>
+  <ion-select [(ngModel)]="selected_gender">
+  <ion-option value="male" name="Male">Male</ion-option>
+  <ion-option value="Female" name="FeMale">FeMale</ion-option>
+  </ion-select>
+</ion-item>
+<ion-item>
+  <ion-label stacked>Address</ion-label>
+  <ion-textarea [(ngModel)]="selected_address" autocomplete="true" spellcheck="true">
+  </ion-textarea>
+</ion-item>
+<ion-item>
+  <ion-label stacked>Contact No.</ion-label>
+  <ion-textarea [(ngModel)]="selected_contact" autocomplete="true" spellcheck="true">
+  </ion-textarea>
+</ion-item>
+<button ion-button block>Add</button>
+</ion-content>
+<ion-footer>
+  <ion-toolbar color="appheader"><ion-row><ion-col id="col1"><ion-icon color="lit" name="home" (click)="home()" align-left></ion-icon></ion-col>
+</ion-row>  </ion-toolbar>
+</ion-footer>

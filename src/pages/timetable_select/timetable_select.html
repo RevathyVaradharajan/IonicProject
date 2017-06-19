@@ -1,12 +1,9 @@
 <ion-header>
 
   <ion-navbar  color="appheader">
-<ion-row> 
- <ion-col offset-25><p>4-A 22/MAR</p></ion-col>
-</ion-row>
 
-<ion-row>
-  
+<ion-title>4-A 22/MAR
+</ion-title>
     <button ion-button menuToggle >
       <ion-icon name="menu"></ion-icon>
     </button>
@@ -15,44 +12,43 @@
   <ion-datetime displayFormat="DD/MMM/YY" [(ngModel)]="myDate"></ion-datetime>
     </ion-item>
 </ion-col>-->
-</ion-row>
+
   </ion-navbar>
 
 </ion-header>
 
      <ion-content padding class="crt">
 
-    <ion-card>
+    <ion-card class="card1">
 
-        <ion-item>
-            <ion-label>Period</ion-label>
-            <ion-select [(ngModel)]="selected_period" >
-                <ion-option *ngFor= " let x of attendance_period" (ionSelect)= "change(x)">{{x.period_type}}</ion-option>
-            </ion-select>
+         <ion-item>
+                <ion-label>Period</ion-label>
+             <ion-select  [(ngModel)]="selected_period" >
+                   <ion-option *ngFor= "let x of attendance_period" (ionSelect)="change(x)">{{x.period_type}}</ion-option>
+               </ion-select> 
         </ion-item>
 
         <ion-item>
             <ion-label>Start Time</ion-label>
-            <ion-datetime displayFormat="HH:mm" [(ngModel)]="selected_start_time"></ion-datetime>
+            <ion-datetime displayFormat="HH:mm" [(ngModel)]="selected_start_time">{{selected_start_time}}</ion-datetime>
         </ion-item>
-
 
         <ion-item>
             <ion-label >End Time</ion-label>
-            <ion-datetime displayFormat="HH:mm"[(ngModel)]="selected_end_time"></ion-datetime>
+            <ion-datetime displayFormat="HH:mm"[(ngModel)]="selected_end_time">{{selected_end_time}}</ion-datetime>
         </ion-item>
 
        <ion-item>
             <ion-label>Subject</ion-label>
             <ion-select [(ngModel)]="selected_subject">
-            <ion-option *ngFor= " let n of daily_diary_subject"> {{n.subject_name}} </ion-option>
+            <ion-option *ngFor= "let n of daily_diary_subject">{{n.subject_name}}</ion-option>
     </ion-select><br>
        </ion-item>
 
         <ion-item>
             <ion-label>Teacher</ion-label>
             <ion-select [(ngModel)]="selected_name">
-                <ion-option *ngFor="let n of teacher_subject">{{n.name}}</ion-option>
+                <ion-option *ngFor="let n of teacher_subject" (ionSelect)="teacher(n)">{{n.teacher_name}}</ion-option>
             </ion-select>
         </ion-item>
 
@@ -60,17 +56,14 @@
             <ion-label>Attendance required</ion-label>
             <ion-toggle item-right [(ngModel)]="d"></ion-toggle>
         </ion-item>
-
-        <ion-item>
-            <button (click)="addRefTimeToClass()">Add</button>
-        </ion-item>
     </ion-card>
-
-
-<br />
-    <br />
+    <div>
+            <button (click)="addRefTimeToClass()" ion-button color="primary">Add</button>
+    </div>
+<br/>
+    <br/>
     <ion-card>
-        <ion-card-header class="card-header">Periods</ion-card-header>
+       <!-- <ion-card-header class="card-header">Periods</ion-card-header>
         <ion-grid *ngIf="classRefTimes != null && classRefTimes?.length > 0">
             <ion-row class="padding-bottom">
                 <ion-col light>Timing</ion-col>
@@ -80,26 +73,34 @@
                 <ion-col>Attendance</ion-col>
                 <ion-col>Action</ion-col>
             </ion-row>
-            <ion-row *ngFor="let i of classRefTimes">
-                <ion-col class="align-bottom">{{i.start_time}} - {{i.end_time}}</ion-col>
-                <ion-col class="align-bottom">{{i.period_type}}</ion-col>
-                <ion-col class="align-bottom">{{i.subject}}</ion-col>
-                <ion-col class="align-bottom">{{i.teacher_name}}</ion-col>
-                <ion-col class="align-bottom">{{i.attendance_required}}</ion-col>
+        -->
+        <ion-row class="padding-bottom" >
+                <ion-col class="align-bottom">Time </ion-col>
+                <ion-col class="align-bottom">Period</ion-col>
+                <ion-col class="align-bottom">Subject</ion-col>
+                <ion-col class="align-bottom">Teacher</ion-col>
+                <ion-col class="align-bottom">Attendance</ion-col>
+                <ion-col class="align-bottom">Delete</ion-col>
+         </ion-row>
+          <ion-row *ngFor="let x of time_table_notification">
+                <ion-col class="align-bottom">{{x.start_time}} - {{x.end_time}}</ion-col>
+                <ion-col class="align-bottom">{{x.period}}</ion-col>
+                <ion-col class="align-bottom">{{x.subject}}</ion-col>
+                <ion-col class="align-bottom">{{x.teacher_name}}</ion-col>
+                <ion-col class="align-bottom">{{x.attendance_required}}</ion-col>
                 <ion-col class="align-bottom">
-                    <button small clear (click)="removeRefTimeFromClass(i)">
+                    <button small clear (click)="delete(x)">
                         <ion-icon name="trash">
                         </ion-icon>
                     </button>
                 </ion-col>
             </ion-row>
-        </ion-grid>
     </ion-card>
 
 </ion-content>
 <ion-footer>
-  <ion-toolbar color="appheader"><ion-row><ion-col id="col1"><ion-icon color="lit" name="home" align-left><br>home</ion-icon></ion-col>
-<ion-col id="col2">  <ion-icon name="book" (click)="viewDiary()" ><br>view</ion-icon></ion-col></ion-row>  </ion-toolbar>
+  <ion-toolbar color="appheader"><ion-row><ion-col id="col1"><ion-icon (click)="home()" name="home" ><br>home</ion-icon></ion-col>
+<ion-col id="col2" *ngIf="showview">  <ion-icon name="book" (click)="viewDiary()" ><br>view</ion-icon></ion-col></ion-row>  </ion-toolbar>
 </ion-footer>
 
 
